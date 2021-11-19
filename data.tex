@@ -1,0 +1,46 @@
+\chapter{Data}
+\label{chapter:data}
+
+\newcommand{\Cx}{\mbox{\ttfamily C$x$}}
+
+\section{FITS Images}
+
+\subsection{Creation}
+
+FITS files are created by the instrument channel servers. These servers are normally named \verb|C0|, \verb|C1|, and so on. In the examples here, we will use {\Cx} as generic name.
+
+The instrument channel servers create FITS files for each exposure and each detector. The files for each exposure are created hosts running the channel server and are then migrated first to the services server and then to the archive.
+
+A request to create an image can specify a FITS file prefix. If none is given, the server uses:
+\begin{quote}
+\verb|/usr/local/var/tcs/|$yyyymmdd$\verb|/|{\Cx}\verb|/|$yyyymmdd$\verb|T|$hhmmss$
+\end{quote}
+in which $yyyymmdd$ and $hhmmss$ are the local UTC time. To form the complete FITS file name, the server appends its identifier {\Cx}, a letter to indicate the type of exposure (\verb|o| for object exposures, \verb|b| for bias exposures, \verb|d| for dark exposures, \verb|f| for flat-field exposures, \verb|g| for guiding exposures, and \verb|x| for other types of exposures), and \verb|.fits|.
+
+The server maintains hard links to the latest FITS file in the directory
+\begin{quote}
+\verb|/usr/local/var/tcs/|$yyyymmdd$\verb|/|{\Cx}\verb|/|
+\end{quote}
+In this directory, the link \verb|latest.fits| is is created or replaced atomically at the end of an exposure and the link \verb|current.fits| is created at the end of an exposure, but it is removed at the start of an exposure.
+
+\subsection{Compression and Local Migration}
+
+The program \verb|instrumentdataserver| runs continuously on each host that runs an instrument channel server. It losslessly compresses the FITS files (except \verb|latest.fits| and \verb|current.fits|), removing the FITS file, and then migrates the compressed files to the \verb|services| host, again removing the local compressed files. Compression is normally with \verb|fpack| and the compressed file will have a suffix of \verb|.fits.fz|.
+
+The \verb|latest.fits| and \verb|current.fits| links are not migrated to the \verb|services| host.
+
+The aim here is to avoid a build-up of FITS file on the hosts running the instrument channel servers, since some only have limited disk space, and the minimize the network bandwidth required for migration.
+
+\subsection{Migration to the Archive}
+
+The program \verb|instrumentdataserver| runs continuously on the \verb|services| hosts. It migrates compressed FITS files to the observatory raw archive, but does not remove the local compressed files. (They are removed eventually by the \verb|cleanfiles| program.)
+
+\section{Bibliography}
+
+\begin{flushleft}
+\begin{itemize}
+\item \href{https://heasarc.gsfc.nasa.gov/fitsio/fpack/}{fpack Home Page}, NASA.
+\end{itemize}
+\end{flushleft}
+
+

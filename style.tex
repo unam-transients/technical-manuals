@@ -1,0 +1,59 @@
+\usepackage[utf8]{inputenc}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\smallskipamount}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+%\usepackage{fullpage}
+
+\usepackage[colorlinks=true,destlabel=true]{hyperref}
+\hypersetup{extension = }
+
+\newcommand{\safety}[1]{%
+\smallskip
+\resizebox{\columnwidth}{!}{\fbox{\fbox{\begin{minipage}{0.96\linewidth}\emph{#1}\end{minipage}}}}%
+\smallskip
+}
+
+\newcommand{\unit}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\micron}{\mbox{$\mu$m}}
+\newcommand{\var}[1]{\ensuremath{\left<\mathrm{#1}\right>}}
+
+\newenvironment{labeled}[1]{%
+  \begin{tikzpicture}[
+    label/.style={
+      minimum height=0.8cm,
+      red,
+      thick,
+      <-,
+      rectangle,
+      draw=red
+    }
+  ]
+  \node at (0,0) {#1};
+}{
+  \end{tikzpicture}
+}
+\newcommand{\arrowandlabel}[4]{
+  \draw[label] #1 -- #2 node [label,anchor=#3] {#4};
+}
+\newcommand{\arrowonly}[2]{
+  \draw[label] #1 -- #2;
+}
+\newcommand{\dummylabel}[2]{
+  \draw[label,white] #1 node [label,anchor=#2,draw=white] {};
+}
+
+% https://tex.stackexchange.com/questions/52317/pdftex-warning-version-allowed
+\pdfminorversion=7
+
+\newif\ifcoatlioan
+\coatlioanfalse
+\newif\ifddotioan
+\ddotioanfalse
+

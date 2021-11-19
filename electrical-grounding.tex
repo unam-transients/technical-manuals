@@ -1,0 +1,147 @@
+\chapter{Electrical Grounding}
+\label{chapter:electrical-grounding}
+
+This chapter describes the electrical grounding system in the {\projectname} installation. The electrical power system is described in Chapter~\ref{chapter:electrical-power}.
+
+TODO: Measure DDOTI ground resistance.
+
+\section{Grounding Rods}
+
+\ifcoatlioan
+We have installed a network of ground rods to the 
+east of the 84-cm telescope building. There is one main rod and two delta or triad rod systems. The three systems are connected through a ground bar in a box on the eastern wall of the 84-cm telescope.
+
+The 84-cm telescope building is grounded through an independent network of grounding rods just to the south of the building.
+\fi
+
+\ifddotioan
+We have installed a network of ground rods to the 
+east of shed. There is one main rod and two delta or triad rod systems. The three systems are connected through a ground bar in a box on the eastern wall of shed.
+\fi
+
+TODO: Photo.
+
+
+\section{Grounding System}
+
+\ifcoatlioan
+Figure~\ref{figure:schematic-electrical-grounding-system} shows a schematic of the electrical grounding system. These grounding cable from the grounding rods runs through the conduit from the 84-cm to the {\projectname} installation. It is terminated at a protected grounding bar underneath the metal walkway. This is the “tau-point” of the grounding system. From here, spurs are used to ground the electrical system in the shed, the walkways, the tower, and the platform.
+\fi
+\ifddotioan
+Figure~\ref{figure:schematic-electrical-grounding-system} shows a schematic of the electrical grounding system. These grounding cables from the grounding rods are connected at a protected grounding bar on the east side of the shed. This is the “tau-point” of the grounding system. From here, spurs are used to ground the electrical system in the shed, the tower, and the platform.
+\fi
+
+TODO: Photo of the tau-point.
+
+TODO: Cable calibres.
+
+\begin{figure*}
+\begin{center}
+\resizebox{\columnwidth}{!}{
+\begin{tikzpicture}[
+ thick,
+ box/.style={
+  inner sep=1mm,
+  draw=black,
+  rectangle,
+  minimum width=2cm,
+  minimum height=0.6cm,
+  align=center
+ }
+] 
+
+\node at (1.5,1.75) [right,align=left] {Ground\\Rods};
+
+\begin{scope}[xshift=0cm,yshift=1.5cm]
+\draw (-0.25,-0.0) -- (+0.25,-0.0);
+\draw (-0.15,-0.1) -- (+0.15,-0.1);
+\draw (-0.05,-0.2) -- (+0.05,-0.2);
+\end{scope}
+\begin{scope}[xshift=+1cm,yshift=1.5cm]
+\draw (-0.25,-0.0) -- (+0.25,-0.0);
+\draw (-0.15,-0.1) -- (+0.15,-0.1);
+\draw (-0.05,-0.2) -- (+0.05,-0.2);
+\end{scope}
+\begin{scope}[xshift=-1cm,yshift=1.5cm]
+\draw (-0.25,-0.0) -- (+0.25,-0.0);
+\draw (-0.15,-0.1) -- (+0.15,-0.1);
+\draw (-0.05,-0.2) -- (+0.05,-0.2);
+\end{scope}
+
+\draw (-1,1.5) -- (-1,2) -- (0,2);
+\draw (+1,1.5) -- (+1,2) -- (0,2);
+\draw (0,1.5) -- (0,2);
+
+%\node at (0.2,2) [right] {Conduit};
+%\draw (-0.2,1) -- (-0.1,1) -- (-0.1,3) -- (-0.2,3);
+%\draw (+0.2,1) -- (+0.1,1) -- (+0.1,3) -- (+0.2,3);
+
+\node (tao-point-ground-bar) at (0,4) [box,minimum width=11cm] {Tau-Point Ground Bar};
+
+\draw (0,2) -- (tao-point-ground-bar);
+
+\ifcoatlioan
+\node (walkways) [box] at (-4.5,5.5) {Walkways};
+\draw ($(tao-point-ground-bar.north) + (-4.5,0)$) -- (walkways);
+\fi
+
+\node (shed-ground-bar) at (-1.5,7.5) [box,minimum width=5 cm] {Shed Ground Bar};
+\draw ($(tao-point-ground-bar.north) + (-1.5,0)$) -- (shed-ground-bar);
+
+\node (tower) [box] at (+1.5,5.5) {Tower};
+\draw ($(tao-point-ground-bar.north) + (+1.5,0)$) -- (tower);
+
+\node (platform-ground-bar) at (4.5,11.5) [box,minimum width=5 cm] {Platform Ground Bar};
+\draw ($(tao-point-ground-bar.north) + (+4.5,0)$) -| (platform-ground-bar.south);
+
+\node (circuit-box) [box] at (-3.0,8.5) {Circuit Box};
+\draw ($(shed-ground-bar.north) + (-1.5,0)$) -- (circuit-box.south);
+
+\node (circuits-a-f) [box] at (-3.0,9.5) {Circuits A--F};
+\draw (circuit-box) -- (circuits-a-f);
+
+\node (rack-chassis) [box] at (+0.0,8.5) {Rack Chassis};
+\draw ($(shed-ground-bar.north) + (+1.5,0)$) -- (rack-chassis.south);
+
+\node (box-b) [box] at (3.0,12.5) {Box B};
+\draw ($(platform-ground-bar.north) + (-1.5,0)$) -- (box-b.south);
+
+\ifcoatlioan
+\node (boxes) [box] at (3.0,13.5) {Boxes C/D/F};
+\fi
+\ifddotioan
+\node (boxes) [box] at (3.0,13.5) {Boxes C/D/E};
+\fi
+\draw (box-b) -- (boxes);
+
+\node (mount) [box] at (6.0,12.5) {Mount};
+\draw ($(platform-ground-bar.north) + (+1.5,0)$) -- (mount.south);
+
+\draw[dashed] (-6,6.5) -- (+8,6.5);
+\draw[dashed] (-6,10.5) -- (+8,10.5);
+\draw[dashed] (-6,14.5) -- (+8,14.5);
+\node at (-6,+8.5) [right] {\normalsize Shed};
+\node at (-6,+12.5) [right] {\normalsize Platform};
+
+\end{tikzpicture}
+}
+\end{center}
+\caption{Schematic of the Electrical Grounding System}
+\label{figure:schematic-electrical-grounding-system}
+\end{figure*}
+
+The ground bar in the shed is used to provide ground to circuit box and hence to the circuits and the sockets in the shed. It is also used to ground the rack.
+
+Circuits B1, B2, and C run from the shed to Box B on the platform. However, their ground is not connected in Box B. Instead, the ground bar on the platform is used to provide ground for Box B and subsequently for the sockets on the platform (in boxes B and C), the cables to boxes C, D, E, and F, and the mount.
+
+TODO: Make sure the ground is connected to the cables between the boxes.
+
+The Astelco controllers in the shed are connected to the platform and mount. There are undoubtedly ground loops through these connections. However, the connections from the platform to the tau-point is through a heavy-gauge cable, and this is likely to mitigate these ground loops.
+
+\ifcoatlioan
+
+\section{Ground Resistance}
+
+In October 2016 we measured a ground resistance of about 5.5~$\Omega$ at all three of the ground bars (the tau-point, shed ground bar, and platform ground bar) using the three-point method. We further measured a resistance of about 0.8~$\Omega$ between the grounding point of the NTM-500 mount and the platform grounding bar and between the ground contacts of the outlets of the iBootBars and the shed grounding bar. This suggests that the grounding system is working well.
+
+\fi
