@@ -42,14 +42,20 @@
 \include{mount}
 
 \ifcoatlioan
-\include{covers}
 \include{telescope-coatlioan}
-\include{interim-instrument-coatlioan}
-\include{data}
+\include{huitzi}
 \fi
 
 \ifddotioan
 \include{telescopes-ddotioan}
+\fi
+
+\include{data}
+
+\appendix
+\ifcoatlioan
+\include{covers}
+\include{interim-instrument-coatlioan}
 \fi
 
 \end{document}
