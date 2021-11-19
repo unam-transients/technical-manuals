@@ -1,0 +1,74 @@
+\chapter{Lights}
+\label{chapter:lights}
+
+This chapter describes the lighting in the {\projectname} installation. 
+
+\section{Shed Lights}
+
+The shed has standard manual lights controlled by a switch just inside the door. 
+
+The shed lights are on circuit E and are backed up by emergency lighting that switches on if the power fails.
+
+\section{Platform Manual Lights}
+
+The platform manual lights controlled by a switch on Box B by the usual entrance to the platform. The lights are a small LED panel supplied by a 12~VDC power supply in Box B.
+
+The platform manual lights are on circuit C and are backed up by emergency lighting that switches on if the power fails.
+ 
+\section{Platform Remote-Controlled Lights}
+
+\subsection{Hardware}
+
+The platform remote-controlled lights controlled by Box C. The lights are a small LED panel supplied by a 12~VDC power supply in Box C. Electrically, the supply is switched by a H-bridge controlled by GPIO pin 481 on \verb|c0|.
+
+The platform remote-controlled lights are on circuit B1.
+
+\subsection{Control}
+
+The \verb|lights| server for the remote-controlled lights runs on \verb|c0|.
+
+The server starts automatically after \verb|c0| boots, but if necessary it can be stopped, started, or restarted explicitly by issing the following shell commands on \verb|c0|:
+
+\begin{itemize}
+\item sudo stopserver lights
+\item sudo startserver lights
+\item sudo restartserver lights
+\end{itemize}
+
+Server requests can be issued from any of the Mac or Linux machines on the LAN. The following requests are supported:
+
+\begin{itemize}
+\item 
+\verb|request lights status|
+
+Show the status of the server.
+
+Obtain the values of the status data from the server and print them to stdout.
+\item 
+\verb|request lights initialize|
+
+Initialize the server and hardware. As part of the process of initializing, the lights will switch off.
+
+\item 
+\verb|request lights reset|
+
+Attempt to recover from an error.
+
+\item 
+\verb|request lights stop|
+
+Attempt to stop the current activity.
+
+\item 
+\verb|request lights switchon|
+
+Switch the lights on.
+
+\item 
+\verb|request lights switchoff|
+
+Switch the lights off.
+
+\end{itemize}
+
+There are buttons to control the lights on the web interface. These are useful for illuminating the platform to allow inspection by the webcams.
