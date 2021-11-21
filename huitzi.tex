@@ -1,0 +1,288 @@
+\chapter{The Huitzi Imager}
+
+The Huitzi imager was installed on the COATLI telescope in October 2021. The imager is named for the mexica god \href{https://en.wikipedia.org/wiki/Huītzilōpōchtli}{Huītzilōpōchtli}, the son of the goddess Coatlicue.
+
+\section{Introduction}
+
+The Huitzi imager has an Andor iXon Ultra 888 unit with an e2v CCD201-20 electron-multiplying CCD detector. The detector has $1024\times1024$ pixels with a pixel scale of 0.68 arcsec and a field of 11.6 arcmin. The detector operates as a frame-transfer CCD and can be read through either a conventional amplifier or the electron-multiplying amplifier at a variety of speeds. The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device).
+
+The image also has Finger Lakes Instruments CFW-1-8 filter wheel for eight 25 mm diameter filters. At the time of writing, the following filters are installed:
+\begin{itemize}
+    \item Pan-STARRS $griz$;
+    \item 470/10, 515/10, 640/10 continuum; and
+    \item 656/3 H$\alpha$.
+\end{itemize}
+
+The mounting hardware for the Huitzi imager is adapted from the previous interim imager (see Appendix~\ref{appendix:interim-imager}).
+
+\section{Detector}
+
+\section{Filter Wheel}
+
+\section{Filters}
+
+\section{Mounting Hardware}
+
+\section{Maintenance Procedures}
+
+\subsection{Dismounting and Mounting the Instrument}
+\label{section:huitzi-dismounting-and-mounting}
+
+\subsubsection{Requirements}
+
+You will need:
+
+\begin{itemize}
+    \item Two persons.
+    \item The key to the shed (see \S\ref{figure:buildings-shed-key}).
+    \item 4 mm and 2 mm hex keys
+    \item 5/16 inch hex key.
+\end{itemize}
+
+\subsubsection{Dismounting the Imager}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-detector-power-button.jpg}
+\end{center}
+\caption{The detector power button.}
+\label{figure:huitzi-detector-power-button}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-cables-disconnected.jpg}
+\end{center}
+\caption{The disconnected detector and filter wheel USB and power cables.}
+\label{figure:huitzi-cables-disconnected}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-mounting-screws.jpg}
+\end{center}
+\caption{The six screws that hold the filter wheel and detector to the separator barrel. Note the arrow scratched on the separator barrel that aligns with a similar barrel on the front filter wheel plate.}
+\label{figure:huitzi-mounting-screws}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-off-telescope.jpg}
+\end{center}
+\caption{The dismounted detector and filter wheel resting on the rear surface of the detector. The six screws that hold the filter wheel between the front and rear plates can be seen here.}
+\label{figure:huitzi-off-telescope}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.3\linewidth]{figures/huitzi-operating-off-telescope-a.jpg}
+\includegraphics[width=0.3\linewidth]{figures/huitzi-operating-off-telescope-b.jpg}
+\includegraphics[width=0.3\linewidth]{figures/huitzi-operating-off-telescope-c.jpg}
+\end{center}
+\caption{Operating the instrument off the telescope. Disconnect the Igus Triflex chain, remove the white secondary cable, connect the instrument, and press the power button on the detector..}
+\label{figure:huitzi-operating-off-telescope}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-set-screws-a.jpg}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-set-screws-b.jpg}
+\end{center}
+\caption{The two set screws in the filter wheel.}
+\label{figure:huitzi-set-screws}
+\end{figure*}
+
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-without-front-plate.jpg}
+\end{center}
+\caption{The detector and filter wheel without the front plate.}
+\label{figure:huitzi-without-front-plate}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-without-spacer.jpg}
+\end{center}
+\caption{The detector and filter wheel without the spacer.}
+\label{figure:huitzi-without-spacer}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-without-filter-wheel.jpg}
+\end{center}
+\caption{The detector without the filter wheel, revealing the rear plate and the rear light baffle cone.} 
+\label{figure:huitzi-without-filter-wheel}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-without-rear-cone.jpg}
+\end{center}
+\caption{The detector without the rear light baffle cone. The four screws that hold the rear plate to the detector can be seen here. Note that the holes for the screws are indicated with scratched lines.}
+\label{figure:huitzi-without-rear-cone}
+\end{figure*}
+
+\begin{enumerate}
+
+    \item Go to the shed. Put on harnesses and helmets. Move the enclosure switch to LOCAL. Open the enclosure to 60 degrees. Ascend to the platform.
+
+    \item Move the telescope to the home position (above the mount and pointed at the north pole). To do this, press the brake button and move the telescope by hand. This is important, as after the instrument is removed the telescope will not be balanced.
+
+    \item Turn off the detector by pressing the power button on its underside. See Figure~\ref{figure:huitzi-detector-power-button}.
+
+    \item Disconnect the four cables: detector USB and power and filter wheel USB and power (see Figure~\ref{figure:huitzi-cables-disconnected}).
+
+    \item Dismount the filter wheel and detector by removing the six screws that hold them to the separator barrel. See Figure~\ref{figure:huitzi-mounting-screws}. Use a 4 mm hex key.  One person should support the filter wheel and detector while the other removes the screws.
+
+    \item Place the filter wheel and detector in a safe place resting on the rear surface of the detector. The covered end of the enclosure is ideal. See Figure~\ref{figure:huitzi-off-telescope}.
+
+    \item If you do not need to operate the instrument when dismounted, skip this step.
+    
+    If you do need to operate the instrument when dismounted, the easiest approach is place the instrument on the steps just to the south of the columm. Be careful that the steps do not penetrate the duct-taped gap between the column and the platform.
+    Then, disconnect the Igus Triflex chain from the telescope and remove the white secondary cable. Finally, connect the detector and filter wheel cables to the instrument and press the power button on the detector. See Figure~\ref{figure:huitzi-operating-off-telescope}.
+    
+    \item If you do not need access to the filter wheel and/or detector, stop here.  If you do, continue.
+    
+    \item Remove the two set screws between the filter wheel and the detector. Use a 5/16 inch hex key. See Figure~\ref{figure:huitzi-set-screws}.
+    
+    \item Remove the the six screws that pass from the front plate, through the wheel, and into the rear plate. Use a 2 mm hex key. See Figure~\ref{figure:huitzi-off-telescope}.
+    
+    \item Remove the front plate to expose the filter wheel and spacer. See Figure~\ref{figure:huitzi-without-front-plate}.
+    
+    \item Remove the spacer to expose the filter wheel. See Figure~\ref{figure:huitzi-without-spacer}.
+    
+    \item Remove the filter wheel. See Figure~\ref{figure:huitzi-without-filter-wheel}.
+    
+    \item If you do not need access to the detector, stop here. If you do, continue.
+    
+    \item Remove the rear light baffle cone from the rear plate. It is held in place by friction.  See Figure~\ref{figure:huitzi-without-filter-wheel}. 
+    
+    \item Remove the four screws that hold the rear plate to the detector flange. Use a 4 mm hex key. See Figure~\ref{figure:huitzi-without-rear-cone}.
+
+\end{enumerate}
+
+\subsubsection{Mounting the Imager}
+
+\begin{enumerate}
+
+    \item Go to the shed. Put on harnesses and helmets. Move the enclosure switch to LOCAL. Open the enclosure to 60 degrees. Ascend to the platform.
+
+    \item Replace the four screws that hold the rear plate to the detector flange. Use a 4 mm hex key. The correct holes for the screws are indicated with scratches on the rear plate. Note the orientation of the plate. See Figure~\ref{figure:huitzi-without-rear-cone}.
+
+    \item Replace the rear light baffle cone from the rear plate.See Figure~\ref{figure:huitzi-without-filter-wheel}. 
+
+    \item Replace the filter wheel. See Figure~\ref{figure:huitzi-without-filter-wheel}.
+
+    \item Replace the spacer. See Figure~\ref{figure:huitzi-without-front-plate}.
+    
+    \item Replace the front plate. See Figure~\ref{figure:huitzi-off-telescope}.
+    
+    \item Replace the the six screws that pass from the front plate, through the wheel, and into the rear plate. Use a 2 mm hex key. See Figure~\ref{figure:huitzi-off-telescope}.
+
+    \item Replace the two set screws between the filter wheel and the detector. Use a 5/16 inch hex key. See Figure~\ref{figure:huitzi-set-screws}.
+
+    \item Mount the filter wheel and detector by replacing the six screws that hold them to the separator barrel. See Figure~\ref{figure:huitzi-mounting-screws}. Use a 4 mm hex key. One person should support the filter wheel and detector while the other replaced the screws. Note the orientation of the filter wheel and detector. The arrows scratched on the separator barrel and front plate should be aligned.
+
+   \item Connect the four cables: detector USB and power and filter wheel USB and power (see Figure~\ref{figure:huitzi-cables-disconnected}).
+
+   \item Turn on the detector by pressing the power button on its underside. See Figure~\ref{figure:huitzi-detector-power-button}.
+
+\end{enumerate}
+
+\subsection{Changing a Filter}
+
+\subsubsection{Requirements}
+
+You will need:
+
+\begin{itemize}
+    \item Two persons.
+    \item The key to the shed.
+    \item 4 mm and 2 mm hex keys (to dismount and mount the instrument).
+    \item 5/16 inch hex key (to dismount and mount the instrument).
+    \item A clean plastic bag to transport the filter wheel. There are bags in the COATLI/DDOTI tool cabinet.
+    \item PH1 screwdriver.
+    \item Tweezers
+    \item Nitrile gloves
+    \item If replacing a 5 mm filter with a 3 mm filter, one of the 25 mm O-rings supplied with the filter wheel.
+\end{itemize}
+
+\subsubsection{Procedure}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-filter-wheel-slots.jpg}
+\end{center}
+\caption{The filter wheel. There are 8 filter slots, labelled 0 to 7. The filter wheel can be moved by hand.}
+\label{figure:huitzi-filter-wheel-slots}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-filter-paper.jpg}
+\end{center}
+\caption{The filters are wrapped in optical paper.}
+\label{figure:huitzi-filter-paper}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/huitzi-filter-case.jpg}
+\end{center}
+\caption{The filters are protected by cases like this one.}
+\label{figure:huitzi-filter-case}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.6\linewidth]{figures/huitzi-filter-wheel-o-ring-a.jpg}
+\includegraphics[width=0.6\linewidth]{figures/huitzi-filter-wheel-o-ring-b.jpg}
+\end{center}
+\caption{The difference in thickness between the 3 mm and 5 mm thick filters is compensated by an O-ring.}
+\label{figure:huitzi-filter-wheel-o-ring}
+\end{figure*}
+
+\safety{Filters are delicate optical components. Work in the laminar-flow cabinet at the 2.1 meter. Handle them by their edges. They should only be cleaned by optical engineers.}
+
+\safety{Do not remove dust from filters by blowing them with compressed air from a compressor, cylinder, or can, as these sources can contain oil. Only use a hand blower (perilla).}
+
+\begin{enumerate}
+    \item Remove the filter wheel from the instrument. See \S\ref{section:huitzi-dismounting-and-mounting}.
+    \item Place the filter wheel in the clean plastic bag. Take the filter wheel to the optical workshop at the 2.1 meter. Replace the filters in the laminar-flow cabinet to avoid dust.
+    \item Use nitrile gloves.
+    \item Move the filter wheel by hand to expose the correct filter. See Figure~\ref{figure:huitzi-filter-wheel-slots}. The 8 filter slots are labelled from 0 to 7. At the time of writing, the slots are filled as follows:
+    \begin{enumerate}
+        \item[0:] $g$
+        \item[1:] $r$
+        \item[2:] $i$
+        \item[3:] $z$
+        \item[4:] 470/10
+        \item[5:] 515/10
+        \item[6:] 640/10
+        \item[7:] 656/3
+    \end{enumerate}
+    \item Remove the two screws and washers that hold the filter in place. See Figure~\ref{figure:huitzi-filter-wheel-slots}.  Use the PH1 screwdriver and the tweezers.
+    \item Use one finger to push the filter from below and the other hand to remove the filter.
+    \item Wrap the filter in optical paper (which should be in its box). See Figure~\ref{figure:huitzi-filter-paper}.
+    \item Replace the filter in its case. See Figure~\ref{figure:huitzi-filter-case}.
+    \item If you are replacing a 5 mm thick filter ($griz$ and $BVRI$) with a 3 mm thick filter (the medium-band $XXX$/10 and narrow-band $XXX$/3 filters), place a 25 mm O-ring in the filter slot. See Figure~\ref{figure:huitzi-filter-wheel-o-ring}.
+    
+    If you are replacing a 3 mm thick filter with a 5 mm filter, remove the 25 mm O-ring from the slot and store it the ziploc bag that contains the others.
+    
+    \item Place the filter in the slot. For interference filters (all but $BVRI$), the bandpass coating (which will often appear to be reflective) should be on the side towards the filter wheel motor. This is down in the orientation shown in \ref{figure:huitzi-filter-wheel-slots} but up once the filter wheel is installed on the telescope.
+    
+    \item Replace the  two screws and washers that hold the filter in place. See Figure~\ref{figure:huitzi-filter-wheel-slots}.  Use the PH1 screwdriver and the tweezers. The washers should make contact with the filter. We find it is easiest to insert both screws first without tightening either and then tighten each in turn. You can use tweezers to make sure the washers are positioned correctly.
+    
+    \item If necessary, use a hand blower (perilla) to remove dust from the filter surfaces.
+    
+    \item Make sure the filter wheel can turn without the screws interfering with the casing. Do this by turning the filter wheel by hand.
+    
+    \item Place the filter wheel in the clean plastic bag. Return it to the platform.
+    
+    \item Replace the filter wheel in the instrument. See \S\ref{section:huitzi-dismounting-and-mounting}.
+    
+    
+\end{enumerate}
