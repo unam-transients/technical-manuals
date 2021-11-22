@@ -4,24 +4,68 @@ The Huitzi imager was installed on the COATLI telescope in October 2021. The ima
 
 \section{Introduction}
 
-The Huitzi imager has an Andor iXon Ultra 888 unit with an e2v CCD201-20 electron-multiplying CCD detector. The detector has $1024\times1024$ pixels with a pixel scale of 0.68 arcsec and a field of 11.6 arcmin. The detector operates as a frame-transfer CCD and can be read through either a conventional amplifier or the electron-multiplying amplifier at a variety of speeds. The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device).
+The Huitzi imager has an Andor iXon electron-multiplying CCD detector with $1024\times1024$ pixels with a pixel scale of 0.68 arcsec and a field of 11.6 arcmin. The detector can be read through either a conventional amplifier or the electron-multiplying amplifier at a variety of speeds.
 
-The image also has Finger Lakes Instruments CFW-1-8 filter wheel for eight 25 mm diameter filters. At the time of writing, the following filters are installed:
+The image also has Finger Lakes Instruments filter wheel for eight 25 mm diameter filters. At the time of writing, the following filters are installed:
 \begin{itemize}
     \item Pan-STARRS $griz$;
-    \item 470/10, 515/10, 640/10 continuum; and
-    \item 656/3 H$\alpha$.
+    \item 470/10, 640/10 continuum;
+    \item 656/3 H$\alpha$; and
+    \item a dark filter.
 \end{itemize}
 
 The mounting hardware for the Huitzi imager is adapted from the previous interim imager (see Appendix~\ref{appendix:interim-imager}).
 
-\section{Detector}
+\section{Hardware}
 
-\section{Filter Wheel}
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.45\linewidth]{figures/huitzi-hardware.jpg}
+\includegraphics[width=0.45\linewidth]{figures/huitzi-hardware-telescope.jpg}
+\includegraphics[width=0.675\linewidth]{figures/huitzi-hardware-electronics.jpg}
+\end{center}
+\caption{The Huitzi hardware. On the telescope the principal components are the Andor iXon detector and FLI filter wheel. The control electronics are located in the box mounted on the south side of the pillar. The cables pass up onto the telescope through an Igus Triflex chain.}
+\label{figure:huitzi-hardware}
+\end{figure*}
 
-\section{Filters}
+The hardware of the Huitzi instrument is shown in Figure~\ref{figure:huitzi-hardware}. On the telescope the principal components are the Andor iXon detector and FLI filter wheel. The control electronics are located in the box mounted on the south side of the pillar. The cables pass up onto the telescope through an Igus Triflex chain.
 
-\section{Mounting Hardware}
+\subsection{Detector}
+
+The detector unit is an Andor iXon Ultra 888 with an e2v CCD201-20 electron-multiplying CCD detector. The detector was acquired in 2014 and originally intended to be the tilt sensor for the planned two-channel imager.
+
+The detector has $1024\times1024$ pixels each $13\times13$ {\micron} square. It gives a pixel scale of 0.68 arcsec and a field of 11.6 arcmin. 
+
+The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device).
+
+The detector can be read using either a conventional signal chain (at 100 kHz or 1 MHz) or an EM signal chain (at 1, 10, 20, or 30 MHz). Both chains have two gains and the EM gain can be set to up to 1000. The detector also has a frame-transfer capability.
+
+The detector has a conventional mechanical iris shutter. We originally used the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures at night, the power supply does not provide sufficient voltage. Therefore, we now leave the shutter open permanently and use the frame-transfer capability in both conventional and EM modes. To take bias and dark images, we have installed a “dark” filter (a opaque cylinder of Delrin 25 mm in diameter and 5 mm thick) in the filter wheel. 
+
+With the normal vertical-shift frequency of 4.33 MHz, the frame transfer takes about 4.5 ms. This leads to some trailing above and below bright stars.
+
+\subsection{Filter Wheel}
+
+The slots are filled as follows:
+    \begin{enumerate}
+        \item[0:] $g$
+        \item[1:] $r$
+        \item[2:] $i$
+        \item[3:] $z$
+        \item[4:] 470/10
+        \item[5:] dark
+        \item[6:] 640/10
+        \item[7:] 656/3
+    \end{enumerate}
+    
+\subsection{Filters}
+
+
+\subsection{Mounting Hardware}
+
+\subsection{Control Hardware}
+
+\section{Control Software}
 
 \section{Maintenance Procedures}
 
@@ -253,17 +297,7 @@ You will need:
     \item Remove the filter wheel from the instrument. See \S\ref{section:huitzi-dismounting-and-mounting}.
     \item Place the filter wheel in the clean plastic bag. Take the filter wheel to the optical workshop at the 2.1 meter. Replace the filters in the laminar-flow cabinet to avoid dust.
     \item Use nitrile gloves.
-    \item Move the filter wheel by hand to expose the correct filter. See Figure~\ref{figure:huitzi-filter-wheel-slots}. The 8 filter slots are labelled from 0 to 7. At the time of writing, the slots are filled as follows:
-    \begin{enumerate}
-        \item[0:] $g$
-        \item[1:] $r$
-        \item[2:] $i$
-        \item[3:] $z$
-        \item[4:] 470/10
-        \item[5:] 515/10
-        \item[6:] 640/10
-        \item[7:] 656/3
-    \end{enumerate}
+    \item Move the filter wheel by hand to expose the correct filter. See Figure~\ref{figure:huitzi-filter-wheel-slots}. The 8 filter slots are labelled from 0 to 7.
     \item Remove the two screws and washers that hold the filter in place. See Figure~\ref{figure:huitzi-filter-wheel-slots}.  Use the PH1 screwdriver and the tweezers.
     \item Use one finger to push the filter from below and the other hand to remove the filter.
     \item Wrap the filter in optical paper (which should be in its box). See Figure~\ref{figure:huitzi-filter-paper}.
@@ -283,6 +317,15 @@ You will need:
     \item Place the filter wheel in the clean plastic bag. Return it to the platform.
     
     \item Replace the filter wheel in the instrument. See \S\ref{section:huitzi-dismounting-and-mounting}.
-    
+
+\section{Bibliography}
+
+\begin{flushleft}
+\begin{itemize}
+\item “\href{bibliography/huitzi/andor-ixon-ultra-888-data-sheet.pdf}{Andor iXon Ultra 888 Data Sheet}”, Andor, May 2014.
+\item “\href{bibliography/huitzi/andor-ixon-ultra-888-hardware-guide.pdf}{Andor iXon Ultra \& Life 888 Hardware Guide}”, Andor, Version 1.8 of 30 September 2019.
+\item “\href{bibliography/huitzi/e2v-ccd201-20-datasheet.pdf}{CCD201-20 Datasheet}”, Teledyne e2v, Version 7 of August 2019.
+\end{itemize}
+\end{flushleft}
     
 \end{enumerate}
