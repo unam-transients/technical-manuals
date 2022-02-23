@@ -38,11 +38,64 @@ The detector has $1024\times1024$ pixels each $13\times13$ {\micron} square. It 
 
 The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device).
 
-The detector can be read using either a conventional signal chain (at 100 kHz or 1 MHz) or an EM signal chain (at 1, 10, 20, or 30 MHz). Both chains have two gains and the EM gain can be set to up to 1000. The detector also has a frame-transfer capability.
+The detector can be read using either a conventional signal chain (at 100 kHz or 1 MHz) or an EM signal chain (at 1, 10, 20, or 30 MHz). Both chains have two gains and the EM gain can be set to up to 1000. 
 
-The detector has a conventional mechanical iris shutter. We originally used the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures at night, the power supply does not provide sufficient voltage. Therefore, we now leave the shutter open permanently and use the frame-transfer capability in both conventional and EM modes. To take bias and dark images, we have installed a “dark” filter (a opaque cylinder of Delrin 25 mm in diameter and 5 mm thick) in the filter wheel. 
+The detector also has a frame-transfer capability. With the normal vertical-shift frequency of 4.33 MHz, the frame transfer takes about 4.5 ms. This leads to some trailing above and below bright stars.
 
-With the normal vertical-shift frequency of 4.33 MHz, the frame transfer takes about 4.5 ms. This leads to some trailing above and below bright stars.
+The detector has a conventional mechanical iris shutter. We originally used the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures at night, the power supply does not provide sufficient voltage to open the shutter. Therefore, we now leave the shutter open permanently and use the frame-transfer capability in both conventional and EM modes. 
+
+To take bias and dark images, we have installed a “dark” filter (a opaque cylinder of Delrin 25 mm in diameter and 5 mm thick) in the filter wheel. Despite this, light leaks in the filter wheel mean that we need to take biases and darks at night.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{lcccc}
+    \hline
+    Mode Name&1MHz-0&em-10MHz-0&em-20MHz-0&em-30MHz-0\\
+    \hline
+    Amplifier&Conventional&EM&EM&EM\\
+    Horizontal Speed&1 MHz&10 MHz&20 MHz&30 MHz\\
+    Software Gain&1&2&4&8\\
+    ADC Range (DN)&64k&32k&16k&8k\\
+    Gain ($e^-$/DN)&3.3&41&78&117\\
+    Read Noise (DN)&2.1&2.6&1.9&1.7\\
+    Read Noise ($e^-$)&7&105&145&204\\
+    Bias Level (DN)&500&242&123&62\\
+    Linear Limit ($e^-$)&&400k&400k&400k\\
+    Saturation (DN)&58k&32k&16k&8k\\
+    Saturation ($e^-$)&190k&1300k&1250k&940k\\
+    Linearity ($e^-$)&&400k&400k&400k\\
+    Linearity (DN)&&9700&5100&3400\\
+    Dynamic Range (bits)&&11.9&11.4&10.9\\
+    \hline
+    \end{tabular}
+    \caption{Detector Characteristics with the Low Preamplifier Gain}
+    \label{table:detector-characteristics-low-gain}
+\end{table}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{lcccc}
+    \hline
+    Mode Name&1MHz-1&em-10MHz-1&em-20MHz-1&em-30MHz-1\\
+    \hline
+    Amplifier&Conventional&EM&EM&EM\\
+    Horizontal Speed&1 MHz&10 MHz&20 MHz&30 MHz\\
+    Software Gain&2&4&8&16\\
+    ADC Range (DN)&32k&16k&8k&4k\\
+    Gain ($e^-$/DN)&1.6&21&45&70\phantom{0}\\
+    Read Noise (DN)&2.9&2.7&2.4&1.6\\
+    Read Noise ($e^-$)&5&56&108&115\\
+    Bias Level (DN)&250&119&62&31\\
+    Saturation (DN)&22k&\\
+    Saturation ($e^-$)&35k&\\
+    Linearity ($e^-$)&&400k&400k&400k\\
+    Linearity (DN)&&19000&8900&5700\\
+    Dynamic Range (bits)&&12.8&11.9&11.8\\
+    \hline
+    \end{tabular}
+    \caption{Detector Characteristics with the High Preamplifier Gain}
+    \label{table:detector-characteristics-high-gain}
+\end{table}
 
 \subsection{Filter Wheel}
 
