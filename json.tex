@@ -1,0 +1,119 @@
+\chapter{JSON}
+
+JSON is used widely in TCS to represent data structures in configuration files, alert files, block files, and in inter-process communication. JSON has a simple and regular syntax that is fairly easy for humans to write, easy for computers to parse, and should be quite familiar to C, C++, and JavaScript programmers. 
+
+\section{Dialect}
+
+The dialect of JSON used in TCS is both extended and restricted compared to standard JSON.
+
+It is extended by the addition of comment lines that can appear wherever white-space can appear in standard JSON. A comment line is a line that begins with zero or more space and horizontal tab characters followed by two slash characters (“//”). Formally, the slash character is U+002F SOLIDUS. Other types of comments (e.g., block comments introduced by “/*” and terminated by “*/”) are not allowed. Comment lines are treated as if they were empty lines. Our dialect of JSON can be converted to standard JSON by using a regular expression substitution to replace comment lines with empty lines.
+
+It is restricted with respect to standard JSON in that it only uses array, object, and string values and does not use number, true, false, or null values. If a value represents a number, then the string representation should be used. This restriction ensures that value can be read and written without being changed.
+
+The dialect of JSON is formally a very limited subset of JavaScript. Therefore, if you are editing data files manually, it might be useful to select an editing mode suitable for JavaScript.
+
+\section{Encoding}
+
+Data files should be encoded in UTF-8. ASCII is a subset of UTF-8, but ISO-8859-1 “Latin-1” is not.
+
+\section{Values}
+
+\subsection{Value Types}
+
+Only array, object, and string values are used. Number and boolean values are represented by their string representation. For example, we do not write
+\begin{quote}
+\verb|0|\\
+\verb|true|\\
+\verb|false|\\
+\end{quote}
+but rather 
+\begin{quote}
+\verb|"0"|\\
+\verb|"true"|\\
+\verb|"false"|\\
+\end{quote}
+Null values are not used.
+
+\subsection{Dates and Times}
+
+Dates and time values are written as strings containing an IS0-8601 basic date or basic combined date and time.
+The time zone is understood to be UTC; an explicit time zone must not be specified. The precision must not be specified more finely than seconds.
+
+Examples of valid dates are:
+\begin{quote}
+\verb|"20101117T223815"| : 2010 Nov 17 22:38:15 UTC\\
+\verb|"20101117T2238"  | : 2010 Nov 17 22:38:00 UTC\\
+\verb|"20101117T22"    | : 2010 Nov 17 22:00:00 UTC\\
+\verb|"20101117"       | : 2010 Nov 17 00:00:00 UTC
+\end{quote}
+
+\subsection{Angles}
+
+A value representing an angle may be written as:
+
+\begin{enumerate}
+    \item a string containing a decimal number (and interpreted as \emph{radians} not \emph{degrees});
+    \item a string containing sexagesimal notation with colons as separators and no white space;
+    \item a strings containing a decimal number with a unit suffix (with no intermediate white space):
+    \begin{enumerate}
+        \item “r” for radians;
+        \item “h” for hours;
+        \item “m” for minutes;
+        \item “s” for seconds;
+        \item "ad" or “d” for degrees;
+        \item “am” for arcminutes; and
+        \item “as” for arcseconds.
+    \end{enumerate}
+\end{enumerate}
+
+For hour angles and right ascensions, sexagesimal notation indicates hours, minutes, and seconds. For all other angles, including offsets, it indicates degrees, arcminutes, and arcseconds.
+
+Examples of valid angles are:
+\begin{quote}
+\verb|"-22.5"    | : $-22.5$ \emph{radians}\\
+\verb|"-22.5d"   | : $-22.5$ \emph{degrees}\\
+\verb|"-01:30:00"| : $-1.5$ hours or $-1.5$ degrees, depending on the context\\
+\verb|"0.5r"     | : $0.5$ radians\\
+\verb|"-1.5h"    | : $-1.5$ hours\\
+\verb|"5am"      | : $5$ arcminutes\\
+\verb|"+20as"    | : $20$ arcseconds
+\end{quote}
+
+\subsection{Durations}
+
+A value representing a duration may be written as:
+\begin{enumerate}
+\item a string containing a decimal number (and interpreted as decimal seconds);
+\item a string containing sexagesimal notation with colons as separators and no white space;
+\item a string containing a decimal number with a unit suffix (with no intermediate white space):
+\begin{enumerate}
+    \item “h” for hours;
+    \item “m” for minutes; and
+    \item “s” for seconds.
+\end{enumerate}
+\end{enumerate}
+
+Sexagesimal notation indicates hours, minutes, and seconds.
+
+Examples of valid durations are:
+\begin{quote}
+\verb|"60"      | :	60 seconds\\
+\verb|"00:30:10”| : 30 minutes and 10 second\\
+\verb|"60s"		| :	60 seconds\\
+\verb|"10m"		| :	10 minutes\\
+\verb|"1h"		| :	1 hour
+\end{quote}
+
+\subsection{Validation}
+
+JSON written by hand is prone to errors such as missing commas. For this reason, it is often worthwhile checking JSON with one of the many on-line validators. The following validator is especially useful, as it tolerates comments:
+
+\begin{quote}
+\url{https://jsonformatter.curiousconcept.com/#}
+\end{quote}
+
+\section{Bibliography}
+
+\begin{itemize}
+    \item “Introducting JSON”, \url{https://www.json.org/json-en.html}
+\end{itemize}
