@@ -2,62 +2,47 @@
 
 \input{style}
 
-%\coatlioantrue
-\ddotioantrue
+\coatlioantrue
 
-\ifcoatlioan
 \newcommand{\projectname}{COATLI/OAN}
 \newcommand{\projectexternalipname}{coatli.astrossp.unam.mx}
 \newcommand{\projectexternalipaddress}{132.248.4.23}
 \newcommand{\projectinterfaceurl}{http://\projectexternalipname/}
 \newcommand{\projectaccount}{coatli}
 \newcommand{\windlimit}{20}
-\fi
-
-\ifddotioan
-\newcommand{\projectname}{DDOTI/OAN}
-\newcommand{\projectexternalipname}{ddoti.astrossp.unam.mx}
-\newcommand{\projectexternalipaddress}{132.248.4.24}
-\newcommand{\projectinterfaceurl}{http://\projectexternalipname/}
-\newcommand{\projectaccount}{ddoti}
-\newcommand{\windlimit}{30}
-\hyperbaseurl{http://ddoti.astrossp.unam.mx/}
-\fi
-
-\includeonly{electrical-power}
 
 \begin{document}
 
 \include{frontmatter}
 \include{introduction}
+
+\part{Operations}
+
 \include{safety}
 \include{operations}
 \include{interface}
+
+\part{Installations}
+
 \include{buildings}
 \include{electrical-power}
 \include{electrical-grounding}
 \include{network}
 \include{lights}
 \include{webcams}
-\include{control-system}
 \include{enclosure}
-\include{mount}
 
-\ifcoatlioan
+\part{Telescope and Instrument}
+
+\include{mount}
 \include{telescope-coatlioan}
 \include{huitzi}
-\fi
 
-\ifddotioan
-\include{telescopes-ddotioan}
-\fi
-
-\include{data}
-
+\part{Obsolete Components}
 \appendix
-\ifcoatlioan
+
 \include{covers}
 \include{interim-imager-coatlioan}
-\fi
+
 
 \end{document}
