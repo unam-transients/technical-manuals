@@ -1,0 +1,461 @@
+\chapter{Observing Blocks}
+
+\section{Introduction}
+
+Observations are organized as \emph{project}, \emph{blocks}, and \emph{visits}.
+
+A project is associated with a successful observing proposal. It has a PI, a name, and an identifier. It consists of one or more blocks.
+
+A block consists of a ordered set of visits associated with a set of constraints and a program. The selector and executor deal with blocks: the selector selects a block and the executor executes it. A block is only selectable if all of its visits satisfy all of the constraints. When a block is executed, its visits are carried out in order.
+
+A visit is typically a logical operation with the telescope such as focusing, correcting the pointing, or observing an objects.
+
+\section{Block Files}
+
+A block file contains a JSON representation of a block.
+
+It consists of a single JSON object with the following structure:
+\begin{quote}
+\verb|{|\\
+\verb|  "project": {|\\
+\verb|    "identifier":| <project-identifier>\verb|,|\\
+\verb|    "name":| <project-name>\\
+\verb|  },|\\
+\verb|  "identifier":| <block-identifier>\verb|,|\\
+\verb|  "name":| <block-name>\verb|,|\\
+\verb|  "visits":| <visits>\verb|,|\\
+\verb|  "constraints":| <constraints>\verb|,|\\
+\verb|  "persistent":| <persistent>\\
+\verb|}|
+\end{quote}
+
+As for any JSON object, the order of the members is irrelevant.
+
+The members and values are interpreted as follows:
+
+\begin{itemize}
+    \item <project-identifier>: The project identifier. 
+    
+    This is a four-digit non-negative integer represented as a string. 
+    
+    By convention, calibration programs have identifiers from 0000 to 0999, alert science programs from 1000 to 1999, and non-alert science programs from 2000 to 2999. (The pipeline uses this convention to reduce alert observations immediately but delay reducing non-alert observations until the morning.) 
+    
+    This member cannot be omitted.
+    
+    \item <project-name>: The project name. 
+    
+    By convention, we use the surname of the PI followed by a brief description of the objects (e.g., \verb|"Watson YSOs"|). 
+    
+    If omitted, the default is \verb|""|.
+
+    \item <block-identifier>: The block identifier. 
+    
+    This is a non-negative integer represented as a string. 
+    
+    This member cannot be omitted.
+
+    \item <block-name>: The block name.
+    
+    By convention, we briefly describe the main science target (e.g., \verb|"HL Tau"|). 
+    
+    If omitted, the default is \verb|""|.
+
+    \item <visits>: An array representing the visits. See below. 
+    
+    If omitted, the default is an empty array.
+    
+    \item <constraints>: An object representing the constraints. See below. 
+    
+    If omitted, the default is an empty object.
+
+    \item <persistent>: Whether the block is persistent.
+    
+    Either \verb|"true"| or \verb|"false"|. 
+    
+    If \verb|"true"|, the block is persistent. Persistent blocks remain in the queue after they have been executed. Non-persistent blocks are removed after they have been executed.
+    
+    If omitted, the default is \verb|"false"|.
+
+\end{itemize}
+
+\section{Constraints}
+
+The <constraints> value specifies constraints which shall be satisfied by all of the visits in a block in order for the block to be selectable. If any constraint is not satisfied by any visit, the block will not be selectable.
+
+For a block to be selectable:
+\begin{itemize}
+    \item All time-based constraints (\verb|mindate|, \verb|maxdate|, \verb|minfocusdelay|, and \verb|maxfocusdelay|) must be satisfied at the start of the first visit.
+    \item All condition-based constraints (e.g., on transparency) must be satisfied at the start of the first visit.  (In the present version of the selector, there are no constraints on unpredictable properties, but this may change in future versions.)
+    \item All other constraints must be satisfied at the start and end of \emph{each} visit.
+\end{itemize}
+
+Syntactically, the <constraints> value is a JSON object with the following structure:
+\begin{quote}
+\verb|{|\\
+\verb|  "mindate":| <date>\verb|,|\\
+\verb|  "maxdate":| <date>\verb|,|\\
+\verb|  "minsunha":| <ha>\verb|,|\\
+\verb|  "maxsunha":| <ha>\verb|,|\\
+\verb|  "minsunzenithdistance":| <distance>\verb|,|\\
+\verb|  "maxsunzenithdistance":| <distance>\verb|,|\\
+\verb|  "minmoondistance":| <distance>\verb|,|\\
+\verb|  "maxmoondistance":| <distance>\verb|,|\\
+\verb|  "minha":| <ha>\verb|,|\\
+\verb|  "maxha":| <ha>\verb|,|\\
+\verb|  "mindelta":| <delta>\verb|,|\\
+\verb|  "maxdelta":| <delta>\verb|,|\\
+\verb|  "minairmass":| <airmass>\verb|,|\\
+\verb|  "maxairmass":| <airmass>\verb|,|\\
+\verb|  "minzenithdistance":| <distance>\verb|,|\\
+\verb|  "maxzenithdistance":| <distance>\verb|,|\\
+\verb|  "minskybrightness":| <skybrightness>\verb|,|\\
+\verb|  "maxskybrightness":| <skybrightness>\verb|,|\\
+\verb|  "minfocusdelay":| <delay>\verb|,|\\
+\verb|  "maxfocusdelay":| <delay>\verb|,|\\
+\verb|}|
+\end{quote}
+
+As for any JSON object, the order of the members is irrelevant.
+
+The members and values are interpreted as follows:
+
+\begin{itemize}
+
+\item The <mindate> and <maxdate> values specify the earliest and latest date and time on which to the visit shall be executed.
+
+Valid values are dates.
+
+\item The <minsunha> and <maxsunha> values specify the minimum and maximum values of the HA of the Sun.
+
+Valid values are angles.
+
+These are of most interest to calibration blocks, where these can be used to determine whether it is morning or evening.
+
+\item The <minsunzenithdistance> and <maxsunzenithdistance> values specify the minimum and maximum values of the zenith distance of the Sun.
+
+Valid values are angles.
+
+These are of most interest to calibration blocks.
+
+\item The <minmoondistance> and <maxmoondistance> members specify the minimum and maximum values of the distance of the Moon from the visit targets.
+
+Valid values are angles.
+
+\item
+The <minha> and <maxha> values specify the minimum and maximum values of the HA of the visit targets.
+
+Valid values are angles.
+
+These can be used to program several blocks on the same target in the a given night by giving each a HA range disjoint from the others.
+
+\item
+The <mindelta> and <maxdelta> values specify the minimum and maximum values of the declination of the visit targets.
+
+Valid values are angles.
+
+\item 
+The <minairmass> and <maxairmass> members specify the minimum and maximum values of the zenith distance of the visit targets.
+
+Valid values are numbers.
+
+\item 
+The <minzenithdistance> and <maxzenithdistance> values specify the minimum and maximum values of the zenith distance of the visit targets.
+
+Valid values are angles.
+
+\item The <minskybrightness> and <maxskybrightness> values specify the minimum (faintest) and maximum (brightest) sky brightness in which the visit shall be executed. 
+    
+Valid values are: \verb|"daylight"|, \verb|"civiltwilight"|, \verb|"nauticaltwilight"|, \verb|"astronomicaltwilight"|, \verb|"bright"|, \verb|"grey"|, and \verb|"dark"|. 
+    
+Daylight and the twilights are defined conventionally by the altitude of the Sun. Bright time is any time between twilights when the moon is above the horizon and is 50\% illuminated or more. Grey time is s any time between twilights when the moon is above the horizon and is 50\% illuminated or less. Dark time is any time between twilights when the moon is below the horizon.
+    
+\item
+The <minfocusdelay> and <maxfocusdelay> values specify the minimum and maximum time since the telescope was last focused. So, for example specifying a <minfocusdelay> of \verb|"1h"| will constrain the block to be run no sooner than 1 hour after focusing and specifying a maxfocusdelay of \verb|"1h"| will constrain the block to be run no later than 1 hour after focusing.
+
+Valid values are durations.
+
+These are of most interest to focus blocks.
+
+\end{itemize}
+
+In addition to any explicit constraints, the scheduler requires that all visit targets are within the telescope pointing limits at the expected start and of the visit.
+
+If no explicit constraints are given, the implicit telescope pointing limits are the only constraint and, for example, a block may be executed at very high airmass, close to the mount, or during twilight. Therefore, it is advisable to include at least minimal constraints, for example:
+\begin{quote}
+\begin{verbatim}
+{
+  "maxskybrightness": "astronomicaltwilight",
+  "maxairmass": "2.0",
+  "minmoondistance": "15d"
+}
+\end{verbatim}
+\end{quote}
+
+\section{Visits}
+
+Syntactically, the <visits> value is a JSON array containing zero or more <visit> objects:
+\begin{quote}
+\verb|[|\\
+\verb|  |<visit>\verb|,|\\
+\verb|  |<visit>\verb|,|\\
+\verb|  |<visit>\verb|,|\\
+\verb|  |\ldots\\
+\verb|  |<visit>\\
+\verb|]|
+\end{quote}
+
+Each <visit> value is a JSON object with the following structure:
+\begin{quote}
+\verb|{|\\
+\verb|  "identifier":| <visit-identifier>\verb|,|\\
+\verb|  "name":| <visit-name>\verb|,|\\
+\verb|  "targetcoordinates":| <target-coordinates>\verb|,|\\
+\verb|  "estimatedduration":| <estimated-duration>\verb|,|\\
+\verb|  "command":| <command>\\
+\verb|}|
+\end{quote}
+
+As for any JSON object, the order of the members is irrelevant.
+
+The members and values are interpreted as follows:
+
+\begin{itemize}
+\item <visit-identifier>: The visit identifier.
+
+This is a non-negative integer represented as a string.
+
+By convention, science visits have identifiers from 0 to 999 and focusing, pointing correction, and other non-science visits from 1000 onward. (The pipeline uses this convention to avoid reducing non-science visits.)
+
+\item <visit-name>: The visit name.
+
+By convention, we used names that describe the activity generically, such as \verb|"focussing"|, \verb|"pointingcorrection"|, \verb|"science"|.
+
+If omitted, the default is \verb|""|.
+
+\item <target-coordinates>: The target coordinates. See below.
+
+\item <estimated-duration>: The estimated duration of the visit.
+
+Valid values are durations (e.g., \verb|"10m"| for 10 minutes).
+
+This is used to by the selector to check the constraints at the estimated end of the visit.
+
+\item <command>: The command to execute the visit. See below.
+
+\end{itemize}
+
+\section{Target Coordinates}
+
+The <target-coordinates> value is a JSON object with one of the following structures.
+
+For equatorial coordinates, the structure is:
+\begin{quote}
+\verb|{|\\
+\verb|  "type": "equatorial",|\\
+\verb|  "alpha":| <alpha>\verb|,|\\
+\verb|  "delta":| <delta>\verb|,|\\
+\verb|  "equinox":| <equinox>\\
+\verb|}|
+\end{quote}
+
+The <alpha> and <delta> values are angles. The <equinox> value is a number.
+
+For fixed topocentric coordinates, the structure is:
+\begin{quote}
+\verb|{|\\
+\verb|  "type": "fixed",|\\
+\verb|  "ha":| <ha>\verb|,|\\
+\verb|  "delta":| <delta>\\
+\verb|}|
+\end{quote}
+
+The <ha> and <delta> values are angles.
+
+For the zenith, the structure is:
+\begin{quote}
+\verb|{|\\
+\verb|  "type": "zenith"|\\
+\verb|}|
+\end{quote}
+
+For the idle position, the structure is:
+\begin{quote}
+\verb|{|\\
+\verb|  "type": "idle"|\\
+\verb|}|
+\end{quote}
+
+For a solar system body, the structure is:
+\begin{quote}
+\verb|{|\\
+\verb|  "type": "solarsystembody",|\\
+\verb|  "number":| <number>\\
+\verb|}|
+\end{quote}
+
+The <number> is a number and refers to the number part of the minor-planet designation. For example, for  (388188) 2006 DP$_{14}$, it would be \verb|388188|.
+
+\section{Commands}
+
+The <command> value is a string representing the Tcl command that will be run to execute the visit. Here we describe the three main commands of interest to science blocks and omit the other commands that are used in calibration blocks.
+
+Many parameters of commands have default values.
+
+\subsection{Focus}
+
+The \verb|focusvisit| command focuses 
+\ifcoatlioan
+the secondary on C0.
+\fi
+\ifddotioan
+the focuser of each channel C0 to C5.
+\fi
+
+The parameters are:
+\begin{itemize}
+    \item \verb|filter|: the filter in which to focus. The default is \verb|i|.
+    \item \verb|exposuretime|: the exposure time in seconds. The default is \verb|5|.
+\end{itemize}
+
+Examples:
+\begin{quote}
+\begin{verbatim}
+"focusvisit"
+"focusvisit z"
+"focusvisit r 10"
+\end{verbatim}
+\end{quote}
+
+\subsection{Pointing Correction}
+
+The \verb|pointingcorrectionvisit| command attempts to correct the pointing. 
+
+The parameters are:
+\begin{itemize}
+    \item \verb|filter|: the filter in which to expose. The default is \verb|i|.
+    \item \verb|exposuretime|: the exposure time in seconds. The default is \verb|15|.
+\end{itemize}
+
+Examples:
+\begin{quote}
+\begin{verbatim}
+"pointingcorrectionvisit"
+"pointingcorrectionvisit z"
+"pointingcorrectionvisit z 5"
+\end{verbatim}
+\end{quote}
+
+\subsection{Grid}
+
+The \verb|gridvisit| command takes exposures in possibly multiple filters over grid of dithers.
+
+The parameters are:
+\begin{itemize}
+    \item \verb|gridrepeats|: The number of times the whole grid is repeated.
+
+    \item \verb|gridpoints|: The number of points in the grid.
+    
+    Valid values are 1 to 9.
+    
+    The grid points are distributed in a square that is 1 arcmin to a side. The grid points, in order, are the center, the four corners, and the four midpoints of the sides. So, for example, if a value of 5 is given, the grid will consist of the center and the four corners.
+    
+    \item \verb|exposurerepeats|: The number of exposures taken in each grid repetition for each filter/dither combination.
+    
+    \item \verb|exposuretime|: The exposure time of each exposure.
+    
+    \item \verb|filters|: The filters.
+    
+    A list of filters in which to observe. 
+    
+    Remember that lists in Tcl are surrounded by curly brackets. For example, \verb|{g r i z}|.
+    
+    Filters can be repeated. So, for example, to do an ABBA sequence in $g$ and $r$, you might use \verb|{g r r g}|.
+    
+    \item \verb|offsetfastest|: Whether to offset fastest (\verb|true|) or change filters fastest (\verb|false|).
+    
+    The default is \verb|true|.
+    
+    If \verb|offsetfastest| is \verb|true|, the code will observe a whole grid in the first filter, then the observe a whole grid in the second filter, and so on.
+    
+    If \verb|offsetfastest| is \verb|false|, the code will observe in each filter at the first grid point, then observe in each filter at the second grid point, and so on.
+    
+    \item \verb|readmode|: The read-mode.
+    
+    The default is \verb|fastguidingmode|.
+\end{itemize}
+
+The total number of exposure is the value of \verb|gridrepeats| multiplied by the value of \verb|gridpoints| multiplied by the value of \verb|exposurerepeats| multiplied by the number of \verb|filters|. The total exposure time is this multiplied by the value of \verb|exposuretime|.
+
+Examples:
+\begin{quote}
+\begin{verbatim}
+"gridvisit 4 9 1 30 {r}"
+"gridvisit 1 5 1 60 {g r i z}"
+"gridvisit 1 5 1 60 {640/10 656/3} false"
+\end{verbatim}
+\end{quote}
+
+\section{Managing the Block Queue}
+
+The telescope maintains an alert queue and a block queue. We will not discuss the alert queue here, except to note that observations are selected at a higher priority from the alert queue than from the block queue.
+
+The block queue is maintained in a repository in GitHub:
+\begin{quote}
+\ifcoatlioan
+\url{https://github.com/alanwatsonforster/coatlioan-blocks}
+\fi    
+\end{quote}
+This repository contains block files, shell scripts to generate block files, and a BLOCKS file to specify which block files are loaded, when, and with which priority.
+
+At 00:00 UTC each day (16:00 PDT or 17:00 PST), the telescope control system fetches a copy of the repository from GitHub. At 00:01 UTC each day, it loads blocks from the copy of the repository into the queue. These actions are separate, so that even if the telescope is not able to fetch the latest version of the repository, it will still load the queue using a previous version of the repository.
+
+The blocks that are loaded are specified in the BLOCKS file in the repository. 
+
+In the BLOCKS file, empty lines and lines beginning with \verb|#| are ignored.
+
+The remaining lines shall have three obligatory fields possibly followed by additional fields that give a time specification. Fields are separated by tabs or spaces.
+
+The fields are:
+
+\begin{enumerate}
+\item Priority. A letter, with a being highest priority and z being lowest
+priority.
+\item  Duplicates. The number of copies of the block file that are added to the
+queue. This is useful when breaking long observations into shorter blocks; simply set this field to the number times you want to run the shorter block.
+
+\item Block file. This can be a file name or a shell glob pattern to match a set
+of file names. Omit the trailing \verb|.json|.
+\end{enumerate}
+
+After the first three columns, additional optional fields can give a time specification. If no time specification is given, the block files are added to the queue
+every day. Valid time specifications are:
+
+\begin{itemize}
+    \item Load the blocks into the queue on a fixed UTC date. 
+    
+    In this case, the 4th field is \verb|on| and the 5th field specifies the date as YYYYMMDD.
+    
+    This is useful when you only want to add blocks to the queue once.
+    
+    \item Load the blocks into the queue every $N$ days. 
+    
+    In the case, the 4th field is \verb|day|, the 5th field is a number $M$, and the 6th field is another number $N$. The blocks are loaded into the queue when the day of year $D$ (1 to 366) satisfies $M = D \bmod N$.
+    
+    Note that by choosing different values of $M$ you can cycle through a set of blocks.
+    
+\end{itemize}
+
+Example BLOCKS file:
+
+\begin{quote}
+\begin{verbatim}
+a 1 0004-initial-focus-*
+b 1 0004-focus-*
+f 1 2001-smith-*
+g 1 2000-jones-0      day 0 2
+g 1 2000-jones-1      day 1 2
+h 3 2003-harris-0     on 20220218
+i 1 2002-bloggs-0
+x 1 0001-twilight-flats-evening-0
+\end{verbatim}
+\end{quote}
