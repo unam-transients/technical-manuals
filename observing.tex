@@ -413,33 +413,33 @@ The blocks that are loaded are specified in the BLOCKS file in the repository.
 
 In the BLOCKS file, empty lines and lines beginning with \verb|#| are ignored.
 
-The remaining lines shall have three obligatory fields possibly followed by additional fields that give a time specification. Fields are separated by tabs or spaces.
+The remaining lines shall have four obligatory fields possibly followed by additional fields that give a time specification. Fields are separated by tabs or spaces.
 
 The fields are:
 
 \begin{enumerate}
+\item Action. Either the the word \verb|load| or the word \verb|unload|. This specifies whether the block will be loaded or unloaded.
 \item Priority. A letter, with a being highest priority and z being lowest
 priority.
-\item  Duplicates. The number of copies of the block file that are added to the
-queue. This is useful when breaking long observations into shorter blocks; simply set this field to the number times you want to run the shorter block.
+\item  Duplicates. The number of copies of the block file that are loaded or unloaded. This is useful when breaking long observations into shorter blocks; simply set this field to the number times you want to run the shorter block.
 
 \item Block file. This can be a file name or a shell glob pattern to match a set
 of file names. Omit the trailing \verb|.json|.
 \end{enumerate}
 
-After the first three columns, additional optional fields can give a time specification. If no time specification is given, the block files are added to the queue
+After the first four columns, additional optional fields can give a time specification. If no time specification is given, the block files are loaded or unloaded
 every day. Valid time specifications are:
 
 \begin{itemize}
-    \item Load the blocks into the queue on a fixed UTC date. 
+    \item Load or unload the blocks on a fixed UTC date. 
     
-    In this case, the 4th field is \verb|on| and the 5th field specifies the date as YYYYMMDD.
+    In this case, the 5th field is the word \verb|date| and the 6th field specifies the date as YYYYMMDD.
     
     This is useful when you only want to add blocks to the queue once.
     
-    \item Load the blocks into the queue every $N$ days. 
+    \item Load or unload the blocks every $N$ days. 
     
-    In the case, the 4th field is \verb|day|, the 5th field is a number $M$, and the 6th field is another number $N$. The blocks are loaded into the queue when the day of year $D$ (1 to 366) satisfies $M = D \bmod N$.
+    In the case, the 5th field is the word \verb|day|, the 6th field is a number $M$, and the 7th field is another number $N$. The blocks are loaded into the queue when the day of year $D$ (1 to 366) satisfies $M = D \bmod N$.
     
     Note that by choosing different values of $M$ you can cycle through a set of blocks.
     
@@ -449,13 +449,14 @@ Example BLOCKS file:
 
 \begin{quote}
 \begin{verbatim}
-a 1 0004-initial-focus-*
-b 1 0004-focus-*
-f 1 2001-smith-*
-g 1 2000-jones-0      day 0 2
-g 1 2000-jones-1      day 1 2
-h 3 2003-harris-0     on 20220218
-i 1 2002-bloggs-0
-x 1 0001-twilight-flats-evening-0
+load   a 1 0004-initial-focus-*
+load   b 1 0004-focus-*
+load   f 1 2001-smith-*
+load   g 1 2000-jones-0      day 0 2
+load   g 1 2000-jones-1      day 1 2
+load   h 3 2003-harris-0     date 20220218
+unload h 3 2003-harris-0     date 20220318
+load   i 1 2002-bloggs-0
+load   x 1 0001-twilight-flats-evening-0
 \end{verbatim}
 \end{quote}
