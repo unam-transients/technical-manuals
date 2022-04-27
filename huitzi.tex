@@ -1,3 +1,5 @@
+% !TEX root = coatlioan.tex
+
 \chapter{The Huitzi Imager}
 
 The Huitzi imager was installed on the COATLI telescope in October 2021. The imager is named for the mexica god \href{https://en.wikipedia.org/wiki/Huītzilōpōchtli}{Huītzilōpōchtli}, the son of the goddess Coatlicue.
@@ -14,10 +16,6 @@ The image also has Finger Lakes Instruments CFW-1-8 filter wheel for eight 25 mm
     \item a dark filter.
 \end{itemize}
 
-The mounting hardware for the Huitzi imager is adapted from the previous interim imager (see Appendix~\ref{appendix:interim-imager}).
-
-\section{Hardware}
-
 \begin{figure*}
 \begin{center}
 \includegraphics[width=0.45\linewidth]{figures/huitzi-hardware.jpg}
@@ -28,23 +26,137 @@ The mounting hardware for the Huitzi imager is adapted from the previous interim
 \label{figure:huitzi-hardware}
 \end{figure*}
 
-The hardware of the Huitzi instrument is shown in Figure~\ref{figure:huitzi-hardware}. On the telescope the principal components are the Andor iXon detector and FLI filter wheel. The control electronics are located in the box mounted on the south side of the pillar. The cables pass up onto the telescope through an Igus Triflex chain.
+The hardware of the Huitzi instrument is shown in Figure~\ref{figure:huitzi-hardware}. On the telescope the principal components are the Andor iXon detector and FLI filter wheel. The control electronics are located in the box mounted on the south side of the pillar. The cables pass up onto the telescope through an Igus Triflex chain. The mechanical hardware is adapted from the previous interim imager (see Appendix~\ref{appendix:interim-imager}).
 
-\subsection{Detector}
+\section{Detector}
 
 The detector unit is an Andor iXon Ultra 888 with an e2v CCD201-20 electron-multiplying CCD detector. The detector was acquired in 2014 and originally intended to be the tilt sensor for the planned two-channel imager.
 
-The detector has $1024\times1024$ pixels each $13\times13$ {\micron} square. It gives a pixel scale of 0.68 arcsec and a field of 11.6 arcmin. 
+\subsection{Format, Scale, and Field}
 
-The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device).
+The detector has $1024\times1024$ pixels each $13\times13$ {\micron} square. 
+
+The detector gives a pixel scale of 0.68 arcsec and a field of 11.6 arcmin. 
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=-3cm]
+\draw (-2,-2) -- (+2,-2) -- (+2,+2) -- (-2,+2) -- cycle;
+\draw (0,2.2) node [anchor=south] {Mount rotation = 0 deg};
+\draw[->] (0,0) -- (1,0) node [anchor=west] {N};
+\draw[->] (0,0) -- (0,1) node [anchor=south] {E};
+\end{scope}
+\begin{scope}[xshift=3cm]
+\draw (-2,-2) -- (+2,-2) -- (+2,+2) -- (-2,+2) -- cycle;
+\draw (0,2.2) node [anchor=south] {Mount rotation = 180 deg};
+\draw[->] (0,0) -- (-1,0) node [anchor=east] {N};
+\draw[->] (0,0) -- (0,-1) node [anchor=north] {E};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\caption{The orientation of the detector on the sky according to the mount rotation. The pixel origin is in the lower left.}
+\label{figure:detector-orientation}
+\end{figure}
+
+The orientation of the field on the sky depends on the mount rotation (given by the values of the \verb|SMTMRO| and \verb|EMTMRO| keywords in the header), and is shown in Figure~\ref{figure:detector-orientation}. However, the pipeline reduction rotates all images to the conventional orientation with north up and east left.
+
+\subsection{Quantum Efficiency}
+
+The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device). The nominal quantum efficiency is shown in Figure~\ref{figure:detector-quantum-efficiency}. The detector has excellent efficiency from 500 to 800 nm.
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+\small
+\begin{axis}[
+   xmin=300,
+   xmax=1100,
+   xlabel={$\lambda$ (nm)},
+   xticklabel style={
+     /pgf/number format/precision=0,
+     /pgf/number format/fixed,
+     /pgf/number format/fixed zerofill
+   },
+   minor x tick num=3,
+   ymin=0,
+   ymax=1,
+   minor y tick num=3,
+   ylabel={$\eta$},
+   legend style={
+     cells={anchor=west},
+     legend pos=north east,
+   },
+]
+\addplot [black] table [x=lam, y=Q, col sep=comma] {figures/huitzi-detector-efficiency.csv};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\caption{The nominal quantum efficiency $\eta$ of the Huitzi detector.}
+\label{figure:detector-quantum-efficiency}
+\end{figure}
+
+
+\subsection{Readout Architecture}
 
 The detector can be read using either a conventional signal chain (at 100 kHz or 1 MHz) or an EM signal chain (at 1, 10, 20, or 30 MHz). Both chains have two gains and the EM gain can be set to up to 1000. 
 
-The detector also has a frame-transfer capability. With the normal vertical-shift frequency of 4.33 MHz, the frame transfer takes about 4.5 ms. This leads to some trailing above and below bright stars.
+Although the conventional and EM amplifiers clock the serial register in different directions, the control software flips each row in conventional data so that physical pixels have the same logical position in the FITS files.
 
-The detector has a conventional mechanical iris shutter. We originally used the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures at night, the power supply does not provide sufficient voltage to open the shutter. Therefore, we now leave the shutter open permanently and use the frame-transfer capability in both conventional and EM modes. 
+The detector is used in frame-transfer mode without a mechanical shutter (see \S\ref{section:shutter}). At the end of an exposure, the charge is rapidly clocked into from the light-sensitive image section to the shielded store section. The change can then be read. In EM mode, the next exposure can then start immediately.
 
-To take bias and dark images, we have installed a “dark” filter (a opaque cylinder of Delrin 25 mm in diameter and 5 mm thick) in the filter wheel. Despite this, light leaks in the filter wheel mean that we need to take biases and darks at night.
+With the normal vertical-shift frequency of 4.33 MHz, the frame transfer takes about 4.5 ms. This leads to some trailing above and below bright stars.
+
+The read-out architecture has several parameters, which are encoded in the value of the \verb|READMODE| header keyword. The value is a string of the form $A$-$B$-$C$-$D$-$E$-$F$-$G$ in which $A$ to $G$ are non-negative integers with the following meanings:
+
+\begin{itemize}
+\item[$A$] The ADC channel index. This is always 0 since the detector only has one ADC channel.
+\item[$B$] The amplifier index. This is 0 for the EM amplifier and 1 for the conventional amplifier.
+\item[$C$] The vertical shift speed index. For both amplifiers, 0 is 0.60 MHz, 1 is 1.13 MHz, 2 is 2.20 MHz, and 3 is 4.33 MHz. 
+\item[$D$] The horizontal shift speed index. For the EM amplifier, 0 is 30 MHz, 1 is 20 MHz, 2 is 10 MHz, and 3 is 1 MHz. For the conventional amplifier, 0 is 1 MHz and 1 is 100 kHz.
+\item[$E$] The gain index. For both amplifiers, 0 is low gain (more electrons per ADU) and 1 is high gain (fewer electrons per ADU).
+\item[$F$] The nominal EM gain. This is ignored when the conventional amplifier is used. For the EM amplifier, it can be between 1 and 1000.
+\item[$G$] The software gain. After the data are read, each ADU signal is divided by the software gain to reduce white noise in the low-order bits (see \href{https://ui.adsabs.harvard.edu/abs/2002RMxAA..38..233W/abstract}{Watson 2002, RMAA, 38, 233}).
+\end{itemize}
+
+Fortunately, there is little need to use these values directly, since aliases have been defined for common modes. They are shown in Table~\ref{table:read-mode-aliases}.
+
+\begin{table}
+\caption{Read-Mode Aliases}
+\label{table:read-mode-aliases}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Alias&Mode\\
+\hline
+ initial&default\\
+ default&em-30MHz-0\\
+ conventionaldefault&1MHz-0\\
+ fastguidingdefault&em-30MHz-0\\
+ 1MHz-0&0-1-3-0-0-1-1\\
+ 1MHz-1&0-1-3-0-1-1-2\\
+ em-10MHz-0&0-0-3-2-0-250-2\\
+ em-10MHz-1&0-0-3-2-1-160-4\\
+ em-20MHz-0&0-0-3-1-0-500-4\\
+ em-20MHz-1&0-0-3-1-1-320-8\\
+ em-30MHz-0&0-0-3-0-0-1000-8\\
+ em-30MHz-1&0-0-3-0-1-640-16\\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Shutter and Dark Filter}
+
+\label{section:shutter}
+
+The detector has a conventional mechanical iris shutter, but we do not use it.
+
+We originally attempted to use the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures at night, the power supply does not provide sufficient voltage to open the shutter. 
+
+Therefore, we now leave the shutter open permanently and use the frame-transfer capability in both conventional and EM modes. As noted above, with the normal vertical-shift frequency, the frame transfer takes about 4.5 ms.
+
+To take bias and dark images, we have installed a “dark” filter (an opaque cylinder of black Delrin 25 mm in diameter and 5 mm thick) in the filter wheel. Despite this, light leaks in the filter wheel mean that we need to take biases and darks at night.
 
 \begin{table}
     \centering
@@ -97,7 +209,7 @@ To take bias and dark images, we have installed a “dark” filter (a opaque cy
     \label{table:detector-characteristics-high-gain}
 \end{table}
 
-\subsection{Filter Wheel}
+\section{Filter Wheel}
 
 The slots are filled as follows:
     \begin{enumerate}
@@ -111,12 +223,12 @@ The slots are filled as follows:
         \item[7:] 656/3
     \end{enumerate}
     
-\subsection{Filters}
+\section{Filters}
 
 
-\subsection{Mounting Hardware}
+\section{Mounting Hardware}
 
-\subsection{Control Hardware}
+\section{Control Hardware}
 
 \section{Control Software}
 
