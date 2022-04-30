@@ -119,7 +119,7 @@ The read-out architecture has several parameters, which are encoded in the value
 \item[$G$] The software gain. After the data are read, each ADU signal is divided by the software gain to reduce white noise in the low-order bits (see \href{https://ui.adsabs.harvard.edu/abs/2002RMxAA..38..233W/abstract}{Watson 2002, RMAA, 38, 233}).
 \end{itemize}
 
-Fortunately, there is little need to use these values directly, since aliases have been defined for common modes. They are shown in Table~\ref{table:read-mode-aliases}.
+Fortunately, there is little need to use these values directly, since aliases are defined for common modes. They are shown in Table~\ref{table:read-mode-aliases}.
 
 \begin{table}
 \caption{Read-Mode Aliases}
@@ -130,17 +130,21 @@ Fortunately, there is little need to use these values directly, since aliases ha
 Alias&Mode\\
 \hline
  initial&default\\
- default&em-30MHz-0\\
- conventionaldefault&1MHz-0\\
- fastguidingdefault&em-30MHz-0\\
- 1MHz-0&0-1-3-0-0-1-1\\
- 1MHz-1&0-1-3-0-1-1-2\\
- em-10MHz-0&0-0-3-2-0-250-2\\
- em-10MHz-1&0-0-3-2-1-160-4\\
- em-20MHz-0&0-0-3-1-0-500-4\\
- em-20MHz-1&0-0-3-1-1-320-8\\
- em-30MHz-0&0-0-3-0-0-1000-8\\
- em-30MHz-1&0-0-3-0-1-640-16\\
+ default&em-30MHz\\
+ conventionaldefault&1MHz\\
+ fastguidingdefault&em-30MHz\\
+ 1MHz&1MHz-low\\
+ em-10MHz&em-10MHz-low\\
+ em-20MHz&em-20MHz-low\\
+ em-30MHz&em-30MHz-low\\
+ 1MHz-low&0-1-3-0-0-1-1\\
+ 1MHz-high&0-1-3-0-1-1-2\\
+ em-10MHz-low&0-0-3-2-0-250-2\\
+ em-10MHz-high&0-0-3-2-1-160-4\\
+ em-20MHz-low&0-0-3-1-0-500-4\\
+ em-20MHz-high&0-0-3-1-1-320-8\\
+ em-30MHz-low&0-0-3-0-0-1000-8\\
+ em-30MHz-high&0-0-3-0-1-640-16\\
  \hline
 \end{tabular}
 \end{center}
