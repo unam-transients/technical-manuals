@@ -25,16 +25,18 @@ This revision has three elements. The observatory staff will:
 
 \begin{enumerate}
 \item
-Check that all of the control system servers are not showing errors in the web interface. 
+Check that all of the control system servers are not showing errors in the web interface (see \S\ref{figure:interface-main-page}). 
 \item
 Check that the webcams in the web interface are not showing an unusual situation.
 \item
 If necessary, carry out an on-site inspection of {\projectname}. For example, after a snowfall, it might not be obvious from the webcams whether snow remains on the roof of the enclosure.
 \end{enumerate}
 
-If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they will enable the supervisor by pressing the “Enable” button in the “Supervisor” section of the web interface.
+\textcolor{red}{MAGUI: To interact with the COATLI/OAN control system, in regular robotic operation, the observatory staff will use the web interface described in section \ref{chapter:interface}.}
 
-If the observatory staff consides that decisions to open and close the installation cannot be safely taken by the control system, they should explicitly force the supervisor to maintain the telescope closed by pressing the “Close” button in the “Supervisor” section of the web interface. 
+If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they will enable the supervisor by pressing the “Enable” button in the “Supervisor” section of the web interface (see \S\ref{figure:interface-main-page}).
+
+If the observatory staff considers that decisions to open and close the installation cannot be safely taken by the control system, they should explicitly force the supervisor to maintain the telescope closed by pressing the “Close” button in the “Supervisor” section of the web interface (see \S\ref{figure:interface-main-page}).. 
 
 The observatory staff will report the result of their inspection in the Skype chat and will indicate whether they are enabling the supervisor or forcing it to close.
 
@@ -65,10 +67,10 @@ Note that the rules for opening the other telescopes specify a wind limit of 45 
 \item
 The observatory staff will monitor {\projectname} during the night. Their primary responsibilities are:
 \begin{enumerate}
-\item If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they should enable the supervisor by pressing the “Enable” button in the “Supervisor” section of the web interface and report this in the Skype chat.
-\item If the observatory staff consider that decisions to open and close the installation cannot be safely taken by the control system, they must explicitly force the supervisor to maintain the telescope closed by pressing the “Close” button in the “Supervisor” section of the web interface and report this in the Skype chat. 
+\item If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they should enable the supervisor by pressing the “Enable” button in the “Supervisor” section of the web interface (see \S\ref{figure:interface-main-page}) and report this in the Skype chat.
+\item If the observatory staff consider that decisions to open and close the installation cannot be safely taken by the control system, they must explicitly force the supervisor to maintain the telescope closed by pressing the “Close” button in the “Supervisor” section of the web interface (see \S\ref{figure:interface-main-page}) and report this in the Skype chat. 
 \item
-The observatory staff should verify that the the control system opens and closes as expected according to the weather conditions and the state of the supervisor. If it does not close, they should intervene as described in \S\ref{section:operations:interventions}.
+The observatory staff should verify that the control system opens and closes as expected according to the weather conditions and the state of the supervisor. If it does not close, they should intervene as described in \S\ref{section:operations:interventions}.
 
 \item
 When the control system closes (at the end of the night, in response to weather conditions, or if the supervisor is forced to close), it switches the lights on for safety. At the end of the process, if the control system can determine that the enclosure closed correctly, it will switch the lights off. If it cannot, it will leave the lights switched on. Thus, if the lights are left on, this indicates that there was a problem during closing and the observatory staff should intervene as described in \S\ref{section:operations:interventions}.
@@ -98,17 +100,17 @@ If the control system does not close when expected or does not close correctly, 
 First attempt to close normally:
 \begin{enumerate}
 \item
-Press the “Close” button in the supervisor section of the interface (see \S\ref{interface-close-button}). This should turn on the enclosure lights and close.
+Press the “Close” button in the supervisor section of the web interface (see \S\ref{figure:interface-main-page}). This should turn on the enclosure lights and close.
 \item
-Check the interface and webcams for success or failure.
+Check the web interface and webcams for success or failure.
 \end{enumerate}
 \item
 If that fails, attempt an emergency close:
 \begin{enumerate}
 \item
-Press the “Emergency Close” button in the supervisor section of the interface (see \S\ref{interface-close-button}). This should turn on the enclosure lights and close.
+Press the “Emergency Close” button in the supervisor section of the web interface (see \S\ref{interface-close-button}). This should turn on the enclosure lights and close.
 \item
-Check the interface and webcams for success or failure.
+Check the web interface and webcams for success or failure.
 \end{enumerate}
 \item
 If that fails, close the enclosure locally according to the procedure in \S\ref{section:enclosure-opening-or-closing-in-local-mode}.
@@ -123,7 +125,7 @@ The observatory staff should carry out a physical inspection of the installation
 
 \subsubsection{Safety Considerations}
 
-\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.} 
+\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or to ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.} 
 
 \safety{You must use a safety helmet if you are working under the platform or balconies.}
 
@@ -174,11 +176,11 @@ A “soft” shut-down is appropriate for circumstances in which electrical powe
 
 \subsubsection{Safety Considerations}
 
-\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.} 
+\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or to ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.} 
 
 \safety{You must use a safety helmet if you are working under the platform or balconies.}
 
-\safety{The enclosure controller cabinet uses 220 VAC. Switch off the power using the switch on the door before working inside the cabinet.}
+\safety{The enclosure controller cabinet uses 220 VAC. Switch off the power using the main power switch on the door before working inside the cabinet (see Fig. \S\ref{figure:enclosure-controller-door}) .}
 
 \subsubsection{Requirements}
 
@@ -203,7 +205,7 @@ You can find clean tarpaulins in the shelves next to the cabinet in the 84-cm an
 \item
 Place the enclosure in local mode.
 
-Move the enclosure controller mode selector switch to “LOCAL”.
+Move the enclosure controller mode selector switch to “LOCAL” (see Fig. \S\ref{figure:enclosure-controller-door}).
 \item
 If the weather permits, open the enclosure to 60 deg.
 
@@ -248,7 +250,7 @@ Gather the loose ends of the tarpaulin below and fasten them with a short red co
 \ifddotioan
 Be very careful not to place stress on the CCDs.
 
-Wrap the long rope around the telescopes and tarpaulin, below the two electronics boxes but above the lower end of the telescopes and the CCDs, and then pass a loop over the the telescopes, between the east and west sets, and fasten the rope on itself to prevent it slipping down. Gather the loose ends of the tarpaulin below and fasten them with a short red cord. See Figure~\ref{figure:tarpaulin}.
+Wrap the long rope around the telescopes and tarpaulin, below the two electronics boxes but above the lower end of the telescopes and the CCDs, and then pass a loop over the telescopes, between the east and west sets, and fasten the rope on itself to prevent it slipping down. Gather the loose ends of the tarpaulin below and fasten them with a short red cord. See Figure~\ref{figure:tarpaulin}.
 
 \emph{We repeat. The tarpaulin and the ropes must not come into contact with the CCDs and must not place any stress on them. The tarpaulin and ropes can only come into contact with the telescope tubes, focusers, and electronics boxes.}
 
@@ -265,17 +267,17 @@ Press and hold the close button until the green light goes out.
 \item
 Switch off the enclosure controller.
 
-Move the main power switch on the controller door from ON to OFF.
+Move the main power switch on the controller door from ON to OFF. (see Fig. \S\ref{figure:enclosure-controller-door}).
 \item
-Open the enclosure controller.
+Open the enclosure controller cabinet.
 
 \item
 Engage the manual lock. This switches on the enclosure electromagnet and actuates the enclosure emergency stop buttons. This ensures that the electromagnet stays energized even if the PLC fails and that the PLC cannot attempt to open the enclosure.
 
-Move the manual lock switch inside the enclosure controller from OFF to ON. See Figure~\ref{figure:enclosure-controller-manual-lock-switch}.
+Move the manual lock switch inside the enclosure controller cabinet from OFF to ON. See Figure~\ref{figure:enclosure-controller-manual-lock-switch}.
 
 \item
-Close the enclosure controller.
+Close the enclosure controller cabinet.
 
 \item
 Switch on the enclosure controller.
@@ -305,7 +307,7 @@ Leave the shed locked. Return the shed keys to the tool box (see \S\ref{section:
 
 \subsubsection{Safety Considerations}
 
-\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.} 
+\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or to ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.} 
 
 \safety{You must use a safety helmet if you are working under the platform or balconies.}
 
@@ -327,7 +329,7 @@ You will need:
 \item
 In the shed, switch off the enclosure controller.
 
-Move the main power switch on the controller door from ON to OFF.
+Move the main power switch on the controller door from ON to OFF.  (see Fig. \S\ref{figure:enclosure-controller-door}).
 
 \item
 Open the enclosure controller.
@@ -400,7 +402,7 @@ Store the tarpaulin in the shelves next to the cabinet in the 84-cm and the rope
 
 \section{Hard Shut-Down and Start-Up}
 
-A “hard” shut-down is appropriate for circumstances in which electrical power will not continue to be supplied to {\projectname}. This occured, for example, in the evacuations for COVID-19. In this case, we can must shut down the computers and cannot rely on the electromagnet to maintain the enclosure closed.
+A “hard” shut-down is appropriate for circumstances in which electrical power will not continue to be supplied to {\projectname}. This occurred, for example, in the evacuations for COVID-19. In this case, we must shut down the computers and cannot rely on the electromagnet to maintain the enclosure closed.
 
 \subsection{Hard Shut-Down}
 
@@ -486,7 +488,7 @@ To log out of the iBootBar, use CTRL-] and then \verb|quit|.
 $ ssh user@ddoti.astrossp.unam.mx -p 2222 -L8080:localhost:80
 \end{verbatim}
 
-Open a browser to \verb|http://localhost:8080/| and halt the firewall from the web interface (selevct “Halt System” on the “Diagnostics” menu).
+Open a browser to \verb|http://localhost:8080/| and halt the firewall from the web interface (select “Halt System” on the “Diagnostics” menu).
 \end{quote}
 
 \end{enumerate}
