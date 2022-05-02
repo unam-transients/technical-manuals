@@ -10,7 +10,7 @@ The address of the {\projectname} web site is:
 \url{\projectinterfaceurl}
 \end{quotation}
 
-The web site contains the interface and documentation. The interface is only directly available to computers on the mountain-top network, although ssh port-forwarding can make it indirectly available elsewhere.
+The web site contains the interface and documentation. They are only directly available to computers on the mountain-top network, although ssh port-forwarding can make it indirectly available elsewhere.
 
 The interface is protected by passwords. The \verb|operator15| and \verb|operator21| accounts are configured with the same passwords as the RATIR interface. If in doubt, ask on the Skype chat.
 
@@ -137,12 +137,9 @@ A description of whether the current weather conditions permit the enclosure to 
 \item
 A description of the current sky state (daylight, twilight, and night).
 \item
-The local end of day time, in UTC (with a count-down clock).
-
+The time of the next day/twilight/night transition in UTC.
 \item
 The enclosure state (open or closed).
-%\item
-
 \end{itemize}
 \item
 The activity section. If a control system server activity is not “idle” (for example, if it is “started”, “initializing”, “moving”, “tracking”, “opening”, or “closing”), this is shown here. If a server activity is “idle”, it is not shown here. Thus, if all of the servers are “idle”, this section is empty.
@@ -160,7 +157,7 @@ Open. Force the supervisor to open and to stay open until explicitly instructed 
 \item
 Open to Cool. Force the supervisor to open to cool and to stay open to cool until explicitly instructed otherwise. Opening to cool opens the enclosure partially,  and starts to cool the CCD. It is typically used at the end of the day to cool the enclosure, telescope, and CCD ready for observations after sunset.
 \item
-Close. Force the supervisor  to close and to stay closed until explicitly instructed otherwise.
+Close. Force the supervisor to close and to stay closed until explicitly instructed otherwise.
 \label{interface-close-button}
 \item
 Switch On. Switch on the enclosure lights. This is useful when you want to use the webcams to check the status of the telescope or enclosure. Of course, one does not want to turn the lights on if the telescope is observing.
