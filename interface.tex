@@ -10,11 +10,11 @@ The address of the {\projectname} web site is:
 \url{\projectinterfaceurl}
 \end{quotation}
 
-The web site contains the interface and documentation.
+The web site contains the interface and documentation. The interface is only directly available to computers on the mountain-top network, although ssh port-forwarding can make it indirectly available elsewhere.
 
 The interface is protected by passwords. The \verb|operator15| and \verb|operator21| accounts are configured with the same passwords as the RATIR interface. If in doubt, ask on the Skype chat.
 
-The interface is only directly available to computers on the mountain-top network, although ssh port-forwarding can make it indirectly available elsewhere.
+
 
 \section{Main Page}
 
@@ -137,11 +137,12 @@ A description of whether the current weather conditions permit the enclosure to 
 \item
 A description of the current sky state (daylight, twilight, and night).
 \item
-The selector mode (enabled or disabled).
+The local end of day time, in UTC (with a count-down clock).
+
 \item
 The enclosure state (open or closed).
-\item
-The covers state (open or closed)
+%\item
+
 \end{itemize}
 \item
 The activity section. If a control system server activity is not “idle” (for example, if it is “started”, “initializing”, “moving”, “tracking”, “opening”, or “closing”), this is shown here. If a server activity is “idle”, it is not shown here. Thus, if all of the servers are “idle”, this section is empty.
@@ -157,9 +158,9 @@ Enable. Enabled the supervisor. This permits the supervisor to open and close ac
 \item
 Open. Force the supervisor to open and to stay open until explicitly instructed otherwise.
 \item
-Open to Cool. Force the supervisor to open to cool and to stay open to cool until explicitly instructed otherwise. Opening to cool opens the enclosure partially, opens the covers, and starts to cool the CCD. It is typically used at the end of the day to cool the enclosure, telescope, and CCD ready for observations after sunset.
+Open to Cool. Force the supervisor to open to cool and to stay open to cool until explicitly instructed otherwise. Opening to cool opens the enclosure partially,  and starts to cool the CCD. It is typically used at the end of the day to cool the enclosure, telescope, and CCD ready for observations after sunset.
 \item
-Close. Force the supervisor to open to close and to stay closed until explicitly instructed otherwise.
+Close. Force the supervisor  to close and to stay closed until explicitly instructed otherwise.
 \label{interface-close-button}
 \item
 Switch On. Switch on the enclosure lights. This is useful when you want to use the webcams to check the status of the telescope or enclosure. Of course, one does not want to turn the lights on if the telescope is observing.
@@ -167,19 +168,16 @@ Switch On. Switch on the enclosure lights. This is useful when you want to use t
 \item
 Switch Off. Switch off the enclosure lights. 
 \label{interface-switch-off-button}
-\item
-Initialize. Initialize the control system servers. Successfully initializing the servers places their hardware in a safe, closed state ready for further actions. This can be used to recover from software problems.
-\label{interface-initialize-button}
+
 \item
 Restart. Schedule a restart of the control system servers for the top of the next minute. This can be used to recover from software problems.
 \label{interface-restart-button}
-\item
-Reboot. Schedule a reboot of the control system computers for the top of the next minute. This is used to recover 
+
 \end{itemize}
 \end{itemize}
 
 \section{Running the Interface on the Access Mac in the Shed}
-\label{section:interface-access-mac}.
+\label{section:interface-access-mac}
 
 The interface can be run locally on the Access Mac in the Shed.
 
