@@ -1,0 +1,51 @@
+\chapter{Instrument}
+
+\section{Calibration Data}
+
+\subsection{Biases and Darks}
+
+\subsection{Flats}
+
+\subsection{Gain and Read Noise}
+
+The control system does not automatically take data for calibrating the gain and read-noise, but there are blocks that can be executed manually either in evening or morning twilight. 
+
+For best results, do this procedure either at the start of evening civil twilight or the start of morning nautical twilight.
+
+The procedure is:
+
+\begin{itemize}
+\item Make sure the telescope is closed:
+\begin{verbatim}
+tcs request supervisor close
+\end{verbatim}
+\item Unpark the telescope and cool the instrument:
+\begin{verbatim}
+tcs request telescope unpark
+tcs request instrument open
+\end{verbatim}
+\item Wait for the detector to cool to the operating temperature. Then run the morning or evening block, as appropriate:
+\begin{verbatim}
+tcs request executor execute block \
+  /usr/local/var/tcs/blocks/0013-signal-chain-morning.json
+tcs request executor execute block \
+  /usr/local/var/tcs/blocks/0013-signal-chain-evening.json
+\end{verbatim}
+The difference between the blocks is that in the morning the block takes biases and then flats, whereas in the evening it takes flats and then biases.
+\item
+One the block has finished, close the telescope again by running:
+\begin{verbatim}
+tcs request executor close
+\end{verbatim}
+\end{itemize}
+
+For these data:
+\begin{itemize}
+\item The program identifier is 0013. 
+\item The block identifier is 0 for the morning and 1 for the evening. 
+\item The data are taken in visit 0.
+\end{itemize}
+
+The block takes 10 biases and attempts to obtain 10 flats with levels suitable for determining the gain. These flats will normally be the last 10 flats, as the block waits for the signal in the flat to be in a suitable range.
+
+The dome lights should not be switched on during this process. If they are, then the biases might be contaminated with light and the flats will be saturated. Note that sometimes the technical staff switch the lights on in the morning to check that the enclosures have closed, so you should warn them in the chat that you are taking calibration data and that they should not do this.
