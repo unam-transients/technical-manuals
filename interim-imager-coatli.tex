@@ -1,0 +1,253 @@
+%!TEX root = technical-manual.tex
+\chapter{Interim Imager}
+\label{appendix:interim-imager}
+
+The COATLI telescope was originally equipped with an interim imager. The imager was removed in January 2020. This appendix remains as a historic reference.
+
+\section{Introduction}
+
+The interim imager is a simple direct imager that will be used for commissioning the telescope and early science pending the delivery of the definitive high-resolution imager. It is based on an air-cooled Finger Lakes Instruments Microline ML3200 detector and a Finger Lakes Instruments CFW-1-5 filter wheel. The wheel accepts five 50 mm diameter filters. We have installed $BVRI$ and clear filters.
+
+\section{Detector}
+
+The interim imager uses a Finger Lakes Instruments Microline ML3200 detector with an Kodak KAF-3200ME CCD. The detector has a thermoelectric cooler and can nominally reach 60~C below ambient. Heat is vented to air via heat exchanger and fan. The detector serial number is ML0053812.
+
+The CCD has $2184 \times 1472$ active pixels each 6.8 {\micron} square. It is front-illuminated, but employs a microlens array to boost the fill-factor and quantum efficiency. The detector has two read modes, 1~MHz and 6~MHz. Table~\ref{table:detector-read-performance} shows detector read performance in each read mode and for binning $1\times1$ and $2\times2$.
+
+\begin{table}
+\caption{Detector Read Performance}
+\label{table:detector-read-performance}
+\begin{center}
+\begin{tabular}{ccccc}
+\hline
+\hline
+Read Mode&Binning&Gain&Read Noise&Overhead\\
+(MHz)&Pixels&$e^-/\mathrm{DN}$&$e^-$&s\\
+\hline
+1&$1 \times 1$&6.3&\phantom{0}9.4&4.0\\
+1&$2 \times 2$&6.2&\phantom{}10.7&3.9\\
+6&$1 \times 1$&6.4&\phantom{}19.5&1.2\\
+6&$2 \times 2$&6.4&\phantom{}25.8&1.0\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The full data image from the CCD is $2267 \times 1510$. The vertical structure is:
+
+\begin{itemize}
+\item 34 dark lines
+\item 1472 photoactive lines
+\item 4 dark lines
+\end{itemize}
+
+Each photoactive line has the following horizontal structure:
+
+\begin{itemize}
+\item 8 inactive pixels
+\item 1 photoactive pixel
+\item 3 inactive pixels
+\item 34 dark reference pixels
+\item 2184 photoactive pixels
+\item 34 dark reference pixels
+\item 1 photoactive pixel
+\item 2 inactive pixels
+\end{itemize}
+
+The inactive pixels do not accumulate charge and read only the bias level. The dark reference pixels accumulate only dark current and read the bias level plus the dark level. The photoactive pixels accumulate both dark current and photoelectric current and read the bias level plus the dark level plus the photon signal. The single columns of photoactive pixels close to the start and end of each line are for monitoring horizontal CTE.
+
+The dark lines have a similar structure, with dark reference pixels replacing the photoactive pixels.
+
+The maximum field diameter is 18~mm, which is well within the nominal diffraction-limited field of the telescope of 26~mm. The measured pixel scale is 0.351 arcsec (binned $1\times1$) and the field is $12.8 \times 8.7$ arcmin.
+
+\section{Filters}
+
+We plan to install 5-mm thick BVRI and clear filters. The BVRI filters will be supplied by Custom Scientific. The clear filter will be a window supplied by Edmund Optics.
+
+The detector is a  
+
+\section{Mechanical Design}
+
+Figure 1 shows a CAD model of the telescope and the interim instrument. The CAD model of the Astelco RC500 telescope was supplied by Astelco. The CAD model of the instrument was developed in the Instituto de Astronomía of the UNAM.
+
+Figure 1. CAD model of the Astelco RC500 telescope, the interim instrument, the finder, and the electronics cabinet.
+
+
+Figure 2 shows an exploded view of the components of the interim instrument. Table 1 lists the mechanical components. The total weight of the instrument excluding the filter wheel, filters, and detector is 6.8 kg. When the filter wheel (0.77 kg) and the camera (1.36 kg) are included, the weight rises to 8.93 kg. 
+
+Figure 2. Exploded view of the interim instrument.
+
+
+Table 1. List of mechanical components of the interim instrument.
+
+1.2  Description of the Components.
+The following is a brief description of each component:
+1.- Instrument flange: This is the mechanical interface with the telescope, and permits the interim instrument (and eventually the definitive instrument) to be mounted. The instrument flange will be attached to the telescope flange by six M10x1.5 bolts (part 13) and nuts (part 14). The bolts pass through six smooth, 11 mm diameter holes in the instrument flange. These holes will also serve as templates for the six simular holes that will be drilled in the telescope flange in situ; these holes are not part of the standard telescope design. These holes are shown in Figure 3.
+   
+Figure 3. The six holes to be drilled in the telescope flange.
+.
+
+2.- Extension barrel: The function of this component is simply to serve as an interface between the instrument flange and the filter wheel. The length is chose to place the detector in the nominal focal plane of the telescope, as shown in Figure 4. (See also the diagram “T0500-20 focal plane without corrector 2014-06-06” supplied by Astelco.)
+
+
+Figure 4. Position of the focal plane of the camera and telescope.
+
+
+3, 4 y 5: Interface EB/CFW1-5, Interface CFW1-5/Camera and Adapter for centering: These interfaces serve to attach the filter wheel and the camera to the telescope, via the extension barrel. They will be fabricated by a CNC machine. They have a series of through bolts that will act to avoid rotation of the wheel and camera. These bolts are shown in Figure 5. The filter wheel will be modified with six through holes through the outer rim to accomodate these bolts. This modification will not significantly affect the operation or rigidity of the wheel.
+
+Figure 5. The filter wheel between the two interfaces.
+The Interface CFW1-5/Camera also supports the detector using four bolts with lock washers. These will keep the bolts tight even in the presense of rapid movements by the telescope.
+
+Figure 6. The detector and its interface plate.  
+N.B.: The design uses SS thread-locking inserts. 
+N.B.: The design uses and lock washers, to guard against bolts or nuts coming loose because of vibrations or motion.
+
+2.	Finder and Support:
+2.1 Overview.
+The finder is a IDS UI-1540RE-M-GL detector head with a Fujinon HF35HA-1B 35 mm f/1.6 C-mount lens. The detector is an Aptina MT9M001STM CMOS device with a format of 1280 by 1024 and 5.4 micron pixels. The field is about 9 by 11 degrees and the pixel scale is about 30 arcsec. 
+Figure 7 and Table 2 show the components of the finder and its support.
+
+Figure 7. Exploded view of the finder and its support
+
+
+Table 2. List of mechanical components of the finder 
+.
+
+2.2 Functional Description.
+1.- Holder grip top: This component acts to couple the finder support to the the upper ring of the telescope. The shape of the cut-out follows that of the ring. As shown in Figure 8, in theory the finder can be located at any azimuth, but locating it close to the polar axis is probably beneficial for reasons of torque and balance.
+ 
+Figure 8. Left: although the finder can be mounted at any azimuth, we plan to mount it closes to the polar axis. Right: the assembly of the holder is straightfoward. 
+
+2.- Holder grip bottom: These two identical components are used to firmly attach the Holder grip top to the upper ring. We will use four lock washers (5) between components 1 and 2, as shown in Figure 7.
+
+3.- Camera interface with holder grip: This is a 90 degree bracket, with holes to make it lighter, and two sets of four through holes for bolts. These bolts attach the interface to the holder grip top and to the detector (see Figure 9). Lock washers will be used with the bolts.
+
+Figure 9. The finder detector head and the support.
+
+3.	The electronics cabinet support
+The interim instrument will use one electronics cabinet mounted opposite the dovetail. (The definitive instrument will use two cabinets mounted at 90 and 270 degrees of azimuth from the dovetail.)
+The electronics cabinet will be bolted to two L brackets, as shown in Figures 10 and 11. The two brackets are similar, with the exception that the lower bracket attaches to two holes on the telescope whereas the upper bracket attaches to three. These holes in the telescope appear in the model supplied by Astelco. We will use five M6x1.0 bolts, nuts, and lock washers.
+The total weight of the two brackets, bolts, nuts, and washers is 290 g.
+
+
+
+Figure 10. Exploded diagram of the electronics cabinet.
+ 
+
+
+
+Figure 11. The electronics cabinent mounted on the telescope.
+
+The upper bracket has slots which will permit minor adjustments of its position with respect to the cabinet and and the telescope (see Figure 12). They will be attached to the telescope with four M5 bolts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figure 12. Slots in the upper bracket will permit fine adjustment.
+
+\section{Control}
+
+The server for C0 runs on \verb|f1|. 
+
+It starts automatically when \verb|f1| is rebooted, but if necessary can be stopped, started, or restarted expliciatly by issuing the following commands on \verb|f1|:
+\begin{itemize}
+\item
+\verb|sudo stopserver C0|
+\item
+\verb|sudo startserver C0|
+\item
+\verb|sudo restartserver C0|
+\end{itemize}
+
+Server requests can be issued from any of the Mac or Linux machines on the COATLI LAN. The following requests are supported:
+
+\begin{itemize}
+\item
+\verb|request C0 movefilterwheel| \var{filter}
+
+Move the filter wheel to the specified \var{filter}. 
+
+The server activity must be \verb|idle| for this request to be accepted. The server activity changes to \verb|moving| and then, once the filter wheel has finished moving, to \verb|idle|.
+
+The \var{state} argument can be:
+
+\begin{itemize}
+\item
+The filter name: \verb|C|, \verb|BB|, \verb|BV|, \verb|BR|, or \verb|BI|.
+\item
+An integer from 0 to 4 specifying the slot number.
+\end{itemize}
+
+\item
+\verb|request C0 setcooler| \var{state}
+
+Set the cooler to the specified \var{state}. 
+
+The server activity must be \verb|idle| for this request to be accepted. The server activity does not change.
+
+The \var{filter} argument can be:
+
+\begin{itemize}
+\item
+a decimal fraction
+
+Turn on the cooler. Set the cooler set temperature to the value given.
+
+The initial set temperature is \verb|-30|.
+\item
+\verb|on|
+
+Turn on the cooler. Do not change the current cooler set temperature.
+
+\item
+\verb|off|
+
+Turn off the cooler. Do not change the current cooler set temperature.
+
+\item
+\verb|following|
+
+Turn on the cooler. Periodically adjust the cooler set temperature to the value of the detector housing temperature. This setting is intended to extract the heat generated by the CCD electronics without generating excessive waste heat.
+
+\item
+\verb|open|
+
+This is an alias currently defined to be for \verb|on|. When the executor server opens the telescope, it requests C0 to use this cooler state.
+
+\item
+\verb|closed|
+
+This is an alias currently defined to be \verb|following|. When the executor server closed the telescope, it requests C0 to use this cooler state.
+
+\end{itemize}
+
+\end{itemize}
+
+\section*{Bibliography}
+
+\begin{flushleft}
+\begin{itemize}
+\item “\href{bibliography/fli-drawing-ml.pdf}{FLI MicroLine Drawings for 25-mm Shutter}”, 2015.
+\item “\href{bibliography/fli-ml-users-guide.pdf}{FLI MicroLine Imaging System User’s Guide}”, 2009.
+\item “\href{bibliography/fli-ml3200-data-sheet.pdf}{FLI MicroLine ML3200 Data Sheet}”, 2015.
+\item “\href{bibliography/kodak-kaf-3200me-data-sheet.pdf}{Kodak KAF-3200ME Image Sensor}”, 2008, Revision 3.0.
+\end{itemize}
+\end{flushleft}
+

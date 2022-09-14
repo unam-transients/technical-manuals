@@ -7,14 +7,14 @@ TODO: Measure DDOTI ground resistance.
 
 \section{Grounding Rods}
 
-\ifcoatlioan
+\ifcoatli
 We have installed a network of ground rods to the 
 east of the 84-cm telescope building. There is one main rod and two delta or triad rod systems. The three systems are connected through a ground bar in a box on the eastern wall of the 84-cm telescope.
 
 The 84-cm telescope building is grounded through an independent network of grounding rods just to the south of the building.
 \fi
 
-\ifddotioan
+\ifddoti
 We have installed a network of ground rods to the 
 east of shed. There is one main rod and two delta or triad rod systems. The three systems are connected through a ground bar in a box on the eastern wall of shed.
 \fi
@@ -24,10 +24,10 @@ TODO: Photo.
 
 \section{Grounding System}
 
-\ifcoatlioan
+\ifcoatli
 Figure~\ref{figure:schematic-electrical-grounding-system} shows a schematic of the electrical grounding system. These grounding cable from the grounding rods runs through the conduit from the 84-cm to the {\projectname} installation. It is terminated at a protected grounding bar underneath the metal walkway. This is the “tau-point” of the grounding system. From here, spurs are used to ground the electrical system in the shed, the walkways, the tower, and the platform.
 \fi
-\ifddotioan
+\ifddoti
 Figure~\ref{figure:schematic-electrical-grounding-system} shows a schematic of the electrical grounding system. These grounding cables from the grounding rods are connected at a protected grounding bar on the east side of the shed. This is the “tau-point” of the grounding system. From here, spurs are used to ground the electrical system in the shed, the tower, and the platform.
 \fi
 
@@ -80,7 +80,7 @@ TODO: Cable calibres.
 
 \draw (0,2) -- (tao-point-ground-bar);
 
-\ifcoatlioan
+\ifcoatli
 \node (walkways) [box] at (-4.5,5.5) {Walkways};
 \draw ($(tao-point-ground-bar.north) + (-4.5,0)$) -- (walkways);
 \fi
@@ -106,10 +106,10 @@ TODO: Cable calibres.
 \node (box-b) [box] at (3.0,12.5) {Box B};
 \draw ($(platform-ground-bar.north) + (-1.5,0)$) -- (box-b.south);
 
-\ifcoatlioan
+\ifcoatli
 \node (boxes) [box] at (3.0,13.5) {Boxes C/D/F};
 \fi
-\ifddotioan
+\ifddoti
 \node (boxes) [box] at (3.0,13.5) {Boxes C/D/E};
 \fi
 \draw (box-b) -- (boxes);
@@ -138,7 +138,7 @@ TODO: Make sure the ground is connected to the cables between the boxes.
 
 The Astelco controllers in the shed are connected to the platform and mount. There are undoubtedly ground loops through these connections. However, the connections from the platform to the tau-point is through a heavy-gauge cable, and this is likely to mitigate these ground loops.
 
-\ifcoatlioan
+\ifcoatli
 
 \section{Ground Resistance}
 
