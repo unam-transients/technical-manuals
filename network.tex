@@ -23,10 +23,10 @@ TODO: haltsoon and rebootsoon
  \draw[dashed] (-4.5,1.0) -- (+7.5,1.0) -- (+7.5,6.0) -- (-4.5,6.0) -- node [above,rotate=90] {84-cm} cycle;
 
  \node at (0,2.0) (oan-firewall) [box] {OAN/SPM\\Firewall};
- \ifcoatlioan
+ \ifcoatli
  \node at (3,3.5) (webcam-c) [box] {webcam-c\\132.148.4.16};
  \fi
- \ifddotioan
+ \ifddoti
  \node at (3,3.5) (webcam-c) [box] {webcam-c\\132.148.4.26};
  \fi
  \node at (0,3.5) (switch-84) [box] {Switch\\84-cm};
@@ -75,12 +75,12 @@ TODO: haltsoon and rebootsoon
  \draw (switch-c) -- (webcam-a);
  \draw (switch-c) -- (webcam-b);
  \draw (switch-c) -- (airport-express);
- \ifcoatlioan
+ \ifcoatli
  \node at (+6,15.25) (d0) [box] {d0\\10.0.1.12}; 
  \draw (switch-c) -- (d0);
  \fi
  
- \ifcoatlioan 
+ \ifcoatli 
  \draw[dashed] (-4.5,17.5) -- (+7.5,17.5) -- (+7.5,19.5) -- (-4.5,19.5) -- node [above,rotate=90] {Telescope} cycle;
  \node at (0,18.5) (switch-e) [box] {Switch\\Box E};
  \node at (-3,18.5) (e0) [box] {e0\\10.0.1.15}; 
@@ -90,7 +90,7 @@ TODO: haltsoon and rebootsoon
  \draw (switch-e) -- (e1);
  \fi
 
- \ifddotioan 
+ \ifddoti 
  \draw[dashed] (-4.5,17.5) -- (+7.5,17.5) -- (+7.5,25.5) -- (-4.5,25.5) -- node [above,rotate=90] {Telescope} cycle;
  \node at (-3,20.5) (d0) [box] {d0\\10.0.1.12}; 
  \node at (-3,18.5) (d1) [box] {d1\\10.0.1.13}; 
@@ -145,13 +145,13 @@ Address&Name&Equipment&Location\\
 10.0.1.8&\verb|pc|&PC&Not currently installed\\
 10.0.1.9&\verb|control|&Linux Server&Rack\\
 10.0.1.10&\verb|airport-express|&Airport Express&Box C\\
-\ifcoatlioan
+\ifcoatli
 10.0.1.11&\verb|c0|&Minnowboard Max&Box C\\
 10.0.1.12&\verb|d0|&Minnowboard Max&Box D\\
 10.0.1.15&\verb|e0|&Minnowboard Max&Box E\\
 10.0.1.16&\verb|e1|&Minnowboard Max&Box E\\
 \fi
-\ifddotioan
+\ifddoti
 10.0.1.11&\verb|c0|&Minnowboard Turbot&Box C\\
 10.0.1.12&\verb|d0|&Minnowboard Turbot&Box D\\
 10.0.1.13&\verb|d1|&Minnowboard Turbot&Box D\\
@@ -165,10 +165,10 @@ Address&Name&Equipment&Location\\
 10.0.1.20&\verb|webcam-a|&Webcam&Platform (above Box B)\\
 10.0.1.21&\verb|webcam-b|&Webcam&Platform (above Box C)\\
 \hline
-\ifcoatlioan
+\ifcoatli
 132.248.4.16&\verb|webcam-c|&Webcam&84-cm (SE side)\\
 \fi
-\ifddotioan
+\ifddoti
 132.248.4.26&\verb|webcam-c|&Webcam&84-cm (NE side)\\
 \fi
 \hline
@@ -178,10 +178,10 @@ Address&Name&Equipment&Location\\
 
 \section{Port Filtering and Forwarding}
 
-The observatory firewall filters access to {\ttfamily \projectexternalipname} ({\projectexternalipaddress}) from outside the observatory WAN except for ports TCP/22 (SSH), TCP/80 (HTTP), and \ifcoatlioan
+The observatory firewall filters access to {\ttfamily \projectexternalipname} ({\projectexternalipaddress}) from outside the observatory WAN except for ports TCP/22 (SSH), TCP/80 (HTTP), and \ifcoatli
 TCP/5349 (GCN/TAN).
 \fi
-\ifddotioan
+\ifddoti
 TCP/5351 (GCN/TAN).
 \fi
 
@@ -199,10 +199,10 @@ Port on WAN&Host on LAN&Port on LAN&Notes\\
 80&\verb|services|&80&Web page and interface.\\
 873&\verb|services|&5349&rsync.\\
 2222&\verb|firewall|&22&Backup ssh access.\\
-\ifcoatlioan
+\ifcoatli
 5349&\verb|services|&5349&GCN/TAN notices.\\
 \fi
-\ifddotioan
+\ifddoti
 5351&\verb|services|&5351&GCN/TAN notices.\\
 \fi
 \hline
@@ -223,12 +223,12 @@ chmod 700 ~/.ssh
 ssh-keygen -t rsa
 \end{verbatim}
 Once you have generated a key, you can copy it to \verb|access| using:
-\ifcoatlioan
+\ifcoatli
 \begin{verbatim}
 ssh-copy-id user@coatli.astrossp.unam.mx
 \end{verbatim}
 \fi
-\ifddotioan
+\ifddoti
 \begin{verbatim}
 ssh-copy-id user@ddoti.astrossp.unam.mx
 \end{verbatim}
@@ -244,10 +244,10 @@ To use your key this, you should make sure that the key is forwarded by using th
 \section{Wireless Networks}
 
 There are two wireless networks for general use. 
-\ifcoatlioan
+\ifcoatli
 The access Mac in the shed implements \verb|apcoatli0| and the Airport Extreme in Box C on the platform implements \verb|apcoatli1|. 
 \fi
-\ifddotioan
+\ifddoti
 The access Mac in the shed implements \verb|apddoti0| and the Airport Extreme in Box C on the platform implements \verb|apddoti1|. 
 \fi
 The password is “keplerxv”.

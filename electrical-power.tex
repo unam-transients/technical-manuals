@@ -30,12 +30,12 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
  }
 ]
 
-\ifcoatlioan
+\ifcoatli
 \node at (-6,-3) [box,minimum width=12cm,right] (oan) {OAN Grid};
 \node at (-6,-1) [box,minimum width=12cm,right] (transformer) {Isolation Transformer};
 \node at (-6,0) [box,minimum width=12cm,right] (main-breaker-box) {Main Breaker Box};
 \fi
-\ifddotioan
+\ifddoti
 \node at (-6,-2) [box,minimum width=12cm,right] (oan) {OAN Grid};
 \node at (-6,-1) [box,minimum width=12cm,right] (transformer) {Isolation Transformer};
 \node at (-6,1) [box,minimum width=12cm,right] (main-breaker-box) {Main Breaker Box};
@@ -56,17 +56,17 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
 \node at (-5,+5) [box] (ups-220) {220 V UPS};
 \node at (-5,+6) [box] (ibb-220) {220 V iBB};
 \node at (-6,+7.5) [box,left] (enclosure) {Enclosure};
-\ifcoatlioan
+\ifcoatli
 \node at (-6,+8.5) [box,left] (secondary) {Secondary};
 \fi
 \node at (+0,+7) [box,right] (rack-power-strip) {Rack Power Strip};
 \node at (+0,+8) [box,right] (other-shed-electronics) {Other Shed Electronics};
 \node at (+2,+6) [box] (fans-and-heater) {Fans and Heater};
 \node at (+1,+11) [box,right] (platform-box) {Platform Box};
-\ifcoatlioan
+\ifcoatli
 \node at (+1,+13) [box,right] (instrument-box) {Instrument Box};
 \fi
-\ifddotioan
+\ifddoti
 \node at (-1,+13) [box,right] (instrument0-box) {Instrument0 Box};
 \node at (+3,+13) [box,right] (instrument1-box) {Instrument1 Box};
 \fi
@@ -103,7 +103,7 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
  ($(ibb-220.north) + (-0.3,0)$)
  -- node [circuit] {\scriptsize A} +(0,1) 
  |- (enclosure.east);
-\ifcoatlioan
+\ifcoatli
 \draw[->] 
  ($(ibb-220.north) + (+0.3,0)$)
  -- node [circuit] {\scriptsize A} +(0,1) 
@@ -143,13 +143,13 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
  -- node [circuit] {\scriptsize C} +(2.5,0)
  -- ($(platform-box.west) + (0,+0.15)$);
 
-\ifcoatlioan
+\ifcoatli
 \draw[->] 
   (power-box.north) 
   -- node [circuit] {\scriptsize B2} +(0,0.7) 
   |- (instrument-box);
 \fi
-\ifddotioan
+\ifddoti
 \draw[->] 
   (power-box.north) 
   -- node [circuit] {\scriptsize B2} +(0,0.7) 
@@ -171,12 +171,12 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
 \node at (-8,+11) [right] {\normalsize Platform};
 \node at (-8,+13) [right] {\normalsize Telescope};
 \node at (-8,+6) [right] {\normalsize Shed};
-\ifcoatlioan
+\ifcoatli
 \draw[dashed] (-8,-2) -- (6.5,-2);
 \draw[dashed] (-8,+1) -- (6.5,+1);
 \node at (-8,-0.5) [right] {\normalsize 84-cm};
 \fi
-\ifddotioan
+\ifddoti
 \draw[dashed] (-8,0) -- (6.5,0);
 \fi
 
@@ -191,7 +191,7 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
 
 The OAN electricity supply is 220~V 60~Hz three-phase.
 
-\ifcoatlioan
+\ifcoatli
 The {\projectname} installation is connected to the OAN electricity supply via a spur to the circuit box in the 84-cm telescope building. This spur carries two phases (L1 and L2) and neutral (N). The phases are protected by an 80 A breaker. The circuit box and the breaker are shown in Figure~\ref{figure:main-breaker-box}.
 
 \begin{figure}[t]
@@ -205,7 +205,7 @@ The {\projectname} installation is connected to the OAN electricity supply via a
 \end{figure}
 \fi
 
-\ifddotioan
+\ifddoti
 The {\projectname} installation is connected to the OAN electricity supply via an isolation transformer (on the north wall of the shed). This spur carries three phases (L1, L2, and L3) and neutral (N). The phases are protected by a 70~A breaker on a 30 kVA main breaker box inside the shed. The main breaker box is shown in Figure~\ref{figure:main-breaker-box}.
 
 \begin{figure}[t]
@@ -222,7 +222,7 @@ The {\projectname} installation is connected to the OAN electricity supply via a
 \section{Circuits}
 
 \begin{figure}[t]
-\ifcoatlioan
+\ifcoatli
 \begin{center}
 \begin{labeled}{\includegraphics[height=0.7\linewidth]{figures/electrical-power-coatli-circuit-box.jpg}}
 \arrowandlabel{(-0.7,0.5)}{(0,5)}{south}{Master Breaker}
@@ -231,7 +231,7 @@ The {\projectname} installation is connected to the OAN electricity supply via a
 \end{center}
 \caption{The circuit box the {\projectname} shed. The master breaker is at the top. The breakers for circuits A--F are at the bottom.}
 \fi
-\ifddotioan
+\ifddoti
 \begin{center}
 \begin{labeled}{\includegraphics[width=0.45\linewidth,angle=0]{figures/electrical-power-ddoti-circuit-box.jpg}}
 \arrowandlabel{(0.4,1)}{(0.5,5)}{south}{Master Breaker}
@@ -263,7 +263,7 @@ Circuits A and B are regulated after the wall sockets by the two UPS units. The 
 \hline
 Circuit&Connection&Voltage&Breaker&Use\\
 \hline
-\ifcoatlioan
+\ifcoatli
 Master&L1-L2&220~V&80~A&Master for all circuits\\
 A&L1-L2&220~V&30~A&Wall socket in shed for 220~V UPS (T5 $1\times$ NEMA L6-20R)\\
 B&L2-N&127~V&30~A&Wall socket in shed for 127~V UPS (T4 $1\times$ NEMA L5-30R)\\
@@ -272,7 +272,7 @@ D&L2-N&127~V&20~A&Wall sockets in shed (T0/T1/T2/T3 $2\times$ NEMA 5-15R)\\
 E&L2-N&127~V&20~A&Lights in shed\\
 F&L1-L2&220~V&30~A&Wall socket in shed (T6 $1\times$ NEMA L6-20R)\\
 \fi
-\ifddotioan
+\ifddoti
 Master&&220~V&70~A&Master for all circuits\\
 A&L1-L2&220~V&30~A&Wall socket in shed for 220~V UPS (T5 $1\times$ NEMA L6-20R)\\
 B&L2-N&127~V&30~A&Wall socket in shed for 127~V UPS (T4 $1\times$ NEMA L5-30R)\\
@@ -406,13 +406,13 @@ There are two iBootBars in the rack in the shed, one 127~V and one 220~V. Both a
 \draw [white] (-6.5,0) -- (+6.5,0);
 \node (ibb-220) [main] at (0,0) {220 V\\iBootBar};
 \node (ups-220) at (-5,0) [box] {220 V\\UPS};
-\ifcoatlioan
+\ifcoatli
 \node (secondary) at (5,+0.6) [box] {Secondary\\Controller};
 \node (enclosure) at (5,-0.6) [box] {Enclosure\\Controller};
 \draw[<-] (secondary.west) -- node [circuit] {A} +(-2,0) node [left] {F};
 \draw[<-] (enclosure.west) -- node [circuit] {A} +(-2,0) node [left] {F};
 \fi
-\ifddotioan
+\ifddoti
 \node (enclosure) at (5,0) [box] {Enclosure\\Controller};
 \draw[<-] (enclosure.west) -- node [circuit] {A} +(-2,0) node [left] {F};
 \fi
@@ -523,10 +523,10 @@ Socket&220~V iBootBar&127~V iBootBar\\
 \hline
 1&Enclosure&Platform (Cable B1)\\
 2&
-\ifcoatlioan
+\ifcoatli
 Secondary
 \fi
-\ifddotioan
+\ifddoti
 -
 \fi
 &\verb|access|\\
@@ -657,14 +657,14 @@ At the rear of the rack, adjacent to the 127~V iBootBar, is a 8-way NEMA 5-15R p
 \hline
 Location&Circuit&Fuze\\
 \hline
-\ifcoatlioan
+\ifcoatli
 Power Box&B1\phantom{}&\phantom{0}3 A\\
 Power Box&B2\phantom{}&\phantom{0}3 A\\
 Power Box&C\phantom{0}&\phantom{}15 A\\
 Platform Box&B1\phantom{}&\phantom{0}3 A\\
 Instrument Box&B2\phantom{}&\phantom{0}3 A\\
 \fi
-\ifddotioan
+\ifddoti
 Power Box&B1\phantom{}&\phantom{0}3 A\\
 Power Box&B2\phantom{}&\phantom{}15 A\\
 Power Box&C\phantom{0}&\phantom{}15 A\\
@@ -694,10 +694,10 @@ Instrument1 Box&B2\phantom{}&\phantom{0}3 A\\
  circuit/.style={draw=black,rectangle,fill=white}
 ]
 \draw [white] (-6.5,0) -- (+6.5,0);
-\ifcoatlioan
+\ifcoatli
 \node (power-box) [main,minimum height=5.8cm] at (0,0) {Power Box};
 \fi
-\ifddotioan
+\ifddoti
 \node (power-box) [main,minimum height=4.6cm] at (0,0) {Power Box};
 \fi
 \node (ibb-127) at (-5,+0.6) [box] {127 V\\iBootBar};
@@ -708,14 +708,14 @@ Instrument1 Box&B2\phantom{}&\phantom{0}3 A\\
 \node at ($(power-box.north) + (-0.5,0)$) [below] {5-15R};
 \node at ($(power-box.north) + (+0.5,0)$) [below] {5-15R};
 \node at ($(power-box.north) + (0,-0.4)$) [below] {Sockets C};
-\ifcoatlioan
+\ifcoatli
 \node (instrument1-box) at (+5,+2.4) [box] {Box E};
 \node (instrument-box) at (+5,+1.2) [box] {Box D};
 \node (platform-box) at (+5,+0.0) [box] {Platform Box};
 \node (manual-light) at (+5,-1.2) [box] {Manual Light};
 \node (emergency-light) at (+5,-2.4) [box] {Emergency Light};
 \fi
-\ifddotioan
+\ifddoti
 \node (platform-box) at (+5,+0.6) [box] {Platform Box};
 \node (instrument0-box) at (+5,+1.8) [box] {Instrument0 Box};
 \node (instrument1-box) at (+5,+3.0) [box] {Instrument1 Box};
@@ -724,7 +724,7 @@ Instrument1 Box&B2\phantom{}&\phantom{0}3 A\\
 \draw[<-] (instrument0-box.west) -- +(-1,0) node [circuit] {B2} -- +(-2,0);
 \draw[->] (instrument0-box.east) -- +(0.4,0) -- node [circuit] {B2} +(0.4,+1.2) |- (instrument1-box.east);
 \fi
-\ifcoatlioan
+\ifcoatli
 \draw[<-] (instrument-box.west) -- +(-1,0) node [circuit] {B1} -- +(-2,0);
 \fi
 \draw[<-] ($(platform-box.west) + (0,+0.3)$) -- +(-1,0) node [circuit] {B1} -- +(-2,0);
@@ -794,7 +794,7 @@ The connections to the manually/electronically-controlled light and heater are v
 
 Circuit B1 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance to the platform box.
 
-\ifcoatlioan
+\ifcoatli
 
 \section{Instrument Box}
 
@@ -866,7 +866,7 @@ Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance t
 
 \fi
 
-\ifddotioan
+\ifddoti
 
 \section{Instrument0 Box}
 
@@ -949,10 +949,10 @@ Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance t
 \item For circuits not connected via a UPS unit (C, D, E, and F), check that the OAN mains supply is working.
 \item For circuits connected via a UPS unit (A, B, B1, and B2), check that the corresponding UPS is working.
 \item Check the breakers in the circuit box in the shed. Has one tripped?
-\ifcoatlioan
+\ifcoatli
 \item Check the breaker in the main breaker box in the 84-cm. Has it tripped?
 \fi
-\ifddotioan
+\ifddoti
 \item Check the breaker in the main breaker box. Has it tripped?
 \fi
 \item Check the equipment has not failed.
