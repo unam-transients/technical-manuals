@@ -868,7 +868,7 @@ Move the main power switch on the controller door from OFF to ON.
 
 The RS-232 interface to the enclosure controller is made available via the Lantronix EDS 4100 ethernet-to-serial converter. Specifically, it is connected to line 3 and configured as 9600/8-N-1 with a tunnel on TCP port 10003.
 
-The Lantronix EDS is on the LAN at \verb|lantronix-eds|.
+The Lantronix EDS is on the LAN at \verb|serial|.
 
 \subsection{ADAM Modules}
 \label{section:enclosure-adam-modules}
@@ -920,7 +920,7 @@ To check communication with the Lantronix EDS, from a terminal run:
 
 \begin{quotation}
 \begin{verbatim}
-ping lantronix-eds
+ping serial
 \end{verbatim}
 \end{quotation}
 
@@ -936,7 +936,7 @@ Then connect to the enclosure TCP port on the Lantronix EDS using telnet:
 
 \begin{quotation}
 \begin{verbatim}
-telnet lantronix-eds 10003
+telnet serial 10003
 \end{verbatim}
 \end{quotation}
 
