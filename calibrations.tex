@@ -1,3 +1,57 @@
 \chapter{Calibrations}
 
 This chapter describes the routine calibrations procedures for {\projectname}.
+
+\section{Twilight Flats}
+
+The control system takes twilight flats each evening that conditions permit.
+
+The flats are taken with the telescope pointed to $-3$ hours of HA and $+45$ degrees of declination and with the tracking turned off. 
+The detector uses a read mode of
+\ifcoatli
+\verb|conventionaldefault| (which is \verb|1MHz-low|).
+\fi
+\ifddoti
+\verb|default| (which is \verb|16MHz|).
+\fi
+The control system monitors the level in the flats, considers a flat to be good it its level is between 
+\ifcoatli
+3500 and 16000 DN, 
+\fi
+\ifddoti
+1000 and 3000 DN,
+\fi
+and moves to the next filter either after acquiring a certain number of good flats (typically 7) or when the level is too low for the flat to be considered good.
+
+\ifcoatli
+HUITZI has many filters and the flats for each filter is associated with a different visit identifier, according to Table~\ref{table:twilight-flats-visits}.
+
+
+\begin{table}
+\begin{center}
+\caption{Visit Identifiers for Twilight Flats}
+\label{table:twilight-flats-visits}
+\medskip
+\begin{tabular}{ll}
+\hline
+Filter&Visit Identifier\\
+\hline
+$g$&0\\
+$r$&1\\
+$i$&2\\
+$z$&3\\
+$y$&4\\
+$w$&5\\
+$B$&10\\
+$V$&11\\
+$R$&12\\
+$I$&13\\
+$\Is$&14\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+In HUITZI it is not possible to take flats in all filters each night, so there are several block files for different sets of filters that are run in turn.
+
+\fi
