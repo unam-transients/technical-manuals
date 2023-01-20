@@ -27,9 +27,9 @@ The imager has three Finger Lakes Instruments filter wheels. Currently, the foll
 \item open: Completely open.
 \item dark: Completely blocked.
 \item $grizy$: Filters similar to the Pan-STARRS equivalents. Note, however, that while the filters are similar, the CCD is not deep-depleted and so the bandpasses are somewhat different.
-\item $w$: A filter that combines the $r$ and $i$ bands. Note that this is different to the Pan-STARRS $w$ which includes the $g$ band too. It is mainly intended for sensitive imaging of GRBs.
+\item $w$: A filter that combines the $r$ and $i$ bands. Note that this is different to Pan-STARRS $w$ which includes the $g$ band too. It is mainly intended for sensitive imaging of GRBs.
 \item $BVRI$: Johnson-Cousins filters according to the Bessell formulation.
-\item $\Is$: The $I$ filter with a sharp red cutoff at 900 nm. This is intended to better match the bandpass of the original Cousins $I$ photomety. The blue edge is the same as the Bessell formulation, but the red edge is defined by a 900 nm short-pass filter to simulate the red edge of a GaAs tube. The Bessell (1990) and Bessell \& Murphy (2012) bandpasses fall at about 900 nm.
+\item $\Is$: The $I$ filter with a sharp red cutoff at 900 nm. This is intended to better match the bandpass of the original Cousins (1978) $I$ photomety. The blue edge is the same as the Bessell formulation, but the red edge is defined by a 900 nm short-pass filter to simulate the red edge of a GaAs tube. The Bessell (1990) and Bessell \& Murphy (2012) bandpasses fall at about 900 nm.
 \item 470/10, 515/10, and 640/10: Nebular continuum filters.
 \item 501/8, 656/3, 656/8: Nebular line filters.
 \end{itemize}
@@ -51,7 +51,7 @@ The detector is mounted on Optec Gemini focuser/rotator, which allows up to 12.7
 \draw (-4,+1) -- (10,0) -- (-4,-1);
 \draw (-4,-2.5) node {$S$};
 \draw (0,-2.5) node {$A$};
-\draw (10,-2.5) node {$A’$};
+\draw (10,-2.5) node {$A'$};
 \end{tikzpicture}
 }
 \medskip
@@ -65,7 +65,7 @@ $$
 	m = SA'/SA,
 $$
 in which $SA'$ and $SA$ are optical distances.
-If the focal length of the lens is $F$, then Gauss’ equation gives the relation between $SA$ and $SA’$ as:
+If the focal length of the lens is $F$, then Gauss’ equation gives the relation between $SA$ and $SA'$ as:
 $$
 	1/F = 1/SA' - 1/SA.
 $$
@@ -88,13 +88,266 @@ We can see the approximate dimensions of the system by ignoring chromatic aberra
 \end{center}
 \end{figure}
 
-The actual lens is Edmund Optics part \#63-767, whose design is shown in Figure~\ref{figure:huitzi-lens-design}. It has a design effective focal length of $-150$ mm at 587.6 nm. It is nominally 40 mm in diameter and 13.54 mm thick at the edge. The precise optical and mechanical prescriptions of are given in the files “\verb|zmax_63767.ZMX|”and “\verb|step_63767.STP|” supplied by Edmund Optics. The lens is used with the convergent element B uppermost (towards the telescope). That is surface S4 is uppermost (towards the telescope) and surface S1 is lowermost (towards the detector). If it is inverted, the system will suffer significant spherical aberration.
+The actual lens is Edmund Optics part \#63-767, whose design is shown in Figure~\ref{figure:huitzi-lens-design}. It has a design effective focal length of $-150$ mm at 587.6 nm. It is nominally 40 mm in diameter and 13.54 mm thick at the edge. The precise optical and mechanical prescriptions of are given in the files “\verb|zmax_63767.ZMX|”and “\verb|step_63767.STP|” supplied by Edmund Optics. The lens is used with the convergent element B uppermost (towards the secondary) and the divergent element A lowermost (towards the detector). That is, surface S4 is uppermost (towards the secondary) and surface S1 is lowermost (towards the detector). If the lens is inverted, the system will suffer significant spherical aberration.
 
 The lens is an achromatic doublet, so its focal length varies with wavelength. This has two effects. First, the different focal length between bands requires us to refocus for each filter. In theory, we could adjust both the secondary and the focuser to achieve focus while holding the magnification constant. In practice, we simply adjust the focuser to maintain focus and let the magnification vary slightly. (The focuser is also used to compensate for the different optical thicknesses of the filters.) Second, chromatic aberration within the $g$ and $B$ bands limits their image quality.
 
 The lens has a $\lambda/4$ MgF$_2$ coating on both surfaces.
 
 The lens also serves as a window to prevent ingress of dust and insects.
+
+\section{Filters}
+
+The upper filter wheel (“A”) is an FLI CFW-1-5 wheel for five 50 mm diameter filters. The two lower filter wheels (“B” and “C”) are FLI CFW-1-8 wheels for eight 25 mm diameter filters. The elements installed in each wheel are shown in Table~\ref{table:filter-wheel-loading}.
+
+\begin{table}
+\begin{center}
+\caption{Filter Wheel Loading}
+\label{table:filter-wheel-loading}
+\medskip
+\begin{tabular}{llll}
+\hline
+Slot&A&B&C\\
+\hline
+0&open	&P0			&open		\\
+1&$B$	&656/3		&$g$		\\
+2&$V$	&470/10		&$r$		\\
+3&$R$	&$z$			&$i$		\\
+4&825SP	&$I$			&550LP	\\
+5&			&925LP		&900SP	\\
+6&			&515/10		&656/8	\\
+7&			&640/10		&501/8	\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The filter elements are:
+
+\begin{itemize}
+\item $griz$: These are similar to the Pan STARRS filters. They were acquired from Custom Scientific and fabricated to our specifications. They are 25 mm in diameter and 5 mm thick. They have dielectric coatings on fuzed silica substrates.
+\item $BVRI$: These are Johnson-Cousins filters adapted from the Bessell (1990) recipe. They are off-the-shelf filters acquired from Custom Scientific. They are 50 mm ($BVR$) or 25 mm ($I$) diameter and 5 mm thick.
+From modeling the transmission curves, we believe the recipes are:
+\begin{itemize}
+\item $B$: 2 mm Hoya L38 + 1 mm Schott BG25 + 2 mm Schott BG39
+\item $V$: 1 mm Schott GG495 + 3 mm Schott BG39 + 1 mm filler
+\item $R$: 2 mm Schott OG570 + 3 mm Schott KG3
+\item $I$: 3 mm Schott RG9 + 2 mm filler
+\end{itemize}
+\item 825SP: This is an 825 nm OD4 short-pass filter. It is Edmund Optics part \#86-113. It is 50 mm in diameter and 5 mm thick. It has  dielectric coatings on a fuzed silica substrate.
+\item 925LP: This is an 925 nm OD4 long-pass filter. It is Edmund Optics part \#86-072. It is 25 mm in diameter and 3 mm thick. It has  dielectric coatings on a fuzed silica substrate.
+\item 900SP: This is an 900 nm OD4 short-pass filter. It is Edmund Optics part \#64-335. It is 25 mm in diameter and 3 mm thick. It has  dielectric coatings on a fuzed silica substrate.
+\item 550LP: This is an 550 nm OD4 long-pass filter. It is Edmund Optics part \#62-984. It is 25 mm in diameter and 3 mm thick. It has dielectric coatings on a fuzed silica substrate.
+\item P0: This is a window. It is Edmund Optics part \#48-066. It is 25 mm in diameter and 3 mm thick. It has Edmund UV-VIS coatings on a fused silica substrate.
+\item 470/10, 501/8, 515/10, 640/10, 656/3, and 656/8: These are narrow-band filters, named for their approximate central wavelength and width in nm. They are off-the-shelf filters acquired from Custom Scientific. They are 25 mm in diameter and 3 mm thick. They have dielectric coatings on a fuzed silica substrate.
+
+In addition to these, we have 486/8 and 501/3 filters that could be installed by special request. Furthermore, Custom Scientific have 672/3, 672/8, and 889/18 filters that could be purchased for about US\$500 each.
+\end{itemize}
+
+\begin{table}
+\begin{center}
+\caption{Filter Combinations}
+\label{table:filter-combinations}
+\medskip
+\begin{tabular}{lllll}
+\hline
+Filter&A&B&C&Thickness (mm)\\
+\hline
+dark		&$B$		&$z$		&656/8	&\phantom{}13		\\
+open		&open		&P0		&open		&\phantom{0}3		\\
+$g$		&open		&P0		&$g$		&\phantom{0}8		\\
+$r$		&open		&P0		&$r$		&\phantom{0}8		\\
+$i$			&open		&P0		&$i$		&\phantom{0}8		\\
+$z$		&open		&$z$		&open		&\phantom{0}5		\\
+$y$		&open		&925LP	&550LP	&\phantom{0}6		\\
+$w$		&825SP	&P0		&550LP	&\phantom{}11		\\
+$B$		&$B$		&P0		&open		&\phantom{0}8		\\
+$V$		&$V$		&P0		&open		&\phantom{0}8		\\
+$R$		&$R$		&P0		&open		&\phantom{0}8		\\
+$I$		&open		&$I$		&open		&\phantom{0}5		\\
+$\Is$		&open		&$I$		&900SP	&\phantom{0}8		\\
+470/10	&open		&470/10	&open		&\phantom{0}3		\\
+501/8		&open		&P0		&501/8	&\phantom{0}6		\\
+515/10	&open		&515/10	&open		&\phantom{0}3		\\
+640/10	&open		&640/10	&open		&\phantom{0}3		\\
+656/3		&open		&656/3	&open		&\phantom{0}3		\\
+656/8		&open		&P0		&656/8	&\phantom{0}6		\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The filter bandpasses are created by combinations of conventional bandpass filters, long-pass, and short-pass filters. The combinations used are given in Table~\ref{table:filter-combinations}. Most of the combinations are straightforward, but we comment on three aspects in particular:
+
+\begin{itemize}
+\item $\Is$: The system responses in both $I$ and $\Is$ have their blue edge defined by RG9 glass. However, in $I$ the red edge is defined by the CCD but in $\Is$ (“$I$ short”) it is defined by the 900SP filter. This gives $\Is$ a system response that is a better match that of Cousins (1978), whose $I$ has its the red edge defined by the cutoff of a GaAs photocathode around 900 nm. Compare Figure~\ref{figure:huitzi-S-JC-IIs} here with Figure~9 of Bessell \& Murphy (2012).
+
+\item
+$w$: The $w$ filter essentially encompasses the bandpasses of $r$ and $i$ (although the exact edges are slightly different). Note that this is different to Pan-STARRS $w$ which includes the $g$ band too. It is mainly intended for sensitive imaging of GRBs.
+
+\item P0: The role of the P0 (“prism 0”) element might seem to be a puzzle. However, we are considering converting the telescope to an altitude-azimuth configuration at some point in the future and installing wedged windows P1 and P2, similar to P0, in wheel B in place of two of the narrow-band filters. This will allow us to implement an atmospheric dispersion corrector  for the $BVR$ and $griw$ filters using P0, P1, and P2. However, while the telescope is in an equatorial configuration, there is no point in installing P1 and P2. We could have left the position occupied by P0 as open, but we decided to install it to give consistent bandpasses in these filters in both the equatorial and altitude-azimuth configurations.
+
+\end{itemize}
+
+Model system efficiency curves at the zenith (including the atmosphere, telescope mirrors, lens, filters, detector window, and detector, but excluding the obscuration of the secondary) are shown in Figures~\ref{figure:huitzi-S-first} to \ref{figure:huitzi-S-last}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-grizy.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $grizy$ filters. The dotted line is the model unfiltered efficiency.}
+\label{figure:huitzi-S-first}
+\end{center}
+\medskip
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-w-open.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $w$ and open filters. The dotted line is the model unfiltered efficiency.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-JC-BVRI.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $BVRI$ filters. The dotted line is the model unfiltered efficiency.}
+\end{center}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-JC-IIs.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $I$ and $\Is$ filters. The $\Is$ filter has a red cutoff defined by the 900SP filter whereas the $I$ filter has the red cutoff defined by the CCD. The dotted line is the model unfiltered efficiency.}
+\label{figure:huitzi-S-JC-IIs}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-g.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $g$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-r.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $r$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-i.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $i$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-z.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $z$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-y.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $y$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-w.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $w$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-open.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the open filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-JC-B.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $B$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-JC-V.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $V$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-JC-R.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $R$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-JC-I.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $I$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-JC-Is.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the $\Is$ filter.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-NBMB.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters. The dotted line is the model unfiltered efficiency.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-NBMB-g.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters in $g$: 470/10, 486/8, 501/3, 501/8, and 515/10. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency. The blue vertical lines are at 486.1, 495.9, and 500.7 nm.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-NBMB-r.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters in $r$: 640/10, 656/3, 656/8, 672/3, and 672/8, 501/8, and 515/10. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency. The blue vertical lines are at 656.3, 654.8, 658.4, 671.6, and 673.1 nm.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{figures/huitzi-S-NBMB-z.png}
+\medskip
+\caption{The model system efficiency $S$ at the zenith in the medium-band filter in $z$: 889/18. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency.}
+\label{figure:huitzi-S-last}
+\end{center}
+\end{figure}
 
 \section{Bibliography}
 
@@ -105,6 +358,7 @@ The lens also serves as a window to prevent ingress of dust and insects.
 \item Bessell, M.S., 1990, PASP, 102, 1181: “$UBVRI$ Passbands”.
 \item Bessell, M., \& Murphy, S., 2012,  PASP, 124, 140: “Spectrophotometric Libraries, Revised Photonic Passbands, and Zero Points for UBVRI, Hipparcos, and Tycho Photometry”.
 \item “\href{bibliography/huitzi/e2v-ccd201-20-datasheet.pdf}{CCD201-20 Datasheet}”, Teledyne e2v, Version 7 of August 2019.
+\item Cousins, A.W.J., 1976, MNRAS, 81, 25: “VRI standards in the E regions”.
 \end{itemize}
 \end{flushleft}
 
