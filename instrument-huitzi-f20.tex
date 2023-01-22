@@ -349,6 +349,55 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 \end{center}
 \end{figure}
 
+\begin{table}
+\begin{center}
+\caption{Model Filter Properties}
+\label{table:model-filter-properties}
+\medskip
+\begin{tabular}{lccc}
+\hline
+Filter&$\lambda_\mathrm{pivot}$ (nm)&$\Delta\lambda$ (nm)&ZP ($\mathrm{s}^{-1}$)\\
+\hline
+open		& 618.7& \phantom{}384.1&$4.2 \times 10^{9}$\\
+$g$		& 475.9& \phantom{}104.6&$1.2 \times 10^{9}$\\
+$r$		& 617.2& \phantom{}132.4&$1.3 \times 10^{9}$\\
+$i$			& 747.4& \phantom{}131.5&$8.0 \times 10^{8}$\\
+$z$		& 862.8& \phantom{0}94.8&$3.0 \times 10^{8}$\\
+$y$		& 973.3& \phantom{0}64.2&$8.6 \times 10^{7}$\\
+$w$		& 668.4& \phantom{}264.6&$2.2 \times 10^{9}$\\
+$B$		& 446.5& \phantom{0}89.4&$5.9 \times 10^{8}$\\
+$V$		& 537.9& \phantom{0}89.8&$8.5 \times 10^{8}$\\
+$R$		& 633.9& \phantom{}118.0&$1.0 \times 10^{9}$\\
+$I$		& 814.8& \phantom{}150.7&$8.0 \times 10^{8}$\\
+$\Is$		& 795.0& \phantom{}150.7&$7.0 \times 10^{8}$\\
+470/10	& 469.7& \phantom{0}10.1&$9.9 \times 10^{7}$\\
+486/8		& 485.5& \phantom{00}9.3&$1.0 \times 10^{8}$\\
+501/3		& 500.7& \phantom{00}3.2&$3.5 \times 10^{7}$\\
+501/8		& 500.5& \phantom{00}7.0&$8.2 \times 10^{7}$\\
+515/10	& 514.2& \phantom{0}10.0&$1.1 \times 10^{8}$\\
+640/10	& 638.9& \phantom{00}9.9&$9.8 \times 10^{7}$\\
+656/3		& 656.5& \phantom{00}2.9&$2.8 \times 10^{7}$\\
+656/8		& 655.9& \phantom{00}7.7&$8.4 \times 10^{7}$\\
+672/3		& 672.3& \phantom{00}2.9&$2.7 \times 10^{7}$\\
+672/8		& 672.2& \phantom{00}7.6&$6.8 \times 10^{7}$\\
+889/18	& 887.3& \phantom{0}17.5&$4.3 \times 10^{7}$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Table~\ref{table:model-filter-properties} gives the model properties of the filter. The filter pivot wavelength $\lambda_\mathrm{pivot}$ is  defined by 
+$$
+\lambda_\mathrm{pivot} \equiv \sqrt{\frac{\int \lambda S\,d\lambda}{\int S/\lambda\, d\lambda}}.
+$$
+For a discussion of the interpretation of the pivot wavelength, see \S A2.1 of Bessell \& Murphy (2012).
+The filter FWHM is defines as the width over which $S$ is at least half its maximum. The filter ZP is the expected electron count rate for a star with AB = 0,
+$$
+ZP \equiv A \int S F_\lambda / (hc/\lambda)\, d\lambda,
+$$
+in which $A$ is the geometric area of the telescope (the area of the primary mirror not occulted by the secondary obscuration) and $F_\lambda$ is the flux density of a source with $F_\nu = \mathrm{3631~Jy}$.
+
+
 \section{Focuser and Rotator}
 
 The instrument incorporates an Optec Gemini focuser and rotator between the last filter wheel and the detector.
