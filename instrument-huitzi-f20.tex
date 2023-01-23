@@ -404,6 +404,54 @@ The instrument incorporates an Optec Gemini focuser and rotator between the last
 
 The focuser moves from 0 to 115200 steps over 12.7 mm which corresponds to 9.07 steps per micron. The 0 position is above and the 115200 position is below. The focuser moves at about 900 steps or 0.1 mm per second.
 
+\section{Focus Compensation}
+
+The lens has chromatic aberration and the filters have different thicknesses. Both of these require us to use a compensator to maintain focus. Our options are the focuser, the secondary, or both. If we use only one compensator, then the magnification necessarily changes slightly was we adjust for focus. If we use both, we can maintain the magnification. 
+
+However, it is fairly easy to show that if we use the focuser, either on its own or in combination with the secondary to maintain the magnification, in the worst case we need to move it about 3 mm. Since the focuser moves at about 0.1 mm per second, this means the worse case time is about 30 seconds. This is long compared to slew speed (without a meridian flip) and cannot be overlapped with changing the filter.  On the other hand, if we use only the secondary, in the worst case we need to move about 60 steps. Even with backlash compensation, this takes about 5.5 seconds. Furthermore, this can be overlapped with changing the filter. Therefore, in the interests of preserving the rapid response of COATLI, we have chosen to compensate the focus using only the secondary. This compensation is handled automatically by the control system.
+
+Our model is as follows. We define $L$ to be the (fixed) physical distance from the lens to the detector and $T$ to be the total physical thickness of filter glass between the lens and the detector. We then have
+$$
+SA' = L - [(n - 1) / n] T \approx L - 0.32 T,
+$$
+where we have assumed $n = 1.48$ for fused silica. We then solve for SA using
+$$
+1/F = 1/SA' - 1/SA,
+$$
+taking into account the dependence of $F$ on wavelength. We determine $\Delta SA$ relative to the $i$ filter. We then determine the corresponding change in the secondary taking into account the amplification of 10.64 between the movement of the secondary and the movement of the telescope focal plane.
+
+Table \ref{table:filter-secondary-offsets} shows the results. Note that for the medium band filters, there are two values depending on whether the filter is in wheel B ($T = 3$ mm) or wheel C ($T = 6$ mm). The offsets of the narrowband filters are the same as for the corresponding medium band filters.
+
+\begin{table}
+\begin{center}
+\caption{Filter Secondary Offsets}
+\label{table:filter-secondary-offsets}
+\medskip
+\begin{tabular}{lccc}
+\hline
+Filter&$F$ (mm)&Thickness (mm)&Offset (steps)\\
+\hline
+open		&$-150.22$		&\phantom{0}3		&\phantom{}$-24$\\
+$g$		&$-150.20$		&\phantom{0}8		&\phantom{0}$+7$\\
+$r$		&$-150.07$		&\phantom{0}8		&\phantom{}$+13$\\
+$i$			&$-150.37$		&\phantom{0}8		&\phantom{+0}$0$\\
+$z$		&$-150.66$		&\phantom{0}5		&\phantom{}$-30$\\
+$y$		&$-150.96$		&\phantom{0}6		&\phantom{}$-37$\\
+$w$		&$-150.25$		&\phantom{}11		&\phantom{}$+24$\\
+$B$		&$-150.43$		&\phantom{0}8		&\phantom{0}$-2$\\
+$V$		&$-150.97$		&\phantom{0}8		&\phantom{}$+17$\\
+$R$		&$-150.14$		&\phantom{0}8		&\phantom{}$+10$\\
+$I$		&$-150.27$		&\phantom{0}5		&\phantom{}$-30$\\
+$\Is$		&$-150.50$		&\phantom{0}8		&\phantom{0}$-5$\\
+470/10	&$-149.99$		&\phantom{}3/6		&\phantom{}$-14/+4$\\
+515/10	&$-149.93$		&\phantom{}3/6		&\phantom{}$-12/+6$\\
+640/10	&$-150.07$		&\phantom{}3/6		&\phantom{}$-16/+1$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
 \section{Bibliography}
 
 \begin{flushleft}
