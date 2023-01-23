@@ -3,10 +3,50 @@
 \chapter{Telescope}
 \label{chapter:telescope}
 
-\section{Optics}
+\section{Description}
+
+
+\subsection{Optics}
+
+The COATLI telescope is a 50-cm $f/8$ Ritchey-Crétien supplied by ASTELCO. The design and as-built optical parameters are given in Table~\ref{table:telescope-optical-parameters}. The as-built radii of curvatures were measured by the manufacturer with a spherometer (and supplied in an email message from Peter Aniol on 9 November 2015). Figures~\ref{figure:telescope-zygo-with-astigmatism} and \ref{figure:telescope-zygo-without-astigmatism} show the results of Zygo interferometry of the optics supplied by the manufacturer. 
+
+The mirrors are coated with aluminium protected with a layer of MgF$_2$.
+
+TODO: Image quality. Field.
+
+TODO: Scale.
+
+TODO: Mirror thicknesses
+
+TODO: Mirror material
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=1.0\linewidth]{figures/telescope-zygo-with-astigmatism.jpg}
+\end{center}
+\caption{Zygo analysis of the optics. Piston, tilt, defocus, and coma have been removed, since these ae irrelevant or can be corrected by alignment.}
+\label{figure:telescope-zygo-with-astigmatism}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=1.0\linewidth]{figures/telescope-zygo-with-astigmatism.jpg}
+\end{center}
+\caption{Zygo analysis of the optics. Piston, tilt, defocus, coma, and astigmatism have been removed. The very small change in image quality compared to Figure~\ref{figure:telescope-zygo-with-astigmatism} -- from 0.047 waves to 0.046 waves -- serves to demonstrate that optics have negligible astigmatism.}
+\label{figure:telescope-zygo-without-astigmatism}
+\end{figure}
+
+\subsection{Mechanics}
+
+The primary mirror cell is mainly carbon fiber, with an aluminum dovetail and instrument flange. Carbon fiber Serrutier struts support the aluminum secondary ring. The structs have ball-and-socket joints at both ends, which help maintain collimation at different pointings. The telescope is equipped with motorized covers over the primary mirror and baffle and a motorized focuser for the secondary. The primary mirror can be adjusted in tilt, the secondary mirror in center and tilt, and the primary baffle in tilt with respect to the primary. Figures~\ref{figure:telescope-lateral-section} to \ref{figure:telescope-instrument-flange-section} show plans of the telescope.
+
+TODO: Confirm primary baffle moves with respect to M1.
+
+TODO: Get updated STEP from ASTELCO. Our telescope has a different focusers.
+
+TODO: Have Alex make more plans.
 
 \begin{table}
-\begin{center}
 \caption{Telescope Optical Parameters}
 \label{table:telescope-optical-parameters}
 \medskip
@@ -14,59 +54,42 @@
 \begin{tabular}{llccc}
 \hline
 \hline
-Component&Parameter&Value\\
+Component&Parameter&Design&As-Built&New\\
 \hline
 M1
-&Clear Aperture Diameter (mm)     &500\\
-&Radius of Curvature (mm)         &$-2554.7$\\
-&Focal Length (mm)&$-1277$\\
-&Focal Ratio                      &$f/2.555$\\
-&Conic Constant                   &$-1.05$\\
-&Central Hole Diameter (mm)       &120\\
+&Clear Aperture Diameter (mm)     &\phantom{$+0$}$500$\phantom{.000}\\
+&Radius of Curvature (mm)         &\phantom{}$-2500$\phantom{.000}&$-2547.0$&$-2578.070$\\
+&Focal Ratio                      &$f/2.5$&$f/2.547$\\
+&Conic Constant                   &\phantom{$000$}$-1.081$\phantom{}&&$-1.066784$\\
+%&Edge Thickness (mm)              &\phantom{$+00$}$58$\phantom{.000}\\
+&Central Hole Diameter (mm)       &\phantom{$+0$}$120$\phantom{.000}\\
 \hline
 M2
-&Clear Aperture Diameter (mm)     &160\\
-&Radius of Curvature (mm)         &$-1137.2$\\
-&Focal length (mm) &$-569$\\
-&Focal Ratio                      &$f/3.554$\\
-&Conic Constant                   &$-4.346$\\
-&Baffle Diameter (mm)             &180\\
+&Clear Aperture Diameter (mm)     &\phantom{$+0$}$172$\phantom{.000}\\
+&Radius of Curvature (mm)         &\phantom{}$-1073.58$\phantom{0}&-1143.0\phantom{}&$-1142.857$\\
+&Focal Ratio                      &$f/3.12$&$f/3.32$\\
+&Conic Constant                   &\phantom{$000$}$-4.484$&&$-4.521162$\\
+%&Edge Thickness (mm)              &\phantom{$+00$}$30$\phantom{.000}\\
+&Baffle Diameter (mm)             &&\phantom{$+0$}$179$\phantom{.000}\\
 \hline
-M1+M2 
-&Focal Length (mm)&$-3967$\\
-&Focal Ratio&$f/7.933$\\
-&Vertex of M1 to Vertex of M2 (mm)&$-891.85$\\
-&Vertex of M1 to Focal Plane (mm) &300\\
-&Flange to Focal Plane (mm)       &136\\
+
+M1+M2
+&Focal Ratio&$f/8$&\\
+&Vertex of M1 to Vertex of M2 (mm)&\phantom{$+0$}880.957\phantom{}&&901.754\phantom{}\\
+&Vertex of M1 to Focal Plane (mm) &\phantom{$+0$}300\phantom{.000}&$300\pm0.5$&300\phantom{.000}\\
+&Flange to Focal Plane (mm)       &\phantom{$+0$}136\phantom{.000}&&139.35\phantom{0}\\
+&RMS Wavefront Error (nm)         &\phantom{$+0$}105\phantom{.000}&\phantom{$+00$}58\phantom{.000}\\
+&Wavefront Error (RMS)            &$\lambda/6$&$\lambda/10.9$\\
 \hline
 \end{tabular}
-\end{center}
 \end{table}
-
-The COATLI telescope is a 50-cm $f/8$ Ritchey-Crétien supplied by ASTELCO. 
-
-The optics originally supplied in 2016 performed poorly and never gave images better than about 1.4 arcsec FWHM. We received new optics in 2020, tested them extensively in CU, and installed them in November 2021. The adopted parameters of the 2020 optics are given in Table~\ref{table:telescope-optical-parameters}. 
-
-The mirrors are fabricated in an unspecified low-expansion glass and coated with aluminium protected with a layer of MgF$_2$.
-
-\section{Mechanics}
-
-The primary mirror cell is mainly carbon fiber, with an aluminum dovetail and instrument flange. The telescope nominal focal plane is 136 mm below the instrument flange.
-
-Carbon fiber Serrutier struts support the aluminum secondary ring. The structs have ball-and-socket joints at both ends, which help maintain collimation at different pointings. 
-
-The telescope is equipped with a motorized focuser for the secondary. 
-
-The primary mirror can be adjusted in tilt, the secondary mirror in center and tilt, and the primary baffle in tilt with respect to the primary. 
-
-Figures~\ref{figure:telescope-plans-first} to \ref{figure:telescope-plans-last} show plans of the telescope.
 
 \begin{figure}
 \begin{center}
 \includegraphics[height=0.9\linewidth,angle=90]{figures/telescope-lateral-section.pdf}
 \end{center}
-\caption{Lateral section of the telescope. Note that our telescope has a focuser with a different design and that the covers have been removed. The M1 to M2 distance is also different with the 2020 optics.}
-\label{figure:telescope-plans-first}
+\caption{Lateral section of the telescope. Note that our telescope has a focuser with a different design.}
+\label{figure:telescope-lateral-section}
 \end{figure}
 
 \begin{figure}
@@ -74,6 +97,7 @@ Figures~\ref{figure:telescope-plans-first} to \ref{figure:telescope-plans-last} 
 \includegraphics[height=1.0\linewidth,angle=90]{figures/telescope-primary-mirror-cell-backplane-section}
 \end{center}
 \caption{Lateral section of the backplane of the primary mirror cell.}
+\label{telescope-primary-mirror-cell-backplane-section}
 \end{figure}
 
 \begin{figure}
@@ -81,6 +105,7 @@ Figures~\ref{figure:telescope-plans-first} to \ref{figure:telescope-plans-last} 
 \includegraphics[height=1.0\linewidth,angle=90]{figures/telescope-primary-mirror-cell-rear}
 \end{center}
 \caption{Lateral section of the telescope.}
+\label{figure:telescope-primary-mirror-cell-rear}
 \end{figure}
 
 \begin{figure}
@@ -88,7 +113,7 @@ Figures~\ref{figure:telescope-plans-first} to \ref{figure:telescope-plans-last} 
 \includegraphics[height=1.0\linewidth,angle=90]{figures/telescope-instrument-flange-section.pdf}
 \end{center}
 \caption{Lateral section of the instrument flange.}
-\label{figure:telescope-plans-last}
+\label{figure:telescope-instrument-flange-section}
 \end{figure}
 
 
