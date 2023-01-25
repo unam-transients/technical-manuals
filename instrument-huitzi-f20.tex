@@ -451,6 +451,188 @@ $\Is$		&$-150.50$		&\phantom{0}8		&\phantom{0}$-5$\\
 \end{center}
 \end{table}
 
+\section{Detector}
+
+The detector unit is an Andor iXon Ultra 888 with an e2v CCD201-20 electron-multiplying CCD detector. The detector was acquired in 2014 and originally intended to be the tilt sensor for the planned two-channel imager.
+
+\subsection{Format, Scale, and Field}
+
+The detector has $1024\times1024$ pixels each $13\times13$ {\micron} square. 
+
+The detector gives a pixel scale of 0.269 arcsec and a field of 4.59 arcmin. 
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=-3cm]
+\draw (-2,-2) -- (+2,-2) -- (+2,+2) -- (-2,+2) -- cycle;
+\draw (0,2.2) node [anchor=south] {Mount rotation = 0 deg};
+\draw[->] (0,0) -- (-1,0) node [anchor=east] {N};
+\draw[->] (0,0) -- (0,-1) node [anchor=north] {E};
+\end{scope}
+\begin{scope}[xshift=3cm]
+\draw (-2,-2) -- (+2,-2) -- (+2,+2) -- (-2,+2) -- cycle;
+\draw (0,2.2) node [anchor=south] {Mount rotation = 180 deg};
+\draw[->] (0,0) -- (1,0) node [anchor=west] {N};
+\draw[->] (0,0) -- (0,1) node [anchor=south] {E};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\caption{The orientation of the detector on the sky according to the mount rotation. The pixel origin is in the lower left.}
+\label{figure:detector-orientation}
+\end{figure}
+
+The orientation of the field on the sky depends on the mount rotation (given by the values of the \verb|SMTMRO| and \verb|EMTMRO| keywords in the header), and is shown in Figure~\ref{figure:detector-orientation}. However, the pipeline reduction rotates all images to the conventional orientation with north up and east left.
+
+\subsection{Quantum Efficiency}
+
+The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device). The nominal quantum efficiency is shown in Figure~\ref{figure:detector-quantum-efficiency}. The detector has excellent efficiency from 500 to 800 nm.
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+\small
+\begin{axis}[
+   xmin=300,
+   xmax=1100,
+   xlabel={$\lambda$ (nm)},
+   xticklabel style={
+     /pgf/number format/precision=0,
+     /pgf/number format/fixed,
+     /pgf/number format/fixed zerofill
+   },
+   minor x tick num=3,
+   ymin=0,
+   ymax=1,
+   minor y tick num=3,
+   ylabel={$\eta$},
+   legend style={
+     cells={anchor=west},
+     legend pos=north east,
+   },
+]
+\addplot [black] table [x=lam, y=Q, col sep=comma] {figures/huitzi-detector-efficiency.csv};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\caption{The nominal quantum efficiency $\eta$ of the Huitzi detector.}
+\label{figure:detector-quantum-efficiency}
+\end{figure}
+
+
+\subsection{Readout Architecture}
+
+The detector can be read using either a conventional signal chain (at 100 kHz or 1 MHz) or an EM signal chain (at 1, 10, 20, or 30 MHz). Both chains have two gains and the EM gain can be set to up to 1000. 
+
+Although the conventional and EM amplifiers clock the serial register in different directions, the control software flips each row in conventional data so that physical pixels have the same logical position in the FITS files.
+
+The detector is used in frame-transfer mode without a mechanical shutter (see \S\ref{section:shutter}). At the end of an exposure, the charge is rapidly clocked into from the light-sensitive image section to the shielded store section. The change can then be read. In EM mode, the next exposure can then start immediately.
+
+With the normal vertical-shift frequency of 4.33 MHz, the frame transfer takes about 4.5 ms. This leads to some trailing above and below bright stars.
+
+The read-out architecture has several parameters, which are encoded in the value of the \verb|READMODE| header keyword. The value is a string of the form $A$-$B$-$C$-$D$-$E$-$F$-$G$ in which $A$ to $G$ are non-negative integers with the following meanings:
+
+\begin{itemize}
+\item[$A$] The ADC channel index. This is always 0 since the detector only has one ADC channel.
+\item[$B$] The amplifier index. This is 0 for the EM amplifier and 1 for the conventional amplifier.
+\item[$C$] The vertical shift speed index. For both amplifiers, 0 is 0.60 MHz, 1 is 1.13 MHz, 2 is 2.20 MHz, and 3 is 4.33 MHz. 
+\item[$D$] The horizontal shift speed index. For the EM amplifier, 0 is 30 MHz, 1 is 20 MHz, 2 is 10 MHz, and 3 is 1 MHz. For the conventional amplifier, 0 is 1 MHz and 1 is 100 kHz.
+\item[$E$] The gain index. For both amplifiers, 0 is low gain (more electrons per ADU) and 1 is high gain (fewer electrons per ADU).
+\item[$F$] The nominal EM gain. This is ignored when the conventional amplifier is used. For the EM amplifier, it can be between 1 and 1000.
+\item[$G$] The software gain. After the data are read, each ADU signal is divided by the software gain to reduce white noise in the low-order bits (see \href{https://ui.adsabs.harvard.edu/abs/2002RMxAA..38..233W/abstract}{Watson 2002, RMAA, 38, 233}).
+\end{itemize}
+
+Fortunately, there is little need to use these values directly, since aliases are defined for common modes. They are shown in Table~\ref{table:read-mode-aliases}.
+
+\begin{table}
+\caption{Read-Mode Aliases}
+\label{table:read-mode-aliases}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Alias&Mode\\
+\hline
+ initial&default\\
+ default&em-30MHz\\
+ conventionaldefault&1MHz\\
+ fastguidingdefault&em-30MHz\\
+ 1MHz&1MHz-low\\
+ em-10MHz&em-10MHz-low\\
+ em-20MHz&em-20MHz-low\\
+ em-30MHz&em-30MHz-low\\
+ 1MHz-low&0-1-3-0-0-1-1\\
+ 1MHz-high&0-1-3-0-1-1-2\\
+ em-10MHz-low&0-0-3-2-0-250-2\\
+ em-10MHz-high&0-0-3-2-1-160-4\\
+ em-20MHz-low&0-0-3-1-0-500-4\\
+ em-20MHz-high&0-0-3-1-1-320-8\\
+ em-30MHz-low&0-0-3-0-0-1000-8\\
+ em-30MHz-high&0-0-3-0-1-640-16\\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Shutter and Dark Filter}
+
+\label{section:shutter}
+
+We originally attempted to use the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures at night, the power supply does not provide sufficient voltage to open the shutter.  Therefore, we now leave the shutter open permanently and use the frame-transfer capability in both conventional and EM modes. As noted above, with the normal vertical-shift frequency, the frame transfer takes about 4.5 ms.
+
+To take bias and dark images, we have use a “dark” filter that consists of the $B$, $z$, and 656/8 filters in series. Despite this, light leaks in the filter wheel mean that we need to take biases and darks at night.
+
+\begin{table}
+    \centering
+    \begin{tabular}{lcccc}
+    \hline
+    Mode Name&1MHz-0&em-10MHz-0&em-20MHz-0&em-30MHz-0\\
+    \hline
+    Amplifier&Conventional&EM&EM&EM\\
+    Horizontal Speed&1 MHz&10 MHz&20 MHz&30 MHz\\
+    Software Gain&1&2&4&8\\
+    ADC Range (DN)&64k&32k&16k&8k\\
+    Gain ($e^-$/DN)&3.3&41&78&117\\
+    Read Noise (DN)&2.1&2.6&1.9&1.7\\
+    Read Noise ($e^-$)&7&105&145&204\\
+    Bias Level (DN)&500&242&123&62\\
+    Linear Limit ($e^-$)&&400k&400k&400k\\
+    Saturation (DN)&58k&32k&16k&8k\\
+    Saturation ($e^-$)&190k&1300k&1250k&940k\\
+    Linearity ($e^-$)&&400k&400k&400k\\
+    Linearity (DN)&&9700&5100&3400\\
+    Dynamic Range (bits)&&11.9&11.4&10.9\\
+    \hline
+    \end{tabular}
+    \caption{Detector Characteristics with the Low Preamplifier Gain}
+    \label{table:detector-characteristics-low-gain}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{lcccc}
+    \hline
+    Mode Name&1MHz-1&em-10MHz-1&em-20MHz-1&em-30MHz-1\\
+    \hline
+    Amplifier&Conventional&EM&EM&EM\\
+    Horizontal Speed&1 MHz&10 MHz&20 MHz&30 MHz\\
+    Software Gain&2&4&8&16\\
+    ADC Range (DN)&32k&16k&8k&4k\\
+    Gain ($e^-$/DN)&1.6&21&45&70\phantom{0}\\
+    Read Noise (DN)&2.9&2.7&2.4&1.6\\
+    Read Noise ($e^-$)&5&56&108&115\\
+    Bias Level (DN)&250&119&62&31\\
+    Saturation (DN)&22k&\\
+    Saturation ($e^-$)&35k&\\
+    Linearity ($e^-$)&&400k&400k&400k\\
+    Linearity (DN)&&19000&8900&5700\\
+    Dynamic Range (bits)&&12.8&11.9&11.8\\
+    \hline
+    \end{tabular}
+    \caption{Detector Characteristics with the High Preamplifier Gain}
+    \label{table:detector-characteristics-high-gain}
+\end{table}
+
+
 
 \section{Bibliography}
 
