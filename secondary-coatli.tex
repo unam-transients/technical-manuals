@@ -29,7 +29,7 @@ The mechanism, shown in Figure~\ref{figure:secondary-mechanism}, appears to be a
 
 The controller for the secondary focus mechanism is located in the cabinet of the covers controller in the shed, and is shown in Figure~\ref{figure:secondary-controller}. Communication is via the Lantronix ethernet-to-serial server.
 
-The mechanism does not appear to have an encoder, but rather appears to use a stepper motor and then count steps. The range of 0 to 7000 steps corresponds to 5.6 mm of motion (0.8 {\micron} per step), with 0 corresponding to the secondary at its lowest position (closest to the primary). The absolute calibration appears to be achieved by a combination of moving the motor to 7000 steps when it is powered on and a adjustable block and a hard stop that together define a reference position. Adjusting the position of this block allows the range of physical motion of the secondary to be changed.
+The mechanism does not appear to have an encoder, but rather appears to use a stepper motor and then count steps. The range of 0 to 7000 steps corresponds to 5.6 mm of motion (0.8 {\micron} per step), with 0 corresponding to the secondary at its lowest position (closest to the primary). The absolute calibration appears to be achieved by a combination of moving the secondary down towards the primary when it is powered on until it the movement is stopped by a hard stop. This defines the 0 position. The motor then moves to 3400 steps. Adjusting the position of the hard stop allows the range of physical motion of the secondary to be changed.
 
 The secondary moves at about 30 steps per second. To compensate for backlash, when moving to lower step numbers the control system initially overshoots by 25 steps then approaches the final position from below. This adds about 3.5 seconds to the process.
 
@@ -47,10 +47,9 @@ This procedure describes how to statically adjust the range over which the secon
 \begin{figure*}
 \begin{center}
 \begin{labeled}{\includegraphics[width=0.8\linewidth]{figures/secondary-coatli-adjustment.jpg}}
-\arrowandlabel{(-0.4,-0.0)}{(-3.0,-2.2)}{east}{Hard Stop};
-\arrowandlabel{(0.3,0.2)}{(3.0,-2.2)}{west}{Block};
+\arrowandlabel{(0.3,0.2)}{(-1.5,-4.2)}{north}{Adjustable Hard Stop};
 \end{labeled}
-\caption{The secondary focus mechanism adjustment. When the secondary focus mechanism is switched on, the mechanism moves upwards until the block comes into contact with the hard stop. This defines position 7000. The mechanism then moves back to 3400.}
+\caption{The secondary focus mechanism adjustment. When the secondary focus mechanism is switched on, the mechanism moves down until the mechanism comes into contact with the hard stop. This defines position 0. The mechanism then moves back to 3400.}
 \label{figure:secondary-adjustment}
 \end{center}
 \end{figure*}
@@ -77,7 +76,7 @@ TODO: Photo.
 \begin{quote}
 \verb|tcs request power switchoff secondary|
 \end{quote}
-\item Adjust the position of the block. When the secondary focus mechanism is switched on, the mechanism moves upwards until the block comes into contact with the hard stop. This defines position 7000. The mechanism then moves back to 3400. See Figure~\ref{figure:secondary-adjustment}.
+\item Adjust the position of the block. When the secondary focus mechanism is switched on, the mechanism moves downwards until the block comes into contact with the hard stop. This defines position 0. The mechanism then moves back to 3400. See Figure~\ref{figure:secondary-adjustment}.
 \item Turn on the power to the secondary controller, either by switching on the covers cabinet manually or by running 
 \begin{quote}
 \verb|tcs request power switchon secondary|
