@@ -1,0 +1,340 @@
+\chapter{Observing Manually}
+\label{chapter:observing-manually}
+
+While TCS was designed to be a robotic control system, there are times when it is more convenient to control the components manually. Such circumstances include diagnosing faults or testing new components. Therefore, TCS has a command-line interface that exposes almost all of the features of the robotic system.
+
+\section{Access}
+
+The command-line interface is available uniformly on all of the Linux computers:
+\begin{itemize}
+\ifcoatli
+\item \verb|coatli-control|
+\item \verb|coatli-platform|
+\item \verb|colibri-instrument|
+\fi
+\ifcolibri
+\item \verb|colibri-control|
+\item \verb|colibri-detectors|
+\fi
+\ifcoatli
+\item \verb|ddoti-control|
+\item \verb|ddoti-platform|
+\item \verb|ddoti-detectors0|
+\item \verb|ddoti-detectors1|
+\fi
+\end{itemize}
+Information on how to log into these computers is distributed separately.
+
+\section{Monitoring}
+
+Even when using the command-line interface, we recommend monitoring TCS using the web interface. 
+
+If more detail is required, you can run
+\begin{quote}
+\verb|tcs request| \var{server} \verb|status|
+\end{quote}
+This command prints the status variables for the \var{server}. For example,
+\begin{quote}
+\verb|tcs request C0 status|\\
+\verb|tcs request target status|
+\end{quote}
+Note that angles are uniformly given in radians.
+
+\section{Starting}
+
+To restart the servers on the Linux computers, run
+\begin{quote}
+\verb|tcs restart|
+\end{quote}
+
+To reboot the Linux computers (and restart the servers when the computers come back up), run
+\begin{quote}
+\verb|tcs reboot|
+\end{quote}
+
+Both of these commands make a request to carry out the specific action. The computers will act on that request up to 1 minute later.
+
+\section{Initializing}
+
+After the servers have started, their activity is “started”. In order to prepare them for operation, they need to be initialized. For this, run
+\begin{quote}
+\verb|tcs request executor initialize|
+\end{quote}
+This will move mechanisms and prepare the telescope for operations.
+
+\section{Opening}
+
+To open the telescope for observing, run
+\begin{quote}
+\verb|tcs request executor open|
+\end{quote}
+
+\section{Closing}
+
+To close the telescope after observing, run
+\begin{quote}
+\verb|tcs request executor close|
+\end{quote}
+
+\section{Recovering}
+
+To recover from an error, run
+\begin{quote}
+\verb|tcs request executor recover|
+\end{quote}
+
+\section{Telescope Commands}
+
+After the telescope has been opened, you can issue commands to carry out common observing tasks.
+
+\subsection{Moving to Arbitrary Coordinates}
+
+To move to a fixed position, run
+\begin{quote}
+\verb|tcs request telescope move| \var{coordinate0} \var{coordinate1} \var{system} 
+\end{quote}
+The \var{system} parameter can be \verb|equatorial| or \verb|horizontal| or be omitted (in which case it defaults to \verb|equatorial|). In the equatorial system, the first coordinate is hour angle and the second is declination. In the horizontal system, the first coordinate is azimuth (measured from north towards the east) and the second is zenith distance. See \S\ref{section:angles} for the representation of angles.
+
+Examples:
+
+\begin{quote}
+\verb|tcs request telescope move +3h +0d|
+\end{quote}
+Move to an HA of +3 hours and declination of +0 degrees.
+
+\begin{quote}
+\verb|tcs request telescope move 90d 45d horizontal|
+\end{quote}
+Move to an azimuth of 90 degrees and zenith distance of 45 degrees.
+
+\subsection{Moving to the Zenith}
+
+To move to the zenith, run
+\begin{quote}
+\verb|tcs request telescope movetozenith|
+\end{quote}
+
+\subsection{Tracking Equatorial Coordinates}
+
+To track equatorial coordinates,
+\begin{quote}
+\verb|tcs request telescope track| \var{alpha} \var{delta} \var{equinox} 
+\end{quote}
+The \var{alpha}, \var{delta}, and \var{equinox} parameters are the right ascension, declination, and equinox of the position. The equinox is assumed to be Julian. See \S\ref{section:angles} for the representation of angles.
+
+Example:
+
+\begin{quote}
+\verb|tcs request telescope track 03:11:13.45 +56:22:54.3 2000|
+\end{quote}
+Track the position 03:11:13.45 +56:22:54.3 J2000.
+
+\subsection{Tracking Topocentric Coordinates}
+
+When you request that the telescope tracks topocentric coordinates, you specify an hour angle and declination, the control system converts these into the equatorial coordinates at that hour angle and declination and then begins to track those equatorial coordinates. This is very useful for tasks like pointing maps.
+
+To track topocentric coordinates,
+\begin{quote}
+\verb|tcs request telescope tracktopocentric| \var{ha} \var{delta}
+\end{quote}
+The \var{ha}, \var{delta}, and \var{equinox} parameters are the hour angle and declination of the position. See \S\ref{section:angles} for the representation of angles.
+
+Example:
+
+\begin{quote}
+\verb|tcs request telescope tracktopocentric +3h +45d|
+\end{quote}
+Track the position that currently has an hour angle of +3 hours and a declination of +45 degrees.
+
+\subsection{Tracking Catalog Objects}
+
+To track a catalog object,
+\begin{quote}
+\verb|tcs request telescope trackcatalogobject| \var{catalog} \var{number}
+\end{quote}
+The \var{catalog} parameter can be:
+\begin{itemize}
+\item \verb|bs| -- the Bright Star Catalog
+\item \verb|hip| -- the Hipparcos Catalog
+\item \verb|hr| -- the Bright Star Catalog (an alias for \verb|bs|)
+\item \verb|ic| -- the Index Catalog
+\item \verb|m| -- the Messier Catalog
+\item \verb|ngc| -- the NGC Catalog
+\end{itemize}
+The \var{number} parameter is the number of the object in the catalog.
+
+Example:
+
+\begin{quote}
+\verb|tcs request telescope trackcatalogobject m 82|
+\end{quote}
+Track M82.
+
+\subsection{Offsetting}
+
+To offset the telescope from the current position, run
+\begin{quote}
+\verb|tcs request telescope offset| \var{eastoffset} \var{northoffset}
+\end{quote}
+The \var{eastoffset} and \var{northoffset} parameters are the offsets to the east and north. Offsets are absolute from the last position to which the telescope was requested to move or track. See \S\ref{section:angles} for the representation of angles.
+
+Example:
+
+\begin{quote}
+\verb|tcs request telescope offset 2am -3am|
+\end{quote}
+Offset the telescope 2 arcmin to the east and 3 arcmin to the south.
+
+\subsection{Correcting}
+
+To correct the current pointing model, run
+\begin{quote}
+\verb|tcs request telescope correct|
+\end{quote}
+This instructs the mount that the instrument is now pointed at the last coordinates the telescope was requested to track and to adjust the pointing model appropriately.
+
+The way in which this is intended to be used is that you start tracking an object, then take images and center it by offsetting. Once the object is centered, you can correct the pointing model.
+
+\section{Instrument Commands}
+
+\subsection{Changing Filters}
+
+\begin{quote}
+\verb|tcs request instrument movefilterwheel| \var{filter}
+\end{quote}
+The \var{filter} parameter must be a slot number (0 to 4) or a filter name (\verb|g|, \verb|r|, \verb|i|, \verb|z|, \verb|y|).
+
+Example:
+
+\begin{quote}
+\verb|tcs request instrument movefilterwheel r| 
+\end{quote}
+Move the filter wheel to the $r$ filter.
+
+\subsection{Changing Binning}
+
+\begin{quote}
+\verb|tcs request instrument setbinning| \var{binning}
+\end{quote}
+The \var{binning} parameter must be a positive integer.
+
+Example:
+
+\begin{quote}
+\verb|tcs request instrument setbinning 2|
+\end{quote}
+Set the binning to $2\times2$.
+
+\subsection{Changing the Window}
+
+\begin{quote}
+\verb|tcs request instrument setwindow| \var{window}
+\end{quote}
+The \var{window} parameter must be one of \verb|1kx1k|, \verb|2kx2k|, or \verb|4kx4k|.
+
+Example:
+
+\begin{quote}
+\verb|tcs request instrument setwindow 1kx1k|
+\end{quote}
+Set the window to the central $1024 \times 1024$ pixels.
+
+\subsection{Exposing}
+
+\begin{quote}
+\verb|tcs request instrument expose| \var{type} \var{time}
+\end{quote}
+The \var{type} parameter must be one of \verb|object|, \verb|flat|, \verb|bias|, or \verb|dark|. The \var{time} parameter is the exposure time in seconds. 
+
+The images are written to \verb|/usr/local/var/tcs/latest/instrument/images| on the computer that runs the detector servers.
+
+Example:
+
+\begin{quote}
+\verb|tcs request instrument expose object 10|
+\end{quote}
+Take a 10 second object expose.
+\begin{quote}
+\verb|tcs request instrument expose dark 60|
+\end{quote}
+Take a 60 second dark expose.
+
+\subsection{Estimating the FWHM}
+
+\begin{quote}
+\verb|tcs request instrument analyze fwhm|
+\end{quote}
+Estimate the FWHM of the objects in the last image.
+
+\section{Secondary Commands}
+
+\subsection{Moving the Secondary}
+
+\begin{quote}
+\verb|tcs request secondary move| \var{position}
+\end{quote}
+The \var{position} parameter is a non-negative integer and specifies the requested position in microns.
+
+Example:
+
+\begin{quote}
+\verb|tcs request secondary move 25000|
+\end{quote}
+Move to 25.000 mm.
+
+\section{Waiting}
+
+The requests above are asynchronous. That is, the commands return almost instantly even if the requested action takes significant time.
+
+If you wish to wait for an action to be completed, run
+\begin{quote}
+\verb|tcs wait| \var{server}
+\end{quote}
+
+Example:
+
+\begin{quote}
+\verb|tcs request instrument expose 10; tcs wait instrument|
+\end{quote}
+Start a 10 second exposure and then wait for it to finish.
+
+\section{Example Session}
+
+In this example session, the implicit or explicit waits have been omitted.
+
+\begin{verbatim}
+tcs restart
+
+tcs request executor initialize
+
+tcs request executor open
+
+tcs request telescope move 90d 45d horizontal
+tcs request instrument movefilterwheel r
+tcs request instrument setwindow 4kx4k
+tcs request instrument expose flat 10
+tcs request instrument expose flat 10
+tcs request instrument expose flat 10
+
+tcs request telescope trackcatalogobject m 82
+tcs request instrument movefilterwheel r
+tcs request instrument expose object 60
+tcs request telescope offset +1am -1am
+tcs request instrument expose object 60
+tcs request telescope correct
+
+tcs request telescope trackcatalogobject hip 10345
+tcs request instrument movefilterwheel i
+tcs request instrument setwindow 1kx1k
+tcs request instrument expose object 10
+tcs request instrument analyze fwhm
+tcs request secondary move 25100
+tcs request instrument expose object 10
+tcs request instrument analyze fwhm
+
+tcs request executor close
+\end{verbatim}
+
+
+
+
