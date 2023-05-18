@@ -578,7 +578,11 @@ Alias&Mode\\
 
 \label{section:shutter}
 
-We originally attempted to use the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures at night, the power supply does not provide sufficient voltage to open the shutter.  Therefore, we now leave the shutter open permanently and use the frame-transfer capability in both conventional and EM modes. As noted above, with the normal vertical-shift frequency, the frame transfer takes about 4.5 ms.
+We originally attempted to use the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures of winter nights night, the power supply does not provide sufficient voltage to open the shutter.  
+
+Therefore, we now leave the shutter open between exposures and use the frame-transfer capability in both conventional and EM modes. As noted above, with the normal vertical-shift frequency, the frame transfer takes about 4.5 ms.
+
+Note that the shutter closes when the detector head is powered down. This sometimes occurs at night, as the detector head sometimes becomes uncommunicative and is automatically powered down and up again by the control system. There is a risk that after such a cycle the shutter will not open or not open completely.
 
 To take bias and dark images, we have use a “dark” filter that consists of the $B$, $z$, and 656/8 filters in series. Despite this, light leaks in the filter wheel mean that we need to take biases and darks at night.
 
