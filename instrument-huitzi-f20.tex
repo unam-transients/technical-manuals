@@ -645,6 +645,53 @@ To take bias and dark images, we have use a “dark” filter that consists of t
 
 \section{Mechanics}
 
+\begin{table*}
+\caption{Mechanical Parts and Hardware}
+\medskip
+\footnotesize
+\begin{center}
+\begin{tabular}{llll}
+\hline
+part&Name&Quantity&Notes\\
+\hline
+1&Instrument flange&1\\
+2&Main barrel&1\\
+3&Lens barrel ring&1\\
+4&Lens barrel&1&Edmund Optics \#57-978\\
+5&Upper filter wheel interface plate&1\\
+6&Filter wheel&3&FLI CFW-1-5 (A) or CFW-1-8 (B and C)\\
+7&Filter wheel separator&2\\
+8&Lower filter wheel interface plate&1\\
+9&Upper focuser interface ring&1\\
+10&Focuser&1&Optec Gemini\\
+11&Lower focuser interface ring&1\\
+12&Detector head&1&Andor iXon Ultra 888\\
+13&Detector posts&2&Andor 12.7 mm diameter 80 mm long with 1/4-20 thread\\
+14&Detector cable support plate&1\\
+X&Lens barrel separator&1\\
+?&Filter wheel adapter&2&FLI part supplied with filter wheels\\
+Z&Internal baffle&2&Black nylon\\
+\hline
+15&SS Hex Head Screw M5×0.8×12&12&McMaster 91287A122\\
+16&SS Belleville Spring Lock Washer M5&12&McMaster 90895A027\\
+17&Threaded Insert M5×0.8×7.5&12&McMaster 97120A220 (= part 22)\\
+18&Threaded rod M3×0.5&6&Modified from McMaster 90024A218\\
+19&SS Hex Nut M3×0.5&6&McMaster 91828A211\\
+20&SS Spring Lock Washer Conical M3&6&McMaster 91477A121\\
+21&Thread-Lock Insert M3×0.5×6.5&6&McMaster 97120A190\\
+22&Threaded Insert M5×0.8×7.5&4&McMaster 97120A220 (= part 17)\\
+23&SS Socket Head Screw M5×0.8×10&8&McMaster 91292A124\\
+24&SS Oval-Tip Set Screw 18-8 1/4-inch&6&McMaster 92778A113\\
+25&SS Flat-Tip Set Screw 18-8 1/8-inch&6&McMaster 94355A180\\
+26&SS Hex Socket Screw Flat Head 82 deg Countersink 1/4-20 1/2-inch&2&McMaster 92210A537\\
+27&SS Belleville Spring Lock Washer 1/4&2&McMaster 93501A029\\
+28&SS Hex Socket Screw Button Head M5×0.8×50&4&McMaster 92095A228\\
+?&Hex Socket Screw M5×0.8&6&\\
+\hline
+\end{tabular}
+\end{center}
+\end{table*}
+
 \begin{figure*}
 \begin{center}
 \includegraphics[angle=180,width=0.9\linewidth]{figures/huitzi-f20-3d.pdf}
@@ -705,7 +752,7 @@ To take bias and dark images, we have use a “dark” filter that consists of t
 \begin{center}
 \includegraphics[angle=180,width=0.9\linewidth]{figures/huitzi-f20-part-6.pdf}
 \end{center}
-\caption{Drawing of part 6: the FLI CFW-1-5 filter wheel. The CFW-1-8 wheel differs only internally.}
+\caption{Drawing of part 6: the FLI CFW-1-5 filter wheel. The CFW-1-8 wheels differs only internally.}
 \label{figure:huitzi-f20-part-6}
 \end{figure*}
 
@@ -802,12 +849,279 @@ To take bias and dark images, we have use a “dark” filter that consists of t
 \includegraphics[angle=0,width=0.5\linewidth]{figures/huitzi-f20-fli-adapter.jpg}
 \end{center}
 \caption{The FLI-supplied adapters are installed on the lower sides of filter wheels A and B. Together with two examples of part Z, they act as internal baffles.}
-\label{figure:huitzi-f20-dovetail}
+\label{figure:huitzi-f20-fli-adapter}
 \end{figure*}
 
 Figures~\ref{figure:huitzi-f20-3d} and \ref{figure:huitzi-f20-section} show an overall view of the instrument mechanics. Figures~\ref{figure:huitzi-f20-part-2} to \ref{figure:huitzi-f20-part-Z} show drawings of the individual parts.
 
-One detail that is not shown in the drawings are the internal baffles. On the lower sides of filter wheels A and B we have installed FLI-supplied adapters as shown in Figure~. Within these we have placed two black nylon baffles, shown in Figure~\ref{figure:huitzi-f20-part-Z}, to reduce scattered light.
+One detail that is not shown in the drawings are the internal baffles. On the lower sides of filter wheels A and B we have installed FLI-supplied adapters as shown in Figure~\ref{figure:huitzi-f20-fli-adapter}. Within these we have placed two black nylon baffles, shown in Figure~\ref{figure:huitzi-f20-part-Z}, to reduce scattered light.
+
+TODO: Cable clamps. M5×0.8 thread. Use 4 mm hex key.
+
+\section{Procedures}
+
+\subsection{Dismounting the Instrument}
+\label{section:dismounting-the-instrument}
+
+\subsubsection{Requirements}
+
+You will need:
+
+\begin{itemize}
+    \item Two persons.
+    \item The key to the shed.
+    \item 4 mm and 5/64-inch hex keys.
+    \item 2 mm flat-bladed screwdriver.
+    \item Cutting pliers.
+    \item 8 mm wrench
+\end{itemize}
+
+\subsubsection{Procedure}
+
+\begin{enumerate}
+
+\item Go to the shed. Put on harnesses and helmets. Move the enclosure switch to LOCAL. Open the enclosure to 60 degrees. Ascend to the platform.
+    
+\item Dismount the detector.
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0,width=0.8\linewidth]{figures/huitzi-f20-detector-power-switch.jpg}
+\end{center}
+\caption{The detector head power switch.}
+\label{figure:huitzi-f20-detector-power-switch}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0,width=0.8\linewidth]{figures/huitzi-f20-detector-cable-clamps.jpg}
+\end{center}
+\caption{The detector head cable clamps.}
+\label{figure:huitzi-f20-detector-cable-clamps}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0,width=0.8\linewidth]{figures/huitzi-f20-detector-cables}
+\end{center}
+\caption{The detector head cables.}
+\label{figure:huitzi-f20-detector-cables}
+\end{figure}
+
+\begin{enumerate}    
+
+  \item Switch off the detector head by pressing the power switch. See Figure~\ref{figure:huitzi-f20-detector-power-switch}.
+  
+  \item With the 4 mm hex key, unfasten the detector head cable clamps. Then disconnect the detector power and USB cables. See Figures~\ref{figure:huitzi-f20-detector-cable-clamps} and \ref{figure:huitzi-f20-detector-cables}.
+
+  \item One person should now support the detector head. The other person should use the 5/64-inch hex key to loosen the set screws between the detector head and the focuser that hold the lower dovetail. In each barrel there are two screws, a shorter, outer, flat-header screw that serves as a lock screw and a longer, inner, oval-headed screw that serves to make contact with the dovetail. Once these are loose, the detector head can be removed from the focuser. See Figure~TODO.
+  
+  \item Place the detector head on a clean surface with the opening toward the detector downwards.
+  
+\end{enumerate}
+
+\item Dismount the focuser.
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0,width=0.8\linewidth]{figures/huitzi-f20-focuser-cables}
+\end{center}
+\caption{The focuser cables.}
+\label{figure:huitzi-f20-focuser-cables}
+\end{figure}
+
+\begin{enumerate}
+  
+  \item Disconnect the focuser control cables. See Figure~\ref{figure:huitzi-f20-focuser-cables}.
+
+  \item One person should now support the focuser. The other person should use the 5/64-inch hex key to loosen the set screws between the filter wheels and the focuser that hold the upper dovetail. In each barrel there are two screws, a shorter, outer, flat-header screw that serves as a lock screw and a longer, inner, oval-headed screw that serves to make contact with the dovetail. Once these are loose, the focuser can be removed. See Figure~TODO.
+  
+  \item Place the focuser on a clean surface.
+  
+\end{enumerate}
+
+\item Dismount the filter wheel block.
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0,width=0.8\linewidth]{figures/huitzi-f20-filter-wheel-block-screws}
+\end{center}
+\caption{The filter wheel block screws. Note the alignment marks.}
+\label{figure:huitzi-f20-filter-wheel-block-screws}
+\end{figure}
+   
+\begin{enumerate}
+    
+    \item Before disconnecting the filter wheel cables, take photos so that you can remember how to reconnect them.    
+
+   \item Each filter wheel has one power cable and one USB cable. These cables cannot be disconnected from the filter wheels without disassembling the whole block. Therefore, disconnect the USB cables from the USB hub on the telescope and, with the 2 mm flat-bladed screwdriver, disconnect the power cables from the power block on the telescope. Then use a 4 mm hex key to remove the clamps so that the cables are loose.
+   
+  \item One person should now support the filter wheel block. The other person should use the 8 mm wrench to loosen the twelve screws that hold the filter wheels to the main barrel. Once these are loose, the filter wheel block can be removed. See Figure~\ref{figure:huitzi-f20-filter-wheel-block-screws}.
+  
+  \item Place the filter wheel block on a clean surface.
+  
+\end{enumerate}
+
+\item Dismount the main barrel.
+
+\begin{figure}
+\begin{center}
+\includegraphics[angle=0,width=0.8\linewidth]{figures/huitzi-f20-main-barrel-screws}
+\end{center}
+\caption{The main barrel screws. Note the alignment marks.}
+\label{figure:huitzi-f20-main-barrel-screws}
+\end{figure}
+   
+
+\begin{enumerate}
+    
+  \item One person should now support the main barrel. The other person should use the 4 mm hex key to loosen the size screws that hold the main barrel to the instrument flange. Once these are loose, the main barrel can be removed. See Figure~\ref{figure:huitzi-f20-main-barrel-screws}.
+  
+  \item Place the filter wheel block on a clean surface.
+
+
+\end{enumerate}
+
+\end{enumerate}
+
+\subsection{Mounting the Instrument}
+\label{section:mounting-the-instrument}
+
+\subsubsection{Requirements}
+
+You will need:
+
+\begin{itemize}
+    \item Two persons.
+    \item The key to the shed.
+    \item 4 mm and 5/64-inch hex keys.
+    \item 2 mm flat-bladed screwdriver.
+    \item Cutting pliers and cable ties.
+    \item 8 mm wrench
+\end{itemize}
+
+\subsubsection{Procedure}
+
+\begin{enumerate}
+
+\item Go to the shed. Put on harnesses and helmets. Move the enclosure switch to LOCAL. Open the enclosure to 60 degrees. Ascend to the platform.
+    
+\item Mount the main barrel.
+
+\begin{enumerate}
+    
+  \item One person should insert the main barrel into the instrument flange and rotate it to align the alignment marks. The other person should use the 4 mm hex key to tighten the six screws that hold the main barrel to the instrument flange. See Figure~\ref{figure:huitzi-f20-main-barrel-screws}.
+
+\end{enumerate}
+
+\item Mount the filter wheel block.
+
+\begin{enumerate}
+    
+  \item One person should support the filter wheel block against the main barrel and rotate it to align the alignment marks. The other person should use the 8 mm wrench to tighten the twelve screws that hold the filter wheels to the main barrel. See Figure~\ref{figure:huitzi-f20-filter-wheel-block-screws}.
+
+   \item Connect the USB cables to the USB hub on the telescope and, with the 2 mm flat-bladed screwdriver, connect the power cables to the power block on the telescope. Then use a 4 mm hex key to fasten the clamps and tidy the cables (using cable ties where appropriate).
+  
+\end{enumerate}
+
+\item Mount the focuser.
+
+\begin{enumerate}
+  
+  \item One person should now support the focuser against the filter wheel block and rotate it so that the control cable sockets are away from the mount.
+  The other person should use the 5/64-inch hex key to tighten the set screws between the filter wheels and the focuser that hold the upper dovetail. In each barrel there are two screws, a shorter, outer, flat-header screw that serves as a lock screw and a longer, inner, oval-headed screw that serves to make contact with the dovetail. See Figure~TODO.
+
+  \item Connect the focuser control cables. See Figure~\ref{figure:huitzi-f20-focuser-cables}.
+  
+\end{enumerate}
+
+
+\item Mount the detector.
+
+\begin{enumerate}    
+
+  \item One person should now support the detector head against the focuser and rotate it so that the control cable sockets are away from the mount. The other person should use the 5/64-inch hex key to tighten the set screws between the detector head and the focuser that hold the lower dovetail. In each barrel there are two screws, a shorter, outer, flat-header screw that serves as a lock screw and a longer, inner, oval-headed screw that serves to make contact with the dovetail. See Figure~TODO.
+
+  \item With the 4 mm hex key, fasten the detector head cable clamps. Then connect the detector power and USB cables. See Figures~\ref{figure:huitzi-f20-detector-cable-clamps} and \ref{figure:huitzi-f20-detector-cables}.
+
+  \item Switch on the detector head by pressing the power switch. See Figure~\ref{figure:huitzi-f20-detector-power-switch}.  
+
+\end{enumerate}
+
+\end{enumerate}
+
+\subsection{Disassembling the Filter Wheel Block}
+
+\subsubsection{Requirements}
+
+You will need:
+
+\begin{itemize}
+    \item Two persons.
+    \item The key to the shed.
+    \item 2 mm flat-bladed screwdriver.
+    \item Phillips screwdriver.
+    \item 4 mm hex key
+    \item 6 mm hex socket
+\end{itemize}
+
+\subsubsection{Procedure}
+
+\begin{enumerate}
+
+    \item Go to the shed. Put on harnesses and helmets. Move the enclosure switch to LOCAL. Open the enclosure to 60 degrees. Ascend to the platform.
+
+    \item Dismount the instrument, including filter wheel block. See \S\ref{section:dismounting-the-instrument}.
+
+   \item Place the filter wheel block in a clean plastic bag. Then carefully transport it from the platform to a clean place.
+   
+   \item Remove the upper focuser interface ring from the lower filter wheel interface plate. 
+   
+   Use the 4 mm hex key to remove the four M5 screws that hold the ring in place. See Figure~TODO.
+   
+  \item The filter block is held together by six M3 threaded rods. The lower ends of the rods are threaded into inserts in the lower filter wheel plate and are slotted to accept a flat-bladed screwdriver. The upper ends are fixed by nuts.
+  
+  Place a flat-bladed screwdriver in the lower slot. Support the screwdriver so that the rod does not turn. Use a 6 mm hex socket to remove the nuts.
+  
+  \item Once all of the nuts have been removed, the filter block can be disassembled piece-by-piece from the top.
+  
+ \item The filter wheels can be disassembled by removing the nine Phillips screws that hold their cover to their body.
+  
+\end{enumerate}
+
+\subsection{Assembling the Filter Wheel Block}
+
+\subsubsection{Requirements}
+
+You will need:
+
+\begin{itemize}
+    \item 2 mm flat-bladed screwdriver.
+    \item Phillips screwdriver.
+    \item 4 mm hex key
+    \item 6 mm hex socket
+\end{itemize}
+
+\subsubsection{Procedure}
+
+\begin{enumerate}
+
+ \item The filter wheels can be assembled by tightening the nine Phillips screws that hold their cover to their body. Do not over-tighten the central one, as this can cause the wheel to jam.
+ 
+  \item Assemble the filter block piece-by-piece from the bottom. See Figure~\ref{figure:huitzi-f20-3d-exploded}.
+
+  \item The filter block is held together by six M3 threaded rods. The lower ends of the rods are threaded into inserts in the lower filter wheel plate and are slotted to accept a flat-bladed screwdriver. The upper ends are fixed by nuts.
+  
+  Place a flat-bladed screwdriver in the lower slot. Support the screwdriver so that the rod does not turn. Use a 6 mm hex socket to tighten the nuts.
+  
+   \item Fasten the upper focuser interface ring to the lower filter wheel interface plate. 
+   
+   Use the 4 mm hex key to tighten the four M5 screws that hold the ring in place. See Figure~TODO.
+   
+   \item Place the filter wheel block in a clean plastic bag. Then carefully transport it to the platform.
+  
+\end{enumerate}
+
 
 \section{Bibliography}
 
