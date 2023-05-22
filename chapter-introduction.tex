@@ -5,34 +5,42 @@
 
 This is the technical manual for the {\projectname} telescope control system (TCS). It has two aims. The first is to allow the COLIBRI staff to operate the telescope conventionally, issuing commands explicitly. The second is to allow the COLIBRI staff to manage the observing blocks for robotic operations.
 
-\else
+\fi
+
+\ifcoatli
+
+This is the technical manual for the {\projectname} installation, telescope, and instrument. It has two aims. The first is to provide clear instructions to the OAN/SPM technical staff supporting routine operations. The second is to aid {\projectname} and OAN/SPM technical staff perform preventative and corrective maintenance of the equipment.
+
+We originally intended to equip the telescope with a two-channel imager, with the blue channel serving as a tilt sensor and the red channel having fast guiding and active optics. We hoped to achieve diffraction-limited images in the red channel. This instrument is described in our 2016 SPIE paper:
+
+\begin{itemize}
+\item “\href{bibliography/spie-coatli-2016.pdf}{COATLI: an all-sky robotic optical imager with 0.3 arcsec image quality}”,   Watson et al.\ 2016, Proc.\ SPIE, 9908, 99085O-2
+\end{itemize}
+
+Subsequently, we decided to construct a more modest single-channel imager using an EMCCD for fast guiding and lucky imaging.
+
+\fi
+
+\ifddoti
 
 This is the technical manual for the {\projectname} installation, telescope, and instrument. It has two aims. The first is to provide clear instructions to the OAN/SPM technical staff supporting routine operations. The second is to aid {\projectname} and OAN/SPM technical staff perform preventative and corrective maintenance of the equipment.
 
 For an overview of the {\projectname} project, we recommend our 2016 SPIE paper:
 
-\ifcoatli
-\begin{itemize}
-\item “\href{bibliography/spie-coatli-2016.pdf}{COATLI: an all-sky robotic optical imager with 0.3 arcsec image quality}”,   Watson et al.\ 2016, Proc.\ SPIE, 9908, 99085O-2
-\end{itemize}
-\fi
-
-\ifddoti
 \begin{itemize}
 \item “\href{bibliography/spie-ddoti-2016.pdf}{DDOTI: the deca-degree optical transient imager}”, Watson et al.\ 2016, Proc.\ SPIE, 9910, 99100G
 \end{itemize}
+
 \fi
 
 \ifcoatli
 {\projectname} has been funded by CONACyT (LN 232649, 260369, and 271117)
 and the Universidad Nacional Aut\'onoma de M\'exico (CIC and
-DGAPA/PAPIIT IT102715, IG100414, IN109408, and IN109418) and is operated and
+DGAPA/PAPIIT IT102715, IG100414, IN109408, IN109418, IG100820, and IN105921) and is operated and
 maintained by the Observatorio Astron\'omico Nacional and the Instituto
 de Astronom{\'\i}a of the Universidad Nacional Aut\'onoma de M\'exico.
 \fi
 
 \ifddoti
 DDOTI is funded by CONACyT (LN 232649, LN 260369, LN 271117, and 277901), the Universidad Nacional Autónoma de México (CIC and DGAPA/PAPIIT IG100414, IT102715, AG100317, IN109418, IG100820, and IN105921), the NASA Goddard Space Flight Center, and the University of Maryland (NNX17AK54G). DDOTI is operated and maintained by the Observatorio Astronómico Nacional and the Instituto de Astronomía of the Universidad Nacional Autónoma de México. We acknowledge the contribution of Neil Gehrels to the development of DDOTI.
-\fi
-
 \fi
