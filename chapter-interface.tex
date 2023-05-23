@@ -12,15 +12,20 @@ The address of the {\projectname} web site is:
 
 The web site contains the interface and documentation. They are only directly available to computers on the mountain-top network, although ssh port-forwarding can make it indirectly available elsewhere.
 
-The interface is protected by passwords. The \verb|operator15| and \verb|operator21| accounts are configured with the same passwords as the RATIR interface. If in doubt, ask on the Skype chat.
-
-
+The interface is protected by passwords. 
+\ifcoatli
+The account name is “coatli” and the password is “coatli”
+\fi
+\ifddoti
+The account name is “ddoti” and the password is “ddoti”
+\fi
+(both all lowercase). Access is restricted to the mountain network.
 
 \section{Main Page}
 
-\begin{figure}
+\begin{figure*}
 \begin{center}
-\resizebox{\linewidth}{!}{\begin{labeled}{\includegraphics[width=0.8\linewidth]{figures/interface-main-page}}
+\resizebox{\linewidth}{!}{\begin{labeled}{\includegraphics[width=0.5\linewidth]{figures/interface-main-page}}
 \arrowandlabel{(-3.6,5.7)}{(-3.6,7)}{south}{All-Sky}
 \arrowandlabel{(-1.8,5.7)}{(1,7)}{south}{Webcams}
 \arrowonly{(-0.4,5.7)}{(1,7)}
@@ -36,7 +41,7 @@ The interface is protected by passwords. The \verb|operator15| and \verb|operato
 \end{center}
 \caption{An example of the main page of the interface. The major elements are labelled and described in the text.}
 \label{figure:interface-main-page}
-\end{figure}
+\end{figure*}
 
 \ifcoatli
 
@@ -151,11 +156,11 @@ The log section. This section shows the latest log messages from the control sys
 The buttons. These are used to interact with the control system.
 \begin{itemize}
 \item
-Enable. Enabled the supervisor. This permits the supervisor to open and close according to the weather and sky state. Note that the supervisor only takes decisions to open, open to cool, or close if it is enabled. 
+Enable. Enabled the supervisor. This permits the supervisor to open and close according to the weather and sky state.
 \item
-Open. Force the supervisor to open and to stay open until explicitly instructed otherwise.
+Open. Permit the supervisor to open and close according to the sky state, taking no account of the weather. 
 \item
-Open to Cool. Force the supervisor to open to cool and to stay open to cool until explicitly instructed otherwise. Opening to cool opens the enclosure partially,  and starts to cool the CCD. It is typically used at the end of the day to cool the enclosure, telescope, and CCD ready for observations after sunset.
+Open to Cool. Permit the supervisor to open to cool according to the sky state, taking no account of the weather. 
 \item
 Close. Force the supervisor to close and to stay closed until explicitly instructed otherwise.
 \label{interface-close-button}
@@ -167,7 +172,7 @@ Switch Off. Switch off the enclosure lights.
 \label{interface-switch-off-button}
 
 \item
-Restart. Schedule a restart of the control system servers for the top of the next minute. This can be used to recover from software problems.
+Restart. Schedule a restart of the control system servers for the start of the next minute. This can be used to recover from software problems. After the software has restarted, you might want to enable the supervisor again.
 \label{interface-restart-button}
 
 \end{itemize}
@@ -176,16 +181,16 @@ Restart. Schedule a restart of the control system servers for the top of the nex
 \section{Running the Interface on the Access Mac in the Shed}
 \label{section:interface-access-mac}
 
-The interface can be run locally on the Access Mac in the Shed.
+The interface can be run locally on the Mac in the shed.
 
 If you need to log into the Mac, use the “{\projectaccount}” account with password “{\projectaccount}”.
 
-If the interface and Skype are not running, you can select “Open Interface” or “Open Skype” from the script menu in the upper right, as shown in Figure~\ref{figure:interface-scripts-menu}.
+%If the interface and Skype are not running, you can select “Open Interface” or “Open Skype” from the script menu in the upper right, as shown in Figure~\ref{figure:interface-scripts-menu}.
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=0.4\linewidth]{figures/interface-scripts-menu.png}
-\end{center}
-\caption{The script menu, in the upper right, can open the interface and Skype on the Access Mac.}
-\label{figure:interface-scripts-menu}
-\end{figure}
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=0.4\linewidth]{figures/interface-scripts-menu.png}
+%\end{center}
+%\caption{The script menu, in the upper right, can open the interface and Skype on the Access Mac.}
+%\label{figure:interface-scripts-menu}
+%\end{figure}
