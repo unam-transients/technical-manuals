@@ -1,4 +1,3 @@
-
 *.aux
 *.log
 *.out
@@ -7,3 +6,4 @@
 .DS_Store
 coatli.pdf
 ddoti.pdf
+colibri.pdf
