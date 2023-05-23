@@ -10,14 +10,14 @@ Earlier, the “Interim Imager” and “Huitzi $f/8$ Imager” were installed o
 
 \begin{figure*}[p]
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-on-telescope.jpg}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-on-telescope.jpg}
 \medskip
 \caption{The Huitzi $f/20$ imager on the COATLI telescope.}
-\label{figure:huitzi-on-coatli}
+\label{figure:huitzi-f20-on-coatli}
 \end{center}
 \end{figure*}
 
-Figure~\ref{figure:huitzi-on-coatli} shows the Huitzi $f/20$ imager on the telescope.
+Figure~\ref{figure:huitzi-f20-on-coatli} shows the Huitzi $f/20$ imager on the telescope.
 
 The imager uses a 150 mm diverging lens to convert the $f/8$ beam of the telescope into an $f/20$ beam. This beam is then imaged an Andor iXon electron-multiplying CCD detector with $1024\times1024$ pixels with a pixel scale of 0.27 arcsec and a field of 4.6 arcmin. The detector can be read through either a conventional amplifier or the electron-multiplying amplifier at a variety of speeds.
 
@@ -58,10 +58,10 @@ The detector is mounted on Optec Gemini focuser and rotator, which allows up to 
 \end{center}
 \medskip
 \caption{Schematic of the Optical Design}
-\label{figure:optical-design}
+\label{figure:huitzi-f20-optical-design}
 \end{figure*}
 
-The effect of the negative lens is shown schematically in Figure~\ref{figure:optical-design}. $A$ is the position of the telescope focus without the lens. $S$ is the position of the lens. $A'$ is the position of the telescope focus with the lens. 
+The effect of the negative lens is shown schematically in Figure~\ref{figure:huitzi-f20-optical-design}. $A$ is the position of the telescope focus without the lens. $S$ is the position of the lens. $A'$ is the position of the telescope focus with the lens. 
 The magnification $m$ is given by
 $$
 	m = SA'/SA,
@@ -83,14 +83,14 @@ We can see the approximate dimensions of the system by ignoring chromatic aberra
 
 \begin{figure*}
 \begin{center}
-\includegraphics[angle=90,width=0.9\linewidth]{figures/huitzi-lens-design.pdf}
+\includegraphics[angle=90,width=0.9\linewidth]{figures/huitzi-f20-lens-design.pdf}
 \medskip
 \caption{The lens design.}
-\label{figure:huitzi-lens-design}
+\label{figure:huitzi-f20-lens-design}
 \end{center}
 \end{figure*}
 
-The actual lens is Edmund Optics part \#63-767, whose design is shown in Figure~\ref{figure:huitzi-lens-design}. It has a design effective focal length of $-150$ mm at 587.6 nm. It is nominally 40 mm in diameter and 13.54 mm thick at the edge. The precise optical and mechanical prescriptions of are given in the files “\verb|zmax_63767.ZMX|”and “\verb|step_63767.STP|” supplied by Edmund Optics. The lens is used with the convergent element B uppermost (towards the secondary) and the divergent element A lowermost (towards the detector). That is, surface S4 is uppermost (towards the secondary) and surface S1 is lowermost (towards the detector). If the lens is inverted, the system will suffer significant spherical aberration.
+The actual lens is Edmund Optics part \#63-767, whose design is shown in Figure~\ref{figure:huitzi-f20-lens-design}. It has a design effective focal length of $-150$ mm at 587.6 nm. It is nominally 40 mm in diameter and 13.54 mm thick at the edge. The precise optical and mechanical prescriptions of are given in the files “\verb|zmax_63767.ZMX|”and “\verb|step_63767.STP|” supplied by Edmund Optics. The lens is used with the convergent element B uppermost (towards the secondary) and the divergent element A lowermost (towards the detector). That is, surface S4 is uppermost (towards the secondary) and surface S1 is lowermost (towards the detector). If the lens is inverted, the system will suffer significant spherical aberration.
 
 The lens is an achromatic doublet, so its focal length varies with wavelength. This has two effects. First, the different focal length between bands requires us to refocus for each filter. In theory, we could adjust both the secondary and the focuser to achieve focus while holding the magnification constant. In practice, we simply adjust the focuser to maintain focus and let the magnification vary slightly. (The focuser is also used to compensate for the different optical thicknesses of the filters.) Second, chromatic aberration within the $g$ and $B$ bands limits their image quality.
 
@@ -100,12 +100,12 @@ The lens also serves as a window to prevent ingress of dust and insects.
 
 \section{Filters}
 
-The upper filter wheel (“A”) is an FLI CFW-1-5 wheel for five 50 mm diameter filters. The two lower filter wheels (“B” and “C”) are FLI CFW-1-8 wheels for eight 25 mm diameter filters. The elements installed in each wheel are shown in Table~\ref{table:filter-wheel-loading}.
+The upper filter wheel (“A”) is an FLI CFW-1-5 wheel for five 50 mm diameter filters. The two lower filter wheels (“B” and “C”) are FLI CFW-1-8 wheels for eight 25 mm diameter filters. The elements installed in each wheel are shown in Table~\ref{table:huitzi-f20-filter-wheel-loading}.
 
 \begin{table*}
 \begin{center}
 \caption{Filter Wheel Loading}
-\label{table:filter-wheel-loading}
+\label{table:huitzi-f20-filter-wheel-loading}
 \medskip
 \begin{tabular}{lccc}
 \hline
@@ -160,7 +160,7 @@ In addition to these, we have 486/8 and 501/3 filters that could be installed by
 \begin{table*}
 \begin{center}
 \caption{Filter Combinations}
-\label{table:filter-combinations}
+\label{table:huitzi-f20-filter-combinations}
 \medskip
 \begin{tabular}{lcccc}
 \hline
@@ -190,10 +190,10 @@ $\Is$		&open		&$I$		&900SP	&\phantom{0}8		\\
 \end{center}
 \end{table*}
 
-The filter bandpasses are created by combinations of conventional bandpass filters, long-pass, and short-pass filters. The combinations used are given in Table~\ref{table:filter-combinations}. Most of the combinations are straightforward, but we comment on three aspects in particular:
+The filter bandpasses are created by combinations of conventional bandpass filters, long-pass, and short-pass filters. The combinations used are given in Table~\ref{table:huitzi-f20-filter-combinations}. Most of the combinations are straightforward, but we comment on three aspects in particular:
 
 \begin{itemize}
-\item $\Is$: The system responses in both $I$ and $\Is$ have their blue edge defined by RG9 glass. However, in $I$ the red edge is defined by the CCD but in $\Is$ (“$I$ short”) it is defined by the 900SP filter. This gives $\Is$ a system response that is a better match that of Cousins (1978), whose $I$ has its the red edge defined by the cutoff of a GaAs photocathode around 900 nm. Compare Figure~\ref{figure:huitzi-S-JC-IIs} here with Figure~9 of Bessell \& Murphy (2012).
+\item $\Is$: The system responses in both $I$ and $\Is$ have their blue edge defined by RG9 glass. However, in $I$ the red edge is defined by the CCD but in $\Is$ (“$I$ short”) it is defined by the 900SP filter. This gives $\Is$ a system response that is a better match that of Cousins (1978), whose $I$ has its the red edge defined by the cutoff of a GaAs photocathode around 900 nm. Compare Figure~\ref{figure:huitzi-f20-S-JC-IIs} here with Figure~9 of Bessell \& Murphy (2012).
 
 \item
 $w$: The $w$ filter essentially encompasses the bandpasses of $r$ and $i$ (although the exact edges are slightly different). Note that this is different to Pan-STARRS $w$ which includes the $g$ band too. It is mainly intended for sensitive imaging of GRBs.
@@ -202,20 +202,20 @@ $w$: The $w$ filter essentially encompasses the bandpasses of $r$ and $i$ (altho
 
 \end{itemize}
 
-Model system efficiency curves at the zenith (including the atmosphere, telescope mirrors, lens, filters, detector window, and detector, but excluding the obscuration of the secondary) are shown in Figures~\ref{figure:huitzi-S-first} to \ref{figure:huitzi-S-last}.
+Model system efficiency curves at the zenith (including the atmosphere, telescope mirrors, lens, filters, detector window, and detector, but excluding the obscuration of the secondary) are shown in Figures~\ref{figure:huitzi-f20-S-first} to \ref{figure:huitzi-f20-S-last}.
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-grizy.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-grizy.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $grizy$ filters. The dotted line is the model unfiltered efficiency.}
-\label{figure:huitzi-S-first}
+\label{figure:huitzi-f20-S-first}
 \end{center}
 \end{figure*}
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-w-open.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-w-open.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $w$ and open filters. The dotted line is the model unfiltered efficiency.}
 \end{center}
@@ -223,7 +223,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-JC-BVRI.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-JC-BVRI.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $BVRI$ filters. The dotted line is the model unfiltered efficiency.}
 \end{center}
@@ -231,16 +231,16 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-JC-IIs.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-JC-IIs.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $I$ and $\Is$ filters. The $\Is$ filter has a red cutoff defined by the 900SP filter whereas the $I$ filter has the red cutoff defined by the CCD. The dotted line is the model unfiltered efficiency.}
-\label{figure:huitzi-S-JC-IIs}
+\label{figure:huitzi-f20-S-JC-IIs}
 \end{center}
 \end{figure*}
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-g.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-g.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $g$ filter.}
 \end{center}
@@ -248,7 +248,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-r.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-r.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $r$ filter.}
 \end{center}
@@ -256,7 +256,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-i.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-i.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $i$ filter.}
 \end{center}
@@ -264,7 +264,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-z.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-z.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $z$ filter.}
 \end{center}
@@ -272,7 +272,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-y.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-y.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $y$ filter.}
 \end{center}
@@ -280,7 +280,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-w.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-w.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $w$ filter.}
 \end{center}
@@ -288,7 +288,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-open.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-open.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the open filter.}
 \end{center}
@@ -296,7 +296,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-JC-B.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-JC-B.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $B$ filter.}
 \end{center}
@@ -304,7 +304,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-JC-V.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-JC-V.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $V$ filter.}
 \end{center}
@@ -312,7 +312,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-JC-R.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-JC-R.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $R$ filter.}
 \end{center}
@@ -320,7 +320,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-JC-I.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-JC-I.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $I$ filter.}
 \end{center}
@@ -328,7 +328,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-JC-Is.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-JC-Is.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the $\Is$ filter.}
 \end{center}
@@ -336,7 +336,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-NBMB.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-NBMB.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters. The dotted line is the model unfiltered efficiency.}
 \end{center}
@@ -344,7 +344,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-NBMB-g.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-NBMB-g.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters in $g$: 470/10, 486/8, 501/3, 501/8, and 515/10. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency. The blue vertical lines are at 486.1, 495.9, and 500.7 nm.}
 \end{center}
@@ -352,7 +352,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-NBMB-r.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-NBMB-r.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters in $r$: 640/10, 656/3, 656/8, 672/3, and 672/8, 501/8, and 515/10. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency. The blue vertical lines are at 656.3, 654.8, 658.4, 671.6, and 673.1 nm.}
 \end{center}
@@ -360,17 +360,17 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.7\linewidth]{figures/huitzi-S-NBMB-z.png}
+\includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-NBMB-z.png}
 \medskip
 \caption{The model system efficiency $S$ at the zenith in the medium-band filter in $z$: 889/18. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency.}
-\label{figure:huitzi-S-last}
+\label{figure:huitzi-f20-S-last}
 \end{center}
 \end{figure*}
 
 \begin{table*}
 \begin{center}
 \caption{Model Filter Properties}
-\label{table:model-filter-properties}
+\label{table:huitzi-f20-model-filter-properties}
 \medskip
 \begin{tabular}{lccc}
 \hline
@@ -404,7 +404,7 @@ $\Is$		& 795.0& \phantom{}150.7&$7.0 \times 10^{8}$\\
 \end{center}
 \end{table*}
 
-Table~\ref{table:model-filter-properties} gives the model properties of the filter. The filter pivot wavelength $\lambda_\mathrm{pivot}$ is  defined by 
+Table~\ref{table:huitzi-f20-model-filter-properties} gives the model properties of the filter. The filter pivot wavelength $\lambda_\mathrm{pivot}$ is  defined by 
 $$
 \lambda_\mathrm{pivot} \equiv \sqrt{\frac{\int \lambda S\,d\lambda}{\int S/\lambda\, d\lambda}}.
 $$
@@ -439,12 +439,12 @@ $$
 $$
 taking into account the dependence of $F$ on wavelength. We determine $\Delta SA$ relative to the $i$ filter. We then determine the corresponding change in the secondary taking into account the amplification of 10.64 between the movement of the secondary and the movement of the telescope focal plane.
 
-Table \ref{table:filter-secondary-offsets} shows the results. Note that for the medium band filters, there are two values depending on whether the filter is in wheel B ($T = 3$ mm) or wheel C ($T = 6$ mm). The offsets of the narrowband filters are the same as for the corresponding medium band filters.
+Table \ref{table:huitzi-f20-filter-secondary-offsets} shows the results. Note that for the medium band filters, there are two values depending on whether the filter is in wheel B ($T = 3$ mm) or wheel C ($T = 6$ mm). The offsets of the narrowband filters are the same as for the corresponding medium band filters.
 
 \begin{table*}
 \begin{center}
 \caption{Filter Secondary Offsets}
-\label{table:filter-secondary-offsets}
+\label{table:huitzi-f20-filter-secondary-offsets}
 \medskip
 \begin{tabular}{lccc}
 \hline
@@ -498,14 +498,14 @@ The detector gives a pixel scale of 0.269 arcsec and a field of 4.59 arcmin.
 \end{tikzpicture}
 \end{center}
 \caption{The orientation of the detector on the sky according to the mount rotation. The pixel origin is in the lower left.}
-\label{figure:detector-orientation}
+\label{figure:huitzi-f20-detector-orientation}
 \end{figure*}
 
-The orientation of the field on the sky depends on the mount rotation (given by the values of the \verb|SMTMRO| and \verb|EMTMRO| keywords in the header), and is shown in Figure~\ref{figure:detector-orientation}. However, the pipeline reduction rotates all images to the conventional orientation with north up and east left.
+The orientation of the field on the sky depends on the mount rotation (given by the values of the \verb|SMTMRO| and \verb|EMTMRO| keywords in the header), and is shown in Figure~\ref{figure:huitzi-f20-detector-orientation}. However, the pipeline reduction rotates all images to the conventional orientation with north up and east left.
 
 \subsection{Quantum Efficiency}
 
-The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device). The nominal quantum efficiency is shown in Figure~\ref{figure:detector-quantum-efficiency}. The detector has excellent efficiency from 500 to 800 nm.
+The detector has standard silicon and the e2v midband coating (which in Andor's terminology makes it a “BV” device). The nominal quantum efficiency is shown in Figure~\ref{figure:huitzi-f20-detector-quantum-efficiency}. The detector has excellent efficiency from 500 to 800 nm.
 
 \begin{figure*}
 \begin{center}
@@ -535,7 +535,7 @@ The detector has standard silicon and the e2v midband coating (which in Andor's 
 \end{tikzpicture}
 \end{center}
 \caption{The nominal quantum efficiency $\eta$ of the Huitzi detector.}
-\label{figure:detector-quantum-efficiency}
+\label{figure:huitzi-f20-detector-quantum-efficiency}
 \end{figure*}
 
 \subsection{Readout Architecture}
@@ -544,7 +544,7 @@ The detector can be read using either a conventional signal chain (at 100 kHz or
 
 Although the conventional and EM amplifiers clock the serial register in different directions, the control software flips each row in conventional data so that physical pixels have the same logical position in the FITS files.
 
-The detector is used in frame-transfer mode without a mechanical shutter (see \S\ref{section:shutter}). At the end of an exposure, the charge is rapidly clocked into from the light-sensitive image section to the shielded store section. The change can then be read. In EM mode, the next exposure can then start immediately.
+The detector is used in frame-transfer mode without a mechanical shutter (see \S\ref{section:huitzi-f20-shutter}). At the end of an exposure, the charge is rapidly clocked into from the light-sensitive image section to the shielded store section. The change can then be read. In EM mode, the next exposure can then start immediately.
 
 With the normal vertical-shift frequency of 4.33 MHz, the frame transfer takes about 4.5 ms. This leads to some trailing above and below bright stars.
 
@@ -560,11 +560,11 @@ The read-out architecture has several parameters, which are encoded in the value
 \item[$G$] The software gain. After the data are read, each ADU signal is divided by the software gain to reduce white noise in the low-order bits (see \href{https://ui.adsabs.harvard.edu/abs/2002RMxAA..38..233W/abstract}{Watson 2002, RMAA, 38, 233}).
 \end{itemize}
 
-Fortunately, there is little need to use these values directly, since aliases are defined for common modes. They are shown in Table~\ref{table:read-mode-aliases}.
+Fortunately, there is little need to use these values directly, since aliases are defined for common modes. They are shown in Table~\ref{table:huitzi-f20-read-mode-aliases}.
 
 \begin{table*}
 \caption{Read-Mode Aliases}
-\label{table:read-mode-aliases}
+\label{table:huitzi-f20-read-mode-aliases}
 \begin{center}
 \begin{tabular}{lll}
 \hline
@@ -593,7 +593,7 @@ Alias&Mode\\
 
 \subsection{Shutter and Dark Filter}
 
-\label{section:shutter}
+\label{section:huitzi-f20-shutter}
 
 We originally attempted to use the mechanical shutter for conventional CCD modes and the frame-transfer capability for EM modes. However, we found that the shutter sometimes failed to open or failed to open completely. We suspect that at the colder temperatures of winter nights night, the power supply does not provide sufficient voltage to open the shutter.  
 
@@ -626,7 +626,7 @@ To take bias and dark images, we have use a “dark” filter that consists of t
     \hline
     \end{tabular}
     \caption{Detector Characteristics with the Low Preamplifier Gain}
-    \label{table:detector-characteristics-low-gain}
+    \label{table:huitzi-f20-detector-characteristics-low-gain}
 \end{table*}
 
 \begin{table*}
@@ -651,7 +651,7 @@ To take bias and dark images, we have use a “dark” filter that consists of t
     \hline
     \end{tabular}
     \caption{Detector Characteristics with the High Preamplifier Gain}
-    \label{table:detector-characteristics-high-gain}
+    \label{table:huitzi-f20-detector-characteristics-high-gain}
 \end{table*}
 
 \section{Mechanics}
