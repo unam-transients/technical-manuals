@@ -103,14 +103,14 @@ TODO: Cable calibres.
 \node (rack-chassis) [box] at (+0.0,8.5) {Rack Chassis};
 \draw ($(shed-ground-bar.north) + (+1.5,0)$) -- (rack-chassis.south);
 
-\node (box-b) [box] at (3.0,12.5) {Box B};
+\node (box-b) [box] at (3.0,12.5) {Power Box};
 \draw ($(platform-ground-bar.north) + (-1.5,0)$) -- (box-b.south);
 
 \ifcoatli
-\node (boxes) [box] at (3.0,13.5) {Boxes C/D/F};
+\node (boxes) [box] at (3.0,13.5) {Platform/Instrument Boxes};
 \fi
 \ifddoti
-\node (boxes) [box] at (3.0,13.5) {Boxes C/D/E};
+\node (boxes) [box] at (3.0,13.5) {Platform/Detectors Boxes};
 \fi
 \draw (box-b) -- (boxes);
 
