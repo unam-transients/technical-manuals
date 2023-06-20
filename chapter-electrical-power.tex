@@ -67,8 +67,8 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
 \node at (+1,+13) [box,right] (instrument-box) {Instrument Box};
 \fi
 \ifddoti
-\node at (-1,+13) [box,right] (instrument0-box) {Instrument0 Box};
-\node at (+3,+13) [box,right] (instrument1-box) {Instrument1 Box};
+\node at (-1,+13) [box,right] (detectors0-box) {Detectors0 Box};
+\node at (+3,+13) [box,right] (detectors1-box) {Detectors1 Box};
 \fi
 \node at (-3.0,+11) [box] (power-box) {Power Box};
 
@@ -153,11 +153,11 @@ TODO: Don’t know which DDOTI circuits are L1-N, L2-N, or L3-N.
 \draw[->] 
   (power-box.north) 
   -- node [circuit] {\scriptsize B2} +(0,0.7) 
-  |- (instrument0-box);
+  |- (detectors0-box);
 \draw[->] 
-  (instrument0-box.east) 
+  (detectors0-box.east) 
   -- node [circuit] {\scriptsize B2} +(0.7,0) 
-  |- (instrument1-box);
+  |- (detectors1-box);
 \fi
 
 \draw[->] 
@@ -457,10 +457,9 @@ The iBootBar is connected to the LAN at the address given in Table~\ref{table:ne
 \node (cable-b2) [box] at (5,+3.0) {Instrument (Cable B2)};
 \node (serial) [box] at (5,+1.8) {Serial Adapter};
 \node (mount) [box] at (5,+0.6) {Mount};
-\node (access) [box] at (5,-0.6) {\ttfamily access};
+\node (access) [box] at (5,-0.6) {\ttfamily console};
 \node (firewall) [box] at (5,-1.8) {\ttfamily firewall};
-\node (services) [box] at (5,-3.0) {\ttfamily services};
-\node (control) [box] at (5,-4.2) {\ttfamily control};
+\node (control) [box] at (5,-3.0) {\ttfamily control};
 
 \draw[->] 
  ($(ibb-127.east) + (0,4.2)$) node [left] {5-15R} 
@@ -488,10 +487,6 @@ The iBootBar is connected to the LAN at the address given in Table~\ref{table:ne
  |- (firewall.west);
 \draw[->] 
  ($(ibb-127.east) + (0,-3.0)$) node [left] {5-15R} 
- -- ++(1,0) node [circuit] {B} 
- |- (services.west);
-\draw[->] 
- ($(ibb-127.east) + (0,-4.2)$) node [left] {5-15R} 
  -- ++(1,0) node [circuit] {B} 
  |- (control.west);
 \end{tikzpicture}
@@ -669,8 +664,8 @@ Power Box&B1\phantom{}&\phantom{0}3 A\\
 Power Box&B2\phantom{}&\phantom{}15 A\\
 Power Box&C\phantom{0}&\phantom{}15 A\\
 Platform Box&B1\phantom{}&\phantom{0}3 A\\
-Instrument0 Box&B2\phantom{}&\phantom{0}3 A\\
-Instrument1 Box&B2\phantom{}&\phantom{0}3 A\\
+Detectors0 Box&B2\phantom{}&\phantom{0}3 A\\
+Detectors1 Box&B2\phantom{}&\phantom{0}3 A\\
 \fi
 \hline
 \end{tabular}
@@ -709,20 +704,19 @@ Instrument1 Box&B2\phantom{}&\phantom{0}3 A\\
 \node at ($(power-box.north) + (+0.5,0)$) [below] {5-15R};
 \node at ($(power-box.north) + (0,-0.4)$) [below] {Sockets C};
 \ifcoatli
-\node (instrument1-box) at (+5,+2.4) [box] {Box E};
-\node (instrument-box) at (+5,+1.2) [box] {Box D};
+\node (instrument-box) at (+5,+1.2) [box] {Instrument Box};
 \node (platform-box) at (+5,+0.0) [box] {Platform Box};
 \node (manual-light) at (+5,-1.2) [box] {Manual Light};
 \node (emergency-light) at (+5,-2.4) [box] {Emergency Light};
 \fi
 \ifddoti
 \node (platform-box) at (+5,+0.6) [box] {Platform Box};
-\node (instrument0-box) at (+5,+1.8) [box] {Instrument0 Box};
-\node (instrument1-box) at (+5,+3.0) [box] {Instrument1 Box};
+\node (detectors0-box) at (+5,+1.8) [box] {Detectors 0 Box};
+\node (detectors1-box) at (+5,+3.0) [box] {Detectors 1 Box};
 \node (manual-light) at (+5,-0.6) [box] {Manual Light};
 \node (emergency-light) at (+5,-1.8) [box] {Emergency Light};
-\draw[<-] (instrument0-box.west) -- +(-1,0) node [circuit] {B2} -- +(-2,0);
-\draw[->] (instrument0-box.east) -- +(0.4,0) -- node [circuit] {B2} +(0.4,+1.2) |- (instrument1-box.east);
+\draw[<-] (detectors0-box.west) -- +(-1,0) node [circuit] {B2} -- +(-2,0);
+\draw[->] (detectors0-box.east) -- +(0.4,0) -- node [circuit] {B2} +(0.4,+1.2) |- (detectors1-box.east);
 \fi
 \ifcoatli
 \draw[<-] (instrument-box.west) -- +(-1,0) node [circuit] {B1} -- +(-2,0);
@@ -822,53 +816,19 @@ Circuit B1 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance t
 \label{figure:schematic-electrical-power-instrument-box}
 \end{figure*}
 
-The instrument box is a smart control box located on the platform. Figure~\ref{figure:schematic-electrical-power-instrument-box} shows a schematic of the electrical power connections to Box D.
+The Instrument box is a smart control box located on the platform. Figure~\ref{figure:schematic-electrical-power-instrument-box} shows a schematic of the electrical power connections to the Instrument Box.
 
-The instrument nox is connected to circuit B1. Circuit B1 is a subcircuit of circuit B. Circuit B1 is used to power the electronics, the internal heater, and the internal fans.
+The instrument box is connected to circuit B1. Circuit B1 is a subcircuit of circuit B. Circuit B1 is used to power the electronics, the internal heater, and the internal fans.
 
 The connection to circuit B1 is via a cable with a C13 plug that connects to the C14 input socket on the platform box. The cable is hardwired to the power box.
 
 Circuit B1 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance to the instrument box.
 
-\section{Box E}
-
-\begin{figure*}
-\begin{center}
-\footnotesize 
-\resizebox{\columnwidth}{!}{
-\begin{tikzpicture}[
- thick,
- >={latex},
- align=center,
- inner sep=1mm,
- box/.style={draw=black,rectangle,minimum height=1cm,minimum width=3cm},
- main/.style={draw=black,rectangle,minimum width=3cm,minimum height=3cm},
- circuit/.style={draw=black,rectangle,fill=white}
-]
-\draw [white] (-6.5,0) -- (+6.5,0);
-\node (instrument1-box) [main] at (0,0) {Box E};
-\node (power-box) [box] at (-5,0) {Power Box};
-\draw[->] (power-box.east) -- node [circuit] {B2} +(2,0) node [right] {C14};
-\end{tikzpicture}
-}
-\end{center}
-\caption{Schematic of the Electrical Power Connections To Box E}
-\label{figure:schematic-electrical-power-instrument1-box}
-\end{figure*}
-
-Box E is a smart control box located on the pillar of the COATLI telescope. Figure~\ref{figure:schematic-electrical-power-instrument1-box} shows a schematic of the electrical power connections to Box E.
-
-Box E is connected to circuit B2. Circuit B2 is a subcircuit of circuit B. Circuit B2 is used to power the electronics, the internal heater, and the internal fans.
-
-The connection to circuit B2 is via a cable with a C13 plug that connects to the C14 input socket on Box E. The cable is hardwired to the power box.
-
-Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance to Box E.
-
 \fi
 
 \ifddoti
 
-\section{Instrument0 Box}
+\section{Detectors 0 Box}
 
 \begin{figure*}
 \begin{center}
@@ -884,25 +844,27 @@ Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance t
  circuit/.style={draw=black,rectangle,fill=white}
 ]
 \draw [white] (-6.5,0) -- (+6.5,0);
-\node (instrument0-box) [main] at (0,0) {Instrument 0};
-\node (instrument1-box) [box] at (-5,0) {Power Box};
-\draw[->] (instrument1-box.east) -- node [circuit] {B2} +(2,0) node [right] {MIL};
+\node (detectors0-box) [main] at (0,0) {Detectors 0\\Box};
+\node (power-box) [box] at (-5,0) {Power Box};
+\node (detector1-box) [box] at (+5,0) {Detectors 1\\Box};
+\draw[->] (power-box.east) -- node [circuit] {B2} +(2,0) node [right] {MIL};
+\draw[->] (detectors0-box.east) -- node [circuit] {B2} +(2,0);
 \end{tikzpicture}
 }
 \end{center}
-\caption{Schematic of the Electrical Power Connections To The Instrument0 Box}
-\label{figure:schematic-electrical-power-instrument0-box}
+\caption{Schematic of the Electrical Power Connections To The Detectors 0 Box}
+\label{figure:schematic-electrical-power-detectors0-box}
 \end{figure*}
 
-The instrument0 box is a smart control box located on the DDOTI telescopes. Figure~\ref{figure:schematic-electrical-power-instrument0-box} shows a schematic of the electrical power connections to the instrument0 box.
+The Detectors 0 box is a smart control box located on the DDOTI telescopes. Figure~\ref{figure:schematic-electrical-power-detectors0-box} shows a schematic of the electrical power connections to the Detectors 0 box.
 
-The instrument 0 box is connected to circuit B2. Circuit B2 is a subcircuit of circuit B. Circuit B2 is used to power the electronics, the internal heater, and the internal fans.
+The Detectors 0 box is connected to circuit B2. Circuit B2 is a subcircuit of circuit B. Circuit B2 is used to power the electronics, the internal heater, and the internal fans.
 
-The connection to circuit B2 is via a cable with a MIL plug that connects to the MIL input socket on Box D. The cable is hardwired to the power box. The cable passes from the power box up onto the telescope through the mount and the custom connector.
+The connection to circuit B2 is via a cable with a MIL plug that connects to the MIL input socket on the Detectors 0 box. The cable is hardwired to the power box. The cable passes from the power box up onto the telescope through the mount and the custom connector.
 
-Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance to the instrument0 box.
+Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance to the Detectors 0 box.
 
-\section{The Instrument1 Box}
+\section{The Detectors 1 Box}
 
 \begin{figure*}
 \begin{center}
@@ -918,23 +880,23 @@ Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance t
  circuit/.style={draw=black,rectangle,fill=white}
 ]
 \draw [white] (-6.5,0) -- (+6.5,0);
-\node (instrument1-box) [main] at (0,0) {Instrument1 Box};
-\node (instrument0-box) [box] at (-5,0) {Instrument0 Box};
-\draw[->] (instrument0-box.east) -- node [circuit] {B2} +(2,0) node [right] {MIL};
+\node (detectors1-box) [main] at (0,0) {Detectors 1\\Box};
+\node (detectors0-box) [box] at (-5,0) {Detectors 0\\Box};
+\draw[->] (detectors0-box.east) -- node [circuit] {B2} +(2,0) node [right] {MIL};
 \end{tikzpicture}
 }
 \end{center}
-\caption{Schematic of the Electrical Power Connections To Instrument1 Box}
-\label{figure:schematic-electrical-power-instrument1-box}
+\caption{Schematic of the Electrical Power Connections To Detectors 1 Box}
+\label{figure:schematic-electrical-power-detectors1-box}
 \end{figure*}
 
-The instrument1 box is a smart control box located on the pillar of the COATLI telescope. Figure~\ref{figure:schematic-electrical-power-instrument1-box} shows a schematic of the electrical power connections to Box E.
+The Detectors 1 box is a smart control box located on the pillar of the COATLI telescope. Figure~\ref{figure:schematic-electrical-power-detectors1-box} shows a schematic of the electrical power connections to the Detectors 1 box.
 
-The instrument1 box is connected to circuit B2. Circuit B2 is a subcircuit of circuit B. Circuit B2 is used to power the electronics, the internal heater, and the internal fans.
+The Detectors 1 box is connected to circuit B2. Circuit B2 is a subcircuit of circuit B. Circuit B2 is used to power the electronics, the internal heater, and the internal fans.
 
-The connection to circuit B2 is via a cable with a MIL plug that connects to the MIL input socket on the instrument1 box. The cable passes through the mount declination bearing to the instrument0 box and has an inline C13/C14 connector close to instrument0 box to allow instrument0 to be demounted.
+The connection to circuit B2 is via a cable with a MIL plug that connects to the MIL input socket on the Detectors 1 box. The cable passes through the mount declination bearing to the Detectors 0 box and has an inline C13/C14 connector close to Detectors 0 box to allow Detectors 0 to be demounted.
 
-Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance to Box E.
+Circuit B2 is switched and fuzed (see Table~\ref{table:fuzes}) at the entrance to the Detectors 1 box.
 
 \fi
 
