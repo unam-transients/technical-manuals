@@ -11,7 +11,7 @@ By “team members” we refer to members of the {\projectname} technical teams.
 
 \section{Communications}
 
-Communication between the observatory staff and the team will take place primarily through the RATIR/COATLI/DDOTI operations Skype chat.
+Communication between the observatory staff and the team will take place primarily through the COATLI/DDOTI Workspace in Google Chat.
 
 \section{Daily Operations}
 
@@ -31,8 +31,6 @@ Check that the webcams in the web interface are not showing an unusual situation
 \item
 If necessary, carry out an on-site inspection of {\projectname}. For example, after a snowfall, it might not be obvious from the webcams whether snow remains on the roof of the enclosure.
 \end{enumerate}
-
-\textcolor{red}{MAGUI: To interact with the COATLI/OAN control system, in regular robotic operation, the observatory staff will use the web interface described in section \ref{chapter:interface}.}
 
 If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they will enable the supervisor by pressing the “Enable” button in web interface (see \S\ref{figure:interface-main-page}).
 
@@ -115,7 +113,7 @@ Check the web interface and webcams for success or failure.
 \item
 If that fails, close the enclosure locally according to the procedure in \S\ref{section:enclosure-opening-or-closing-in-local-mode}.
 \item
-If that fails, close the enclosure manually according to the procedures in %\S\ref{section:enclosure-manual-opening-or-closing-with-power} or
+If that fails, close the enclosure manually according to the procedures in 
 \S\ref{section:enclosure-manual-opening-or-closing-without-power}.
 \end{enumerate}
 
@@ -144,13 +142,13 @@ You will need:
 \item
 Verify that there is a fire extinguisher in the shed.
 \item 
-Verify that the web interface and the Skype chat are open on the control Mac in the shed. If they are not, open them by following the procedures in \S\ref{section:interface-access-mac}.
+Verify that the web interface open on the Raspberry Pi in the shed. If it is not, open it by following the procedures in \S\ref{section:interface-local-access}.
 \item 
 Inspect the inside of the shed. 
 \item 
 Inspect the columns and underside of the platform.
 \item
-Open the enclosure locally to 30 degrees using the procedure in \S\ref{section:enclosure-opening-or-closing-in-local-mode}.
+Open the enclosure locally to 60 degrees using the procedure in \S\ref{section:enclosure-opening-or-closing-in-local-mode}.
 \item
 One person should ascend to the platform to inspect: the electronics boxes, the instrument, the telescope, the mount, and the platform.
 \item
@@ -164,7 +162,7 @@ The person on the platform should descend.
 \item
 Leave the enclosure controller in remote mode.
 \item
-Report that the revision has been carried out in the Skype chat. Additionally, report any anomalies in the Skype chat.
+Report that the revision has been carried out and any anomalies in COATLI/DDOTI Workspace in Google Chat.
 \end{enumerate}
 
 \section{Soft Shut-Down and Start-Up}
@@ -425,70 +423,38 @@ You will need:
 \item Communicate with the remote team member. They will:
 \begin{enumerate}
 
-   \item Log into a computer on the CU, Ensenada, or OAN networks of the Instituto de Astronomía (in order to gain ssh access to the firewall):
-   
-\begin{quote}\footnotesize
-\begin{verbatim}
-$ ssh user@somewhere.astrosxx.unam.mx -p 2222 -A -L 8080:localhost:8080
-\end{verbatim}
-\end{quote}
-
-    \item Log into the firewall:
-\begin{quote}\footnotesize
-\begin{verbatim}
-somewhere$ ssh user@ddoti.astrossp.unam.mx -p 2222 -A -L 8080:localhost:80
-\end{verbatim}
-\end{quote}
-
-    \item Halt the computer \verb|access|:
+    \item Halt the local access computer:
 
 \begin{quote}\footnotesize
+\ifcoatli
 \begin{verbatim}
-firewall$ ssh user@10.0.1.2
-access$ sudo shutdown -h -u now
+$ ssh coatli@coatli-console
+console$ sudo halt
 \end{verbatim}
+\fi
+\ifddoti
+\begin{verbatim}
+$ ssh ddoti@ddoti-console
+console$ sudo halt
+\end{verbatim}
+\fi
 \end{quote}
     
-    \item Switch off \verb|access| from \verb|ibb-127|.
-\begin{quote}\footnotesize
-\begin{verbatim}
-firewall$ telnet 10.0.1.5
-> get device #1
-> set device #1 outlet <n> off
-...
-\end{verbatim}
-\end{quote}
-To log out of the iBootBar, use CTRL-] and then \verb|quit|.
-
-    \item Halt the computers \verb|services|, \verb|control|, \verb|c0|, \verb|d0|, \verb|d1|, \verb|d2|, \verb|d3|, \verb|e0|, \verb|e1|, \verb|e2|, \verb|e3|:
+    \item Halt the TCS computers:
 
 \begin{quote}\footnotesize
+\ifcoatli
 \begin{verbatim}
-firewall$ ssh ddoti@10.0.1.3
-services$ sudo haltsoon
+$ ssh coatli@coatli-control
+control$ tcs haltsoon
 \end{verbatim}
-\end{quote}
-
-    \item Switch off \verb|instrument|, \verb|platform|, \verb|services|, \verb|control|, and \verb|mount| from \verb|ibb-127|.
-
-\begin{quote}\footnotesize
+\fi
+\ifddoti
 \begin{verbatim}
-$ ssh user@ddoti.astrossp.unam.mx -p 2222
-firewall$ telnet 10.0.1.5
-> get device #1
-> set device #1 outlet <n> off
-...
+$ ssh ddoti@ddoti-control
+control$ tcs haltsoon
 \end{verbatim}
-\end{quote}
-To log out of the iBootBar, use CTRL-] and then \verb|quit|.
-    \item Halt the computer \verb|firewall|.
-
-\begin{quote}\footnotesize
-\begin{verbatim}
-$ ssh user@ddoti.astrossp.unam.mx -p 2222 -L8080:localhost:80
-\end{verbatim}
-
-Open a browser to \verb|http://localhost:8080/| and halt the firewall from the web interface (select “Halt System” on the “Diagnostics” menu).
+\fi
 \end{quote}
 
 \end{enumerate}
@@ -540,16 +506,8 @@ Open the breaker panel on the wall next to the door. Switch on circuits A and B.
 
 On both UPSes, press the power button on the front panel for at least one second.
 
-\item Switch on the computer \verb|access|.
-
-Press the button on the rear right of the computer.
-
 \item Communicate with the remote team member. They will:
-
-\begin{enumerate}
-    \item Switch on the computers \verb|instrument|, \verb|platform|, \verb|services|, \verb|control|, and \verb|access| from \verb|ibb-127|.
-    \item Verify that all of the computers boot.
-\end{enumerate}
+verify that all of the computers boot.
 
 \item Perform a soft start-up (see \S\ref{section:soft-start-up}).
 
