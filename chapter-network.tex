@@ -103,7 +103,11 @@ TODO: haltsoon and rebootsoon
 
 \section{WAN and LAN Addresses}
 
-The observatory uses 132.248.4.0/24 as a WAN. {\projectname} uses 10.0.1.0/24 as a LAN. The firewall computer in the rack in the shed serves as a firewall and router between the WAN and the LAN. The addresses of the equipment are given in Table~\ref{table:network-addresses}.
+The observatory uses 132.248.4.0/24 as a WAN. {\projectname} uses 10.0.1.0/24 as a LAN. The firewall computer in the rack in the shed serves as a firewall and router between the WAN and the LAN. 
+
+\section{Computers}
+
+The addresses of the computers are given in Table~\ref{table:network-addresses}.
 
 \begin{table*}
 \caption{Addresses}
@@ -135,7 +139,7 @@ Address&Name&Equipment&Location\\
 10.0.1.21&\verb|webcam-b|&Webcam&Platform (above Platform Box)\\
 10.0.1.30&\verb|airport0|&Airport Express&Rack\\
 10.0.1.31&\verb|airport1|&Airport Express&Platform Box\\
-10.0.1.200 to 10.0.1.250&DHCP\\
+10.0.1.200 to 10.0.1.249&DHCP\\
 \ifcoatli
 132.248.4.16&\verb|webcam-c|&Webcam&84-cm (SE side)\\
 \fi
@@ -147,83 +151,54 @@ Address&Name&Equipment&Location\\
 \end{center}
 \end{table*}
 
+We distinguish the console computer and the “TCS computers”. The TCS computers are control, 
+\ifcoatli
+instrument,
+\fi
+\ifddoti
+detectors0, detectors1,
+\fi
+and platform. One difference, for example, is that the \verb|tcs| command that controls TCS is only available on the TCS computers and not on the console. However, if need be you can use ssh to log into the control computer from the console.
+
 \section{Port Filtering and Forwarding}
 
-The observatory firewall filters access to {\ttfamily \projectexternalipname} ({\projectexternalipaddress}) from outside the observatory WAN except for ports TCP/22 (SSH), TCP/80 (HTTP), and \ifcoatli
-TCP/5349 (GCN/TAN).
-\fi
-\ifddoti
-TCP/5351 (GCN/TAN).
-\fi
+The firewall blocks access from all networks except the observatory network (132.248.4.0/24), the Instituto de Astronomía CU network (132.248.1.0/24), the Instituto de Astronomía Ensenada network (132.248.3/24), and the GCN/TAN network (128.183.96.0/24).
 
-The firewall forwards certain TCP ports from its WAN address to hosts on the LAN. These are listed in Table~\ref{table:port-forwarding}. The firewall restricts access on most of these port, with only the main ssh port being open to all hosts.
-
-\begin{table}
-\caption{Ports Forwarded from the WAN to the LAN}
-\label{table:port-forwarding}
-\begin{center}
-\begin{tabular}{llll}
-\hline
-Port on WAN&Host on LAN&Port on LAN&Notes\\
-\hline
-22&\verb|access|&22&Main ssh access.\\
-80&\verb|services|&80&Web page and interface.\\
-873&\verb|services|&5349&rsync.\\
-2222&\verb|firewall|&22&Backup ssh access.\\
+From these trusted networks it permits:
+\begin{itemize}
+\item TCP/22: SSH access to the firewall. Only public key authentication is permitted.
+\item UDP/123: NTP time sychronization.
+\item TCP/80: HTTP forwarded to the control computer.
+\item
 \ifcoatli
-5349&\verb|services|&5349&GCN/TAN notices.\\
+TCP/5349:
 \fi
 \ifddoti
-5351&\verb|services|&5351&GCN/TAN notices.\\
+TCP/5351:
 \fi
-\hline
-\end{tabular}
-\end{center}
-\end{table}
+GCN/TAN forwarded to the control computer.
+\end{itemize}
 
-\section{Access}
+\section{VPN}
 
-All of the hosts have an account {\projectaccount} with password {\projectaccount}. Local and ssh access is permitted on the Linux machines, but only local access is permitted on the \verb|access|.
+The console and TCS computers are all registered on the UNAM Transients VPN. This is the normal means by which we obtain remote access.
 
-SSH access to \verb|access| is limited to the accounts of project staff and the OAN/SPM network maintenance staff. Thus, remote access is accomplished by first logging into \verb|access| using a non-{\projectaccount} account and then logging into a local machine using the {\projectaccount} account.
+\section{Accounts}
 
-We recommend using an \href{https://help.ubuntu.com/community/SSH/OpenSSH/Keys}{SSH public key} to avoid needing to type passwords repeatedly. If you do not have a key, you can generate one by running these commands on your computer:
-\begin{verbatim}
-mkdir ~/.ssh
-chmod 700 ~/.ssh
-ssh-keygen -t rsa
-\end{verbatim}
-Once you have generated a key, you can copy it to \verb|access| using:
-\ifcoatli
-\begin{verbatim}
-ssh-copy-id user@coatli.astrossp.unam.mx
-\end{verbatim}
-\fi
-\ifddoti
-\begin{verbatim}
-ssh-copy-id user@ddoti.astrossp.unam.mx
-\end{verbatim}
-\fi
-You should then by able to ssh to \verb|access| without having to type your password.
-
-Having copied the key to access, you can copy it to the {\projectaccount} accounts on the other computers on the LAN by running this command on \verb|access|:
-\begin{verbatim}
-ssh-copy-id-to-lan
-\end{verbatim}
-To use your key this, you should make sure that the key is forwarded by using the \verb|-A| option to ssh when you connect to \verb|access| or by adding the \verb|ForwardAgent yes| option to your \verb|.ssh/config| file.
+All of the hosts have an account {\projectaccount} with password {\projectaccount}.
 
 \section{Wireless Networks}
 
 There are two wireless networks for general use. 
 \ifcoatli
-The access Mac in the shed implements \verb|apcoatli0| and the Airport Extreme in Box C on the platform implements \verb|apcoatli1|. 
+The Airport Express in the shed implements \verb|apcoatli0| and the Airport Express in the platform box implements \verb|apcoatli1|. 
 \fi
 \ifddoti
-The access Mac in the shed implements \verb|apddoti0| and the Airport Extreme in Box C on the platform implements \verb|apddoti1|. 
+The Airport Express in the shed implements \verb|apddoti0| and the Airport Express in the platform box implements \verb|apddoti1|. 
 \fi
 The password is “keplerxv”.
 
 \section{DHCP}
 
-The firewall runs a DHCP server that allocates addresses in the range 10.0.1.100 to 10.0.1.200.
+The firewall runs a DHCP server that allocates addresses in the range 10.0.1.200 to 10.0.1.249.
 
