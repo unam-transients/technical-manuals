@@ -20,7 +20,7 @@ TODO: haltsoon and rebootsoon
  \footnotesize
  \node at (0,0) (internet) [box] {Internet};
  
- \draw[dashed] (-4.5,1.0) -- (+7.5,1.0) -- (+7.5,6.0) -- (-4.5,6.0) -- node [above,rotate=90] {84-cm} cycle;
+ \draw[dashed] (-4.5,1.0) -- (+4.5,1.0) -- (+4.5,6.0) -- (-4.5,6.0) -- node [above,rotate=90] {84-cm} cycle;
 
  \node at (0,2.0) (oan-firewall) [box] {OAN/SPM\\Firewall};
  \ifcoatli
@@ -37,81 +37,61 @@ TODO: haltsoon and rebootsoon
  \draw (oan-firewall) -- (switch-84);
  \draw (switch-84) -- (fiber-84);
 
- \draw[dashed] (-4.5,6.5) -- (+7.5,6.5) -- (+7.5,13.0) -- (-4.5,13.0) -- node [above,rotate=90] {Shed} cycle;
+ \draw[dashed] (-4.5,6.5) -- (+4.5,6.5) -- (+4.5,13.0) -- (-4.5,13.0) -- node [above,rotate=90] {Shed} cycle;
  
- \node at (0,7.5) (fiber-shed) [box] {Fibre Adapter};
- \node at (0,9.0) (firewall) [box] {10.0.1.1\\firewall\\{\projectexternalipaddress}};
- \node at (0,10.5) (switch-rack) [box] {Switch\\Rack};
+ \node at (0,7.5) (firewall) [box] {10.0.1.1\\firewall\\{\projectexternalipaddress}};
+ \node at (0,9.75) (switch-rack) [box] {Switch\\Rack};
 
- \draw (fiber-84) -- (fiber-shed);
- \draw (fiber-shed) -- (firewall);
+ \draw (fiber-84) -- (firewall);
  \draw (firewall) -- (switch-rack);
 
- \node at (-3,12.0) (access) [box] {access\\10.0.1.2};
- \node at (-3,10.5) (services) [box] {services\\10.0.1.3};
- \node at (-3,9.0) (control) [box] {control\\10.0.1.9};
+ \node at (-3,12.0) (console) [box] {console\\10.0.1.2};
+ \node at (-3,10.5) (control) [box] {control\\10.0.1.9};
+ \node at (-3,9.0) (airport0) [box] {airport0\\10.0.1.30};
  \node at (+3,12.0) (ibb-220) [box] {ibb-220\\10.0.1.4}; 
- \node at (+3,9.0) (ibb-127) [box] {ibb-127\\10.0.1.5}; 
- \node at (+6,11.25) (mount) [box] {mount\\10.0.1.6};
- \node at (+6,9.75) (serial) [box] {serial\\10.0.1.7};
+ \node at (+3,10.5) (ibb-127) [box] {ibb-127\\10.0.1.5}; 
+ \node at (+3,9.0) (mount) [box] {mount\\10.0.1.6};
+ \node at (+3,7.5) (serial) [box] {serial\\10.0.1.7};
  
- \draw (switch-rack) -- (access);
- \draw (switch-rack) -- (services);
+ \draw (switch-rack) -- (console);
+ \draw (switch-rack) -- (airport0);
  \draw (switch-rack) -- (control);
  \draw (switch-rack) -- (ibb-127);
  \draw (switch-rack) -- (ibb-220);
  \draw (switch-rack) -- (mount);
  \draw (switch-rack) -- (serial);
  
- \draw[dashed] (-4.5,13.5) -- (+7.5,13.5) -- (+7.5,17.0) -- (-4.5,17.0) -- node [above,rotate=90] {Platform} cycle;
+ \draw[dashed] (-4.5,13.5) -- (+4.5,13.5) -- (+4.5,17.0) -- (-4.5,17.0) -- node [above,rotate=90] {Platform} cycle;
 
- \node at (0,15.25) (switch-c) [box] {Switch\\Box C};
- \node at (-3,14.5) (c0) [box] {c0\\10.0.1.11}; 
- \node at (-3,16.0) (airport-express) [box] {airport-express\\10.0.1.10}; 
- \draw (switch-c) -- (c0);
+ \node at (0,15.25) (switch-platform) [box] {Switch\\Platform Box};
+ \node at (-3,14.5) (platform) [box] {platform\\10.0.1.10}; 
+ \node at (-3,16.0) (airport1) [box] {airport1\\10.0.1.31}; 
  \node at (+3,14.5) (webcam-a) [box] {webcam-a\\10.0.1.20}; 
  \node at (+3,16.0) (webcam-b) [box] {webcam-b\\10.0.1.21}; 
- \draw (switch-rack) -- (switch-c);
- \draw (switch-c) -- (webcam-a);
- \draw (switch-c) -- (webcam-b);
- \draw (switch-c) -- (airport-express);
- \ifcoatli
- \node at (+6,15.25) (d0) [box] {d0\\10.0.1.12}; 
- \draw (switch-c) -- (d0);
- \fi
+ \draw (switch-platform) -- (platform);
+ \draw (switch-rack) -- (switch-platform);
+ \draw (switch-platform) -- (webcam-a);
+ \draw (switch-platform) -- (webcam-b);
+ \draw (switch-platform) -- (airport1);
  
  \ifcoatli 
- \draw[dashed] (-4.5,17.5) -- (+7.5,17.5) -- (+7.5,19.5) -- (-4.5,19.5) -- node [above,rotate=90] {Telescope} cycle;
- \node at (0,18.5) (switch-e) [box] {Switch\\Box E};
- \node at (-3,18.5) (e0) [box] {e0\\10.0.1.15}; 
- \node at (+3,18.5) (e1) [box] {e1\\10.0.1.16}; 
- \draw (switch-c) -- (switch-e);
- \draw (switch-e) -- (e0);
- \draw (switch-e) -- (e1);
+ \draw[dashed] (-4.5,17.5) -- (+4.5,17.5) -- (+4.5,19.5) -- (-4.5,19.5) -- node [above,rotate=90] {Telescope} cycle;
+ \node at (-3,18.5) (instrument) [box] {instrument\\10.0.1.12}; 
+ \node at (+3,18.5) (ib-detector) [box] {ib-detector\\10.0.1.11}; 
+ \draw (switch-platform) -- (ib-detector);
+ \draw (switch-platform) -- (instrument);
  \fi
 
  \ifddoti 
- \draw[dashed] (-4.5,17.5) -- (+7.5,17.5) -- (+7.5,25.5) -- (-4.5,25.5) -- node [above,rotate=90] {Telescope} cycle;
- \node at (-3,20.5) (d0) [box] {d0\\10.0.1.12}; 
- \node at (-3,18.5) (d1) [box] {d1\\10.0.1.13}; 
- \node at (+3,20.5) (d2) [box] {d2\\10.0.1.14}; 
- \node at (+3,18.5) (d3) [box] {d3\\10.0.1.15}; 
- \node at (0,19.75) (switch-d) [box] {Switch\\Box D};
- \draw (switch-c) -- (switch-d);
- \draw (switch-d) -- (d0);
- \draw (switch-d) -- (d1);
- \draw (switch-d) -- (d2);
- \draw (switch-d) -- (d3);
- \node at (-3,24.5) (e0) [box] {e0\\10.0.1.16}; 
- \node at (-3,22.5) (e1) [box] {e1\\10.0.1.17}; 
- \node at (+3,24.5) (e2) [box] {e2\\10.0.1.18}; 
- \node at (+3,22.5) (e3) [box] {e3\\10.0.1.19}; 
- \node at (0,23.75) (switch-e) [box] {Switch\\Box E};
- \draw (switch-d) -- (switch-e);
- \draw (switch-e) -- (e0);
- \draw (switch-e) -- (e1);
- \draw (switch-e) -- (e2);
- \draw (switch-e) -- (e3);
+ \draw[dashed] (-4.5,17.5) -- (+4.5,17.5) -- (+4.5,21.0) -- (-4.5,21.0) -- node [above,rotate=90] {Telescope} cycle;
+ \node at (-3,18.5) (detectors0) [box] {detectors0\\10.0.1.11}; 
+ \node at (0,18.5) (switch-detectors0) [box] {Switch\\Detectors 0 Box};
+ \draw (switch-platform) -- (switch-detectors0);
+ \draw (switch-detectors0) -- (detectors0);
+ \node at (-3,20.0) (detectors1) [box] {detectors1\\10.0.1.12}; 
+ \node at (0,20.0) (switch-detectors1) [box] {Switch\\Detectors 1 Box};
+ \draw (switch-detectors0) -- (switch-detectors1);
+ \draw (switch-detectors1) -- (detectors1);
  \fi
  
 \end{tikzpicture}
@@ -123,48 +103,39 @@ TODO: haltsoon and rebootsoon
 
 \section{WAN and LAN Addresses}
 
-The observatory uses 132.248.4/24 as a WAN. {\projectname} uses 10.0.1/24 as a LAN. The firewall computer in the rack in the shed serves as a firewall and router between the WAN and the LAN. The addresses of the equipment are given in Table~\ref{table:network-addresses}.
+The observatory uses 132.248.4.0/24 as a WAN. {\projectname} uses 10.0.1.0/24 as a LAN. The firewall computer in the rack in the shed serves as a firewall and router between the WAN and the LAN. The addresses of the equipment are given in Table~\ref{table:network-addresses}.
 
-\begin{table}
+\begin{table*}
 \caption{Addresses}
 \label{table:network-addresses}
 \begin{center}
-\footnotesize
+%\footnotesize
 \begin{tabular}{llll}
 \hline
 Address&Name&Equipment&Location\\
 \hline
-{\projectexternalipaddress}&\verb|firewall|&HP Server&Rack\\
-10.0.1.1&\verb|firewall|&HP Server&Rack\\
-10.0.1.2&\verb|access|&Mac mini&Rack\\
-10.0.1.3&\verb|services|&HP Server&Rack\\
+{\projectexternalipaddress}&\verb|firewall|&Ubiquiti Edgerouter X-SFP&Rack\\
+10.0.1.1&\verb|firewall|&Ubiquiti Edgerouter X-SFPr&Rack\\
+10.0.1.2&\verb|console|&Raspberry Pi 4&Rack\\
 10.0.1.4&\verb|ibb-220|&iBootBar 220 V&Rack\\
 10.0.1.5&\verb|ibb-127|&iBootBar 127 V&Rack\\
 10.0.1.6&\verb|mount|&Mount Controller&Rack\\
-10.0.1.7&\verb|serial|&HP Adapter&Shed Wall\\
-10.0.1.8&\verb|pc|&PC&Not currently installed\\
-10.0.1.9&\verb|control|&Linux Server&Rack\\
-10.0.1.10&\verb|airport-express|&Airport Express&Box C\\
+10.0.1.7&\verb|serial|&Serial Adapter&Shed Wall\\
+10.0.1.9&\verb|control|&HP Server Server&Rack\\
+10.0.1.10&\verb|platform|&Raspberry Pi 4&Platform Box\\
 \ifcoatli
-10.0.1.11&\verb|c0|&Minnowboard Max&Box C\\
-10.0.1.12&\verb|d0|&Minnowboard Max&Box D\\
-10.0.1.15&\verb|e0|&Minnowboard Max&Box E\\
-10.0.1.16&\verb|e1|&Minnowboard Max&Box E\\
+10.0.1.11&\verb|ib-detector|&iBoot&Platform\\
+10.0.1.12&\verb|instrument|&Kingsdel PC&Instrument Box\\
 \fi
 \ifddoti
-10.0.1.11&\verb|c0|&Minnowboard Turbot&Box C\\
-10.0.1.12&\verb|d0|&Minnowboard Turbot&Box D\\
-10.0.1.13&\verb|d1|&Minnowboard Turbot&Box D\\
-10.0.1.14&\verb|d2|&Minnowboard Turbot&Box D\\
-10.0.1.15&\verb|d3|&Minnowboard Turbot&Box D\\
-10.0.1.16&\verb|e0|&Minnowboard Turbot&Box E\\
-10.0.1.17&\verb|e1|&Minnowboard Turbot&Box E\\
-10.0.1.18&\verb|e2|&Minnowboard Turbot&Box E\\
-10.0.1.19&\verb|e3|&Minnowboard Turbot&Box E\\
+10.0.1.11&\verb|detectors0|&Kingsdel PC&Detectors 0 Box\\
+10.0.1.12&\verb|detectors1|&Kingsdel PC&Detectors 1 Box\\
 \fi
-10.0.1.20&\verb|webcam-a|&Webcam&Platform (above Box B)\\
-10.0.1.21&\verb|webcam-b|&Webcam&Platform (above Box C)\\
-\hline
+10.0.1.20&\verb|webcam-a|&Webcam&Platform (above Power Box)\\
+10.0.1.21&\verb|webcam-b|&Webcam&Platform (above Platform Box)\\
+10.0.1.30&\verb|airport0|&Airport Express&Rack\\
+10.0.1.31&\verb|airport1|&Airport Express&Platform Box\\
+10.0.1.200 to 10.0.1.250&DHCP\\
 \ifcoatli
 132.248.4.16&\verb|webcam-c|&Webcam&84-cm (SE side)\\
 \fi
@@ -174,7 +145,7 @@ Address&Name&Equipment&Location\\
 \hline
 \end{tabular}
 \end{center}
-\end{table}
+\end{table*}
 
 \section{Port Filtering and Forwarding}
 
