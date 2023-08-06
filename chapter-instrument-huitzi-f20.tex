@@ -141,7 +141,9 @@ From modeling the transmission curves, we believe the recipes are:
 \item 900SP: This is an 900 nm OD4 short-pass filter. It is Edmund Optics part \#64-335. It is 25 mm in diameter and 3 mm thick. It has  dielectric coatings on a fuzed silica substrate.
 \item 550LP: This is an 550 nm OD4 long-pass filter. It is Edmund Optics part \#62-984. It is 25 mm in diameter and 3 mm thick. It has dielectric coatings on a fuzed silica substrate.
 \item P0: This is a window. It is Edmund Optics part \#48-066. It is 25 mm in diameter and 3 mm thick. It has Edmund UV-VIS coatings on a fused silica substrate.
-\item 470/10, 501/8, 515/10, 640/10, 656/3, and 656/8: These are narrow-band filters, named for their approximate central wavelength and width in nm. They are off-the-shelf filters acquired from Custom Scientific. They are 25 mm in diameter and 3 mm thick. They have dielectric coatings on a fuzed silica substrate.
+\item 501/8, 515/10, 640/10, 656/3, and 656/8: These are narrow-band filters, named for their approximate central wavelength and width in nm. They are off-the-shelf filters acquired from Custom Scientific. They are 25 mm in diameter and 3 mm thick. They have dielectric coatings on a fused silica substrate.
+
+\item 470/10: This was originally an off-the-shelf filter acquired from Custom Scientific, similar to the other narrow-band filters. The original 470/10 filter was damaged in April 2023. The central screw in wheel A came loose, jammed in filter wheel B, and scratched the 470/10 filter. Figure~\ref{figure:huitzi-f20-damaged-470-10-filter}. It was replaced on 2023 August 5 with a Edmund Optics filter with a central wavelength of 470 nm and a width of 10 nm (part number \href{https://www.edmundoptics.com/p/470nm-cwl-25mm-dia-hard-coated-od-4-10nm-bandpass-filter/19794/}{\#65-144}). The new filter is 25 mm in diameter and 5 mm thick. It has dielectric coatings on a fused silica substrate.
 
 \begin{figure}
 \begin{center}
@@ -152,7 +154,7 @@ From modeling the transmission curves, we believe the recipes are:
 \end{center}
 \end{figure}
 
-The 470/10 filter was damaged in April 2023. The central screw in wheel A came loose, jammed in filter wheel B, and scratched the 470/10 filter. Figure~\ref{figure:huitzi-f20-damaged-470-10-filter}. We are seeking to buy a replacement.
+
 
 In addition to these, we have 486/8 and 501/3 filters that could be installed by special request. Furthermore, Custom Scientific have 672/3, 672/8, and 889/18 filters that could be purchased for about US\$500 each.
 \end{itemize}
@@ -179,7 +181,7 @@ $V$		&$V$		&P0		&open		&\phantom{0}8		\\
 $R$		&$R$		&P0		&open		&\phantom{0}8		\\
 $I$		&open		&$I$		&open		&\phantom{0}5		\\
 $\Is$		&open		&$I$		&900SP	&\phantom{0}8		\\
-470/10	&open		&470/10	&open		&\phantom{0}3		\\
+470/10	&open		&470/10	&open		&\phantom{0}5		\\
 501/8		&open		&P0		&501/8	&\phantom{0}6		\\
 515/10	&open		&515/10	&open		&\phantom{0}3		\\
 640/10	&open		&640/10	&open		&\phantom{0}3		\\
@@ -346,7 +348,7 @@ Model system efficiency curves at the zenith (including the atmosphere, telescop
 \begin{center}
 \includegraphics[width=0.7\linewidth]{figures/huitzi-f20-S-NBMB-g.png}
 \medskip
-\caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters in $g$: 470/10, 486/8, 501/3, 501/8, and 515/10. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency. The blue vertical lines are at 486.1, 495.9, and 500.7 nm.}
+\caption{The model system efficiency $S$ at the zenith in the narrow-band and medium-band filters in $g$: 470/10 (original), 486/8, 501/3, 501/8, and 515/10. The filters shown with dashed lines have not yet been acquired. The dotted line is the model unfiltered efficiency. The blue vertical lines are at 486.1, 495.9, and 500.7 nm.}
 \end{center}
 \end{figure*}
 
@@ -388,7 +390,7 @@ $V$		& 537.9& \phantom{0}89.8&$8.5 \times 10^{8}$\\
 $R$		& 633.9& \phantom{}118.0&$1.0 \times 10^{9}$\\
 $I$		& 814.8& \phantom{}150.7&$8.0 \times 10^{8}$\\
 $\Is$		& 795.0& \phantom{}150.7&$7.0 \times 10^{8}$\\
-470/10	& 469.7& \phantom{0}10.1&$9.9 \times 10^{7}$\\
+470/10 (original)	& 469.7& \phantom{0}10.1&$9.9 \times 10^{7}$\\
 486/8		& 485.5& \phantom{00}9.3&$1.0 \times 10^{8}$\\
 501/3		& 500.7& \phantom{00}3.2&$3.5 \times 10^{7}$\\
 501/8		& 500.5& \phantom{00}7.0&$8.2 \times 10^{7}$\\
@@ -439,7 +441,7 @@ $$
 $$
 taking into account the dependence of $F$ on wavelength. We determine $\Delta SA$ relative to the $i$ filter. We then determine the corresponding change in the secondary taking into account the amplification of 10.64 between the movement of the secondary and the movement of the telescope focal plane.
 
-Table \ref{table:huitzi-f20-filter-secondary-offsets} shows the results. Note that for the medium band filters, there are two values depending on whether the filter is in wheel B ($T = 3$ mm) or wheel C ($T = 6$ mm). The offsets of the narrowband filters are the same as for the corresponding medium band filters.
+Table \ref{table:huitzi-f20-filter-secondary-offsets} shows the results. Note that for the medium band filters, there are two values depending on whether the filter is in wheel B or wheel C. The offsets of the narrowband filters are the same as for the corresponding medium band filters.
 
 \begin{table*}
 \begin{center}
@@ -462,7 +464,8 @@ $V$		&$-150.97$		&\phantom{0}8		&\phantom{}$+17$\\
 $R$		&$-150.14$		&\phantom{0}8		&\phantom{}$+10$\\
 $I$		&$-150.27$		&\phantom{0}5		&\phantom{}$-30$\\
 $\Is$		&$-150.50$		&\phantom{0}8		&\phantom{0}$-5$\\
-470/10	&$-149.99$		&\phantom{}3/6		&\phantom{}$-14/+4$\\
+470/10 (original)	&$-149.99$		&\phantom{}3/6		&\phantom{}$-14/+4$\\
+470/10 (2023-08)	&$-149.99$		&\phantom{}5/8		&\phantom{}$+7/+25$\\
 515/10	&$-149.93$		&\phantom{}3/6		&\phantom{}$-12/+6$\\
 640/10	&$-150.07$		&\phantom{}3/6		&\phantom{}$-16/+1$\\
 \hline
