@@ -26,14 +26,17 @@ The safety priorities at {\projectname}, from highest to lowest, are:
 }
 
 \section{Personnel Safety}
+\label{section:personnel-safety}
 
 The {\projectname} installation is potentially one of the most dangerous installations at the OAN/SPM. Personnel safety is more important than equipment safety or observations. The following  rules are designed to maintain personnel safety and must be followed at all times.
 
-\safety{You must not work alone on the open platform or on the balconies.} 
+%\safety{You must not work alone on the open platform or on the balconies.} 
 
-At least one other person must be present either on the platform or at ground level.
+\safety{When you work on the balconies or the structure of the tower, you must be accompanied by at least one other person.}
 
-\safety{You may work alone on the closed platform. However, someone else must be present when you ascend or descend.}
+\safety{When you work on the platform, you must either (a) be accompanied by at least one other person or (b) be in contact by radio or chat with another person on the mountain and advise them before and after each ascent or descent.}
+
+\safety{When working on the platform, close it partially or fully if possible.}
 
 You should have someone to close the enclosure manually after you have entered and open it manually for you to leave. Remember that you must have a radio on hand.
 
@@ -100,13 +103,13 @@ You may only climb the platform in poor conditions if you need to close the encl
 
 These areas are not load-bearing. If you walk on them, it is likely that they will collapse and you will fall.
 
-\safety{If you need to summon help and do not have a portable radio, you can use the static emergency radio located between the 84-cm building and DDOTI.} 
+\safety{If you need to summon help and do not have a portable radio, you can use chat over WiFi or the static emergency radio located between the 84-cm building and DDOTI.} 
 
 \safety{You must physically disconnect mains power before working on an electronics box.}
 
-Note that box C has two mains connectors, one for regulated power and one for unregulated power. The other boxes have only one mains connector, for regulated power.
+Note that the platform box has two mains connectors, one for regulated power and one for unregulated power. The other boxes have only one mains connector, for regulated power.
 
-Using the switch is not enough; it is present to allow the equipment to be rebooted. Besides, the unregulated power to box C is not switched.
+Using the switch is not enough; it is present to allow the equipment to be rebooted. Besides, the unregulated power to the platform box is not switched.
 
 \safety{Be extremely careful when working inside the enclosure, covers, and secondary cabinets as they use 220 VAC.}
 
@@ -119,11 +122,11 @@ Conditions are not benign if:
 \item It is raining or snowing.
 \item The humidity is 85\% or higher and rising or previously reached 90\% and has not yet fallen below 80\%.
 \item The wind average speed has been {\windlimit} km/h or greater at any moment in the previous 30 minutes.  
-\item There are other circumstance which, in the judgement of observatory technical staff, dictate that it is not safe to open.
+\item There are other circumstance which, in the judgment of observatory technical staff, dictate that it is not safe to open. These include but are not limited to smoke or ash from forest fires and snow blowing off the nearby trees.
 \end{enumerate}
 }
 
-These rules are implemented in the {\projectname} weather server. If you check the {\projectname} web interface (see \S\ref{chapter:interface}), there is a summary line for the weather that says “may be open”, conditions are benign and you may open. If it does not, conditions are not benign and you must not open.
+Rules 1 to 3 are implemented in the {\projectname} weather server. If you check the {\projectname} web interface (see \S\ref{chapter:interface}), there is a summary line for the weather that says “may be open”, conditions are benign and you may open with the permission of the observatory staff. If it does not, conditions are not benign and you must not open.
 
 Note that the rules for opening the other telescopes specify a wind limit of 45 km/h. The limit for {\projectname} is currently lower until we have greater confidence in its reliability and performance in high winds.
 

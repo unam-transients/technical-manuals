@@ -32,11 +32,11 @@ Check that the webcams in the web interface are not showing an unusual situation
 If necessary, carry out an on-site inspection of {\projectname}. For example, after a snowfall, it might not be obvious from the webcams whether snow remains on the roof of the enclosure.
 \end{enumerate}
 
-If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they will enable the supervisor by pressing the “Enable” button in web interface (see \S\ref{figure:interface-main-page}).
+If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they will enable the supervisor by pressing the “Enable” button in web interface (see \S\ref{figure:interface-main-page}). 
 
 If the observatory staff considers that decisions to open and close the installation cannot be safely taken by the control system, they should explicitly force the supervisor to maintain the telescope closed by pressing the “Close” button in  the web interface (see \S\ref{figure:interface-main-page}).. 
 
-The observatory staff will report the result of their inspection in the Skype chat and will indicate whether they are enabling the supervisor or forcing it to close.
+The observatory staff will report the result of their inspection in the Google chat and will indicate whether they are enabling the supervisor or forcing it to close.
 
 \item
 If the supervisor is enabled and weather conditions are benign, the control system will:
@@ -65,8 +65,8 @@ Note that the rules for opening the other telescopes specify a wind limit of 45 
 \item
 The observatory staff will monitor {\projectname} during the night. Their primary responsibilities are:
 \begin{enumerate}
-\item If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they should enable the supervisor by pressing the “Enable” button in the web interface (see \S\ref{figure:interface-main-page}) and report this in the Skype chat.
-\item If the observatory staff consider that decisions to open and close the installation cannot be safely taken by the control system, they must explicitly force the supervisor to maintain the telescope closed by pressing the “Close” button in the web interface (see \S\ref{figure:interface-main-page}) and report this in the Skype chat. 
+\item If the observatory staff consider that decisions to open and close the installation can be safely taken by the control system, they should enable the supervisor by pressing the “Enable” button in the web interface (see \S\ref{figure:interface-main-page}) and report this in the Google chat.
+\item If the observatory staff consider that decisions to open and close the installation cannot be safely taken by the control system, they must explicitly force the supervisor to maintain the telescope closed by pressing the “Close” button in the web interface (see \S\ref{figure:interface-main-page}) and report this in the Google chat. 
 \item
 The observatory staff should verify that the control system opens and closes as expected according to the weather conditions and the state of the supervisor. If it does not close, they should intervene as described in \S\ref{section:operations:interventions}.
 
@@ -74,10 +74,10 @@ The observatory staff should verify that the control system opens and closes as 
 When the control system closes (at the end of the night, in response to weather conditions, or if the supervisor is forced to close), it switches the lights on for safety. At the end of the process, if the control system can determine that the enclosure closed correctly, it will switch the lights off. If it cannot, it will leave the lights switched on. Thus, if the lights are left on, this indicates that there was a problem during closing and the observatory staff should intervene as described in \S\ref{section:operations:interventions}.
 
 \item
-The observatory staff should report explicit changes to the supervisor state (e.g., use of the “Enable” and “Close” buttons) and any other relevant information in the Skype chat.
+The observatory staff should report explicit changes to the supervisor state (e.g., use of the “Enable” and “Close” buttons) and any other relevant information in the Google chat.
 \end{enumerate}
 
-As their other duties permit, the observatory staff are encouraged to report other conditions or occurrences that might degrade the ability of the telescope to observe (e.g., failures of the control system or failures to focus) in the Skype chat.
+As their other duties permit, the observatory staff are encouraged to report other conditions or occurrences that might degrade the ability of the telescope to observe (e.g., failures of the control system or failures to focus) in the Google chat.
 
 \item
 During the evening and night, interventions by the observatory staff are limited to whatever is necessary to close {\projectname} and return it to a safe state. Once the observatory staff have intervened, {\projectname} must be closed and may not open again until the next day.
@@ -123,9 +123,11 @@ The observatory staff should carry out a physical inspection of the installation
 
 \subsubsection{Safety Considerations}
 
-\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or to ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.} 
+\safety{You must use a safety harness, line, and helmet whenever you are on the  platform or balconies or to ascend the tower. Attach your line to one of the fasteners, to the balcony rail, or to something equivalently strong.}
 
 \safety{You must use a safety helmet if you are working under the platform or balconies.}
+
+\safety{See \S\ref{section:personnel-safety} for a more complete discussion of safety.}
 
 \subsubsection{Requirements}
 
@@ -180,6 +182,8 @@ A “soft” shut-down is appropriate for circumstances in which electrical powe
 
 \safety{The enclosure controller cabinet uses 220 VAC. Switch off the power using the main power switch on the door before working inside the cabinet (see Figure \S\ref{figure:enclosure-controller-door}) .}
 
+\safety{See \S\ref{section:personnel-safety} for a more complete discussion of safety.}
+
 \subsubsection{Requirements}
 
 You will need:
@@ -214,11 +218,27 @@ Both persons should ascend to the platform.
 
 \item
 \ifcoatli
-Verify that the telescope is in the parked position, pointed at the north pole and with the telescope above the mount. If not, release the break on the mount by pressing the “BRAKE” button and move it to this position.
+Verify that the telescope is in the parked position, pointed at the north pole and with the telescope above the mount. If not, release the break on the mount by pressing the “BRAKE” button and move it to this position. See Figure~\ref{figure:tarpaulin-before}.
 \fi
 \ifddoti
-Move the telescope so that it is pointed vertically with the CCDs on the bottom and the focusers on the top. To move the telescope, release the brake on the mount by pressing the “BRAKE” button.
+Move the telescope so that it is pointed vertically with the CCDs on the bottom and the focusers on the top. To move the telescope, release the brake on the mount by pressing the “BRAKE” button. See Figure~ref{figure:tarpaulin-before}.
 \fi
+
+\begin{figure}
+\ifcoatli
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/tarpaulin-coatli-before.jpg}
+\end{center}
+\caption{The telescope prior to being covered by a tarpaulin, pointed at the north pole and with the telescope above the mount. }
+\fi
+\ifddoti
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/tarpaulin-ddoti-before.jpg}
+\end{center}
+\caption{The telescope prior to being covered by a tarpaulin, pointed vertically with the CCDs on the bottom and the focusers on the top. }
+\fi
+\label{figure:tarpaulin-before}
+\end{figure}
 
 \item
 Press the mount emergency stop button.
@@ -250,7 +270,7 @@ Be very careful not to place stress on the CCDs.
 
 Wrap the long rope around the telescopes and tarpaulin, below the two electronics boxes but above the lower end of the telescopes and the CCDs, and then pass a loop over the telescopes, between the east and west sets, and fasten the rope on itself to prevent it slipping down. Gather the loose ends of the tarpaulin below and fasten them with a short red cord. See Figure~\ref{figure:tarpaulin}.
 
-\emph{We repeat: The tarpaulin and the ropes must not come into contact with the CCDs and must not place any stress on them. The tarpaulin and ropes can only come into contact with the telescope tubes, focusers, and electronics boxes.}
+{\itshape\bfseries We repeat: The tarpaulin and the ropes must not come into contact with the CCDs and must not place any stress on them. The tarpaulin and ropes can only come into contact with the telescope tubes, focusers, and electronics boxes.}
 
 \fi
 
@@ -310,6 +330,8 @@ Leave the shed locked. Return the shed keys to the tool box (see \S\ref{section:
 \safety{You must use a safety helmet if you are working under the platform or balconies.}
 
 \safety{The enclosure controller cabinet uses 220 VAC. Switch off the power using the switch on the door before working inside the cabinet.}
+
+\safety{See \S\ref{section:personnel-safety} for a more complete discussion of safety.}
 
 \subsubsection{Requirements}
 
@@ -400,7 +422,7 @@ Store the tarpaulin in the shelves next to the cabinet in the 84-cm and the rope
 
 \section{Hard Shut-Down and Start-Up}
 
-A “hard” shut-down is appropriate for circumstances in which electrical power will not continue to be supplied to {\projectname}. This occurred, for example, in the evacuations for COVID-19. In this case, we must shut down the computers and cannot rely on the electromagnet to maintain the enclosure closed.
+A “hard” shut-down is appropriate for circumstances in which electrical power will not continue to be supplied to {\projectname}. This has occurred, for example, in the evacuations for COVID-19 and when the observatory has been evacuated because of approaching storms. In this case, we must shut down the computers and cannot rely on the electromagnet to maintain the enclosure closed.
 
 \subsection{Hard Shut-Down}
 
