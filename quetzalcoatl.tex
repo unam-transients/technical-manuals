@@ -1,0 +1,85 @@
+%LTeX: enabled=false
+
+\documentclass[utf8]{report}
+
+\input{style}
+
+\quetzalcoatltrue
+
+\newcommand{\projectname}{Quetzalcoatl}
+\newcommand{\projectexternalipname}{quetzalcoatl.astrossp.unam.mx}
+\newcommand{\projectexternalipaddress}{132.248.4.23}
+\newcommand{\projectinterfaceurl}{http://\projectexternalipname/}
+\newcommand{\projectaccount}{quetzalcoatl}
+\newcommand{\projectchat}{Quetzalcoatl/DDOTI Workspace}
+\newcommand{\windlimit}{20}
+
+\newcommand{\diego}[1]{{\color{blue}{Diego: \textbf\small{#1}}}}
+\newcommand{\magui}[1]{{\color{red}{Magui: \textbf\small{#1}}}}
+\newcommand{\rosa}[1]{{\color{green}{Rosa: \textbf\small{#1}}}}
+
+\newcommand{\Is}{\mbox{$I_\mathrm{s}$}}
+
+\includeonly{
+    frontmatter,
+    chapter-introduction,
+    part-operations,
+    chapter-safety,
+    chapter-documentation,
+    chapter-interface,
+    chapter-operations,
+}
+
+\begin{document}
+
+\include{frontmatter}
+
+\twocolumn
+
+\include{chapter-introduction}
+
+\include{part-operations}
+
+\include{chapter-safety}
+\include{chapter-documentation}
+\include{chapter-interface}
+\include{chapter-operations}
+
+\include{part-installations}
+
+\include{chapter-buildings}
+\include{chapter-electrical-power}
+\include{chapter-electrical-grounding}
+\include{chapter-network}
+\include{chapter-lights}
+\include{chapter-webcams}
+\include{chapter-enclosure}
+
+\include{part-telescope-and-instrument}
+
+\include{chapter-mount}
+\include{chapter-telescope-coatli}
+\include{chapter-secondary-coatli}
+\include{chapter-instrument-huitzi-f20}
+\include{chapter-calibrations}
+
+\include{part-control-system}
+
+\include{chapter-control-system}
+\include{chapter-json}
+\include{chapter-observing-manually}
+\include{chapter-observing-blocks}
+\include{chapter-archive}
+
+\include{part-obsolete-components}
+\appendix
+
+\include{chapter-covers}
+\include{chapter-interim-imager-coatli}
+\include{chapter-instrument-huitzi-f8}
+
+%\newpage
+%\bibliography{bibliography}
+%\bibliographystyle{aasjournal}
+
+\end{document}

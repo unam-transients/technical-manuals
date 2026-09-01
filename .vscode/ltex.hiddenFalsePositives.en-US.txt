@@ -1,0 +1,18 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qhas been funded by CONACyT (LN 232649, 260369, and 271117) and the Universidad Nacional Autónoma de México (CIC and DGAPA/PAPIIT IT102715, IG100414, IN109408, IN109418, IG100820, and IN105921) and is operated and maintained by the Observatorio Astronómico Nacional and the Instituto de Astronomı́a of the Universidad Nacional Autónoma de México.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QThe safety priorities at , from highest to lowest, are: Avoiding injury and death to personnel.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QWhen working on the platform, close it partially or fully if possible.\\E$"}
+{"rule":"NORTH_POLE","sentence":"^\\QIn the home position, the telescope is pointed to the celestial north pole with the telescope above the mount.\\E$"}
+{"rule":"NORTH_POLE","sentence":"^\\QIn the home position, the telescope is pointed to the celestial north pole with the telescopes to the east and west of the mount.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIn the home position, the telescope is pointed to the celestial north pole with the telescope above the mount.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe supervisor mode (“enabled”, “disabled”, “open”, “opentocool”, or “closed”).\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QAn example view from webcam CZ (on the 84-cm telescope building looking towards ).\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QAn example view from webcam C (on the 84-cm telescope building looking towards ).\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe supervisor mode (one of “enabled”, “disabled”, “open”, “opentocool”, or “closed”).\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qis in regular robotic operation under the responsibility of the observatory staff.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QIf necessary, carry out an on-site inspection of .\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QA “soft” shut-down is appropriate for circumstances in which electrical power will continue to be supplied to .\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIf the supervisor is enabled and the weather conditions change from not benign to benign, the control system will open partially to cool (between half and hour before sunset and sunset) or open completely to observe (between sunset and the end of morning astronomical twilight).\\E$"}
+{"rule":"NORTH_POLE","sentence":"^\\QVerify that the telescope is in the parked position, pointed at the celestial north pole and with the telescope above the mount.\\E$"}
+{"rule":"NORTH_POLE","sentence":"^\\QThe telescope prior to being covered by a tarpaulin, pointed at the celestial north pole and with the telescope above the mount.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QMake sure the “PROHIBIDO EL PASO” sign is left in position at the bottom of the access stairs.\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QA “hard” shut-down is appropriate for circumstances in which electrical power will not continue to be supplied to .\\E$"}

@@ -15,23 +15,26 @@ This chapter describes the interface used by the observatory staff to interact w
 
 \section{Access}
 
-The address of the {\projectname} mountain-top web site is:
-\begin{quotation}
-\url{\projectinterfaceurl}
-\end{quotation}
+The address of the {\projectname} mountain-top web-site is:
+\begin{quote}
+    \url{\projectinterfaceurl}
+\end{quote}
 
-The web site contains the interface and documentation.
+The web-site contains the interface and documentation.
 
 The top-level and the documentation are available to computers on the mountain-top, Instituto de Astronomía CU, and Instituto de Astronomía Ensenada networks.
 
-The interface is only directly available to computers on the mountain-top network. 
+The interface is only directly available to computers on the mountain-top network.
 
-The interface is protected by passwords. 
+The interface is protected by passwords.
 \ifcoatli
 The account name is “coatli” and the password is “coatli”
 \fi
 \ifddoti
 The account name is “ddoti” and the password is “ddoti”
+\fi
+\ifquetzalcoatl
+The account name is “quetzalcoatl” and the password is “quetzalcoatl”
 \fi
 (both all lowercase).
 
@@ -40,62 +43,63 @@ The account name is “ddoti” and the password is “ddoti”
 
 The interface can be accessed locally by OAN technical staff using the Raspberry Pi in the shed.
 
-If you need to log into the Raspberry Pi, use the “{\projectaccount}” account with password “{\projectaccount}”. After this, open Chromium and follow the instructions above for access to the web site.
+If you need to log into the Raspberry Pi, use the “{\projectaccount}” account with password “{\projectaccount}”. After this, open Chromium and follow the instructions above for access to the web-site.
 
 \section{Main Page}
 
 \begin{figure*}
-\begin{center}
-\resizebox{\linewidth}{!}{\begin{labeled}{\includegraphics[width=0.5\linewidth]{figures/interface-main-page}}
-\arrowandlabel{(-3.6,5.7)}{(-3.6,7)}{south}{All-Sky}
-\arrowandlabel{(-1.8,5.7)}{(1,7)}{south}{Webcams}
-\arrowonly{(-0.4,5.7)}{(1,7)}
-\arrowonly{(+1.0,5.7)}{(1,7)}
-\arrowonly{(+3.2,5.7)}{(1,7)}
-\arrowandlabel{(-4.8,3.2)}{(-6,3.2)}{east}{C0}
-\arrowandlabel{(-4.8,2.2)}{(-6,2.2)}{east}{Navigation}
-\arrowandlabel{(-4.8,0.5)}{(-6,0.5)}{east}{Status}
-\arrowandlabel{(-4.8,-1.2)}{(-6,-1.2)}{east}{Activity}
-\arrowandlabel{(-4.8,-4)}{(-6,-4)}{east}{Log}
-\arrowandlabel{(4.8,0.5)}{(6,0.5)}{west}{Buttons}
-\end{labeled}}
-\end{center}
-\caption{An example of the main page of the interface. The major elements are labelled and described in the text.}
-\label{figure:interface-main-page}
+    \begin{center}
+        \resizebox{\linewidth}{!}{
+            \begin{labeled}{\includegraphics[width=0.5\linewidth]{figures/interface-main-page}}
+                \arrowandlabel{(-3.6,5.7)}{(-3.6,7)}{south}{All-Sky}
+                \arrowandlabel{(-1.8,5.7)}{(1,7)}{south}{Webcams}
+                \arrowonly{(-0.4,5.7)}{(1,7)}
+                \arrowonly{(+1.0,5.7)}{(1,7)}
+                \arrowonly{(+3.2,5.7)}{(1,7)}
+                \arrowandlabel{(-4.8,3.2)}{(-6,3.2)}{east}{C0}
+                \arrowandlabel{(-4.8,2.2)}{(-6,2.2)}{east}{Navigation}
+                \arrowandlabel{(-4.8,0.5)}{(-6,0.5)}{east}{Status}
+                \arrowandlabel{(-4.8,-1.2)}{(-6,-1.2)}{east}{Activity}
+                \arrowandlabel{(-4.8,-4)}{(-6,-4)}{east}{Log}
+                \arrowandlabel{(4.8,0.5)}{(6,0.5)}{west}{Buttons}
+        \end{labeled}}
+    \end{center}
+    \caption{An example of the main page of the interface. The major elements are labelled and described in the text.}
+    \label{figure:interface-main-page}
 \end{figure*}
 
 \ifcoatli
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-a.jpg}
-\end{center}
-\caption{An example view from webcam A (in N corner of the enclosure looking to the SW).}
-\label{figure:interface-webcam-a}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-a.jpg}
+    \end{center}
+    \caption{An example view from webcam A (in N corner of the enclosure looking to the SW).}
+    \label{figure:interface-webcam-a}
 \end{figure}
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-b.jpg}
-\end{center}
-\caption{An example view from webcam B (in S corner of the enclosure looking to the NE).}
-\label{figure:interface-webcam-b}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-b.jpg}
+    \end{center}
+    \caption{An example view from webcam B (in S corner of the enclosure looking to the NE).}
+    \label{figure:interface-webcam-b}
 \end{figure}
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-cz.jpg}
-\end{center}
-\caption{An example view from webcam CZ (on the 84-cm telescope building looking towards {\projectname}). Webcam CZ is actually just a fixed zoom of webcam C.}
-\label{figure:interface-webcam-cz}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-cz.jpg}
+    \end{center}
+    \caption{An example view from webcam CZ (on the 84-cm telescope building looking towards {\projectname}). Webcam CZ is actually just a fixed zoom of webcam C.}
+    \label{figure:interface-webcam-cz}
 \end{figure}
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-c.jpg}
-\end{center}
-\caption{An example view from webcam C (on the 84-cm telescope building looking towards {\projectname}).}
-\label{figure:interface-webcam-c}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-c.jpg}
+    \end{center}
+    \caption{An example view from webcam C (on the 84-cm telescope building looking towards {\projectname}).}
+    \label{figure:interface-webcam-c}
 \end{figure}
 
 \fi
@@ -103,35 +107,71 @@ If you need to log into the Raspberry Pi, use the “{\projectaccount}” accoun
 \ifddoti
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-a.jpg}
-\end{center}
-\caption{An example view from webcam A (in N corner of the enclosure looking to the SSW).}
-\label{figure:interface-webcam-a}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-a.jpg}
+    \end{center}
+    \caption{An example view from webcam A (in N corner of the enclosure looking to the SSW).}
+    \label{figure:interface-webcam-a}
 \end{figure}
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-b.jpg}
-\end{center}
-\caption{An example view from webcam B (in S corner of the enclosure looking to the NNE).}
-\label{figure:interface-webcam-b}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-b.jpg}
+    \end{center}
+    \caption{An example view from webcam B (in S corner of the enclosure looking to the NNE).}
+    \label{figure:interface-webcam-b}
 \end{figure}
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-cz.jpg}
-\end{center}
-\caption{An example view from webcam CZ (on the 84-cm telescope building looking towards {\projectname}). Webcam CZ is actually just a fixed zoom of webcam C.}
-\label{figure:interface-webcam-cz}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-cz.jpg}
+    \end{center}
+    \caption{An example view from webcam CZ (on the 84-cm telescope building looking towards {\projectname}). Webcam CZ is actually just a fixed zoom of webcam C.}
+    \label{figure:interface-webcam-cz}
 \end{figure}
 
 \begin{figure}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-c.jpg}
-\end{center}
-\caption{An example view from webcam C (on the 84-cm telescope building looking towards {\projectname}).}
-\label{figure:interface-webcam-c}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-ddoti-webcam-c.jpg}
+    \end{center}
+    \caption{An example view from webcam C (on the 84-cm telescope building looking towards {\projectname}).}
+    \label{figure:interface-webcam-c}
+\end{figure}
+
+\fi
+
+\ifquetzalcoatl
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-a.jpg}
+    \end{center}
+    \caption{An example view from webcam A (in N corner of the enclosure looking to the SW).}
+    \label{figure:interface-webcam-a}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-b.jpg}
+    \end{center}
+    \caption{An example view from webcam B (in S corner of the enclosure looking to the NE).}
+    \label{figure:interface-webcam-b}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-cz.jpg}
+    \end{center}
+    \caption{An example view from webcam CZ (on the 84-cm telescope building looking towards {\projectname}). Webcam CZ is actually just a fixed zoom of webcam C.}
+    \label{figure:interface-webcam-cz}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{figures/interface-coatli-webcam-c.jpg}
+    \end{center}
+    \caption{An example view from webcam C (on the 84-cm telescope building looking towards {\projectname}).}
+    \label{figure:interface-webcam-c}
 \end{figure}
 
 \fi
@@ -139,63 +179,62 @@ If you need to log into the Raspberry Pi, use the “{\projectaccount}” accoun
 Figure~\ref{figure:interface-main-page} shows an example of the main page of the interface. The major elements of the interface are:
 
 \begin{itemize}
-\item
-Thumbnail images from the webcams. Clicking on the thumbnail images brings up larger images, examples of which are shown in Figures~\ref{figure:interface-webcam-a}, \ref{figure:interface-webcam-b}, \ref{figure:interface-webcam-cz}, and \ref{figure:interface-webcam-c}. These images are useful for checking the status of the enclosure and telescope. At night, one needs to switch on the enclosure lights (see \S\ref{interface-switch-on-button}) to see anything in the webcams.  
-\item
-A thumbnail image from the all-sky camera. Clicking on the thumbnail image brings up a larger image. This is useful for checking for clouds.
-\item
-A thumbnail image of the latest image taken by the C0 detector. Clicking on the thumbnail image brings up a larger image. This is useful for checking focus.
-\item
-A navigation section. Clicking on these links will bring up the detailed page for the corresponding control system server. These pages are typically used by the team members to diagnose problems.
-\item
-A status section. In the main page this gives:
-\begin{itemize}
-\item
-The UTC time.
-\item
-The civil time at the observatory (PST or PDT).
-\item
-The supervisor mode (“enabled”, “disabled”, “open”, “opentocool”, or “closed”).
-\item
-A description of whether the supervisor mode permits the enclosure to be open and why.
-\item
-A description of whether the current weather conditions permit the enclosure to be open and why (wind, rain, and humidity).
-\item
-A description of the current sky state (daylight, twilight, and night).
-\item
-The time of the next day/twilight/night transition in UTC.
-\item
-The enclosure state (open or closed).
+    \item
+        Thumbnail images from the webcams. Clicking on the thumbnail images brings up larger images, examples of which are shown in Figures~\ref{figure:interface-webcam-a}, \ref{figure:interface-webcam-b}, \ref{figure:interface-webcam-cz}, and \ref{figure:interface-webcam-c}. These images are useful for checking the status of the enclosure and telescope. At night, one needs to switch on the enclosure lights (see \S\ref{interface-switch-on-button}) to see anything in the webcams.
+    \item
+        A thumbnail image from the all-sky camera. Clicking on the thumbnail image brings up a larger image. This is useful for checking for clouds.
+    \item
+        A thumbnail image of the latest image taken by the C0 detector. Clicking on the thumbnail image brings up a larger image. This is useful for checking focus.
+    \item
+        A navigation section. Clicking on these links will bring up the detailed page for the corresponding control system server. These pages are typically used by the team members to diagnose problems.
+    \item
+        A status section. In the main page this gives:
+        \begin{itemize}
+            \item
+                The UTC time.
+            \item
+                The civil time at the observatory (PST or PDT).
+            \item
+                The supervisor mode (one of “enabled”, “disabled”, “open”, “opentocool”, or “closed”).
+            \item
+                A description of whether the supervisor mode permits the enclosure to be open and why.
+            \item
+                A description of whether the current weather conditions permit the enclosure to be open and why (wind, rain, and humidity).
+            \item
+                A description of the current sky state (daylight, twilight, and night).
+            \item
+                The time of the next day/twilight/night transition in UTC.
+            \item
+                The enclosure state (open or closed).
+        \end{itemize}
+    \item
+        The activity section. If a control system server activity is not “idle” (for example, if it is “started”, “initializing”, “moving”, “tracking”, “opening”, or “closing”), this is shown here. If a server activity is “idle”, it is not shown here. Thus, if all the servers are “idle”, this section is empty.
+
+        Errors and warnings are shown here in red and yellow respectively.
+    \item
+        The log section. This section shows the latest log messages from the control system in reverse order.
+    \item
+        The buttons. These are used to interact with the control system.
+        \begin{itemize}
+            \item
+                Enable. Enabled the supervisor. This permits the supervisor to open and close according to the weather and sky state. (In this context, the "supervisor" is the part of the control system that is responsible for taking the decision to open or close the telescope.)
+            \item
+                Open. Permit the supervisor to open and close according to the sky state, taking no account of the weather.
+            \item
+                Open to Cool. Permit the supervisor to open to cool according to the sky state, taking no account of the weather.
+            \item
+                Close. Force the supervisor to close and to stay closed until explicitly instructed otherwise.
+                \label{interface-close-button}
+            \item
+                Switch On. Switch on the enclosure lights. This is useful when you want to use the webcams to check the status of the telescope or enclosure. Of course, one does not want to turn the lights on if the telescope is observing.
+                \label{interface-switch-on-button}
+            \item
+                Switch Off. Switch off the enclosure lights.
+                \label{interface-switch-off-button}
+
+            \item
+                Restart. Schedule a restart of the control system servers for the start of the next minute. This can be used to recover from software problems. After the software has restarted, you might want to enable the supervisor again.
+                \label{interface-restart-button}
+
+        \end{itemize}
 \end{itemize}
-\item
-The activity section. If a control system server activity is not “idle” (for example, if it is “started”, “initializing”, “moving”, “tracking”, “opening”, or “closing”), this is shown here. If a server activity is “idle”, it is not shown here. Thus, if all of the servers are “idle”, this section is empty.
-
-Errors and warnings are shown here in red and yellow respectively.
-\item
-The log section. This section shows the latest log messages from the control system in reverse order.
-\item
-The buttons. These are used to interact with the control system.
-\begin{itemize}
-\item
-Enable. Enabled the supervisor. This permits the supervisor to open and close according to the weather and sky state. (In this context, the "supervisor" is the part of the control system that is responsible for taking the decision to open or close the telescope.)
-\item
-Open. Permit the supervisor to open and close according to the sky state, taking no account of the weather. 
-\item
-Open to Cool. Permit the supervisor to open to cool according to the sky state, taking no account of the weather. 
-\item
-Close. Force the supervisor to close and to stay closed until explicitly instructed otherwise.
-\label{interface-close-button}
-\item
-Switch On. Switch on the enclosure lights. This is useful when you want to use the webcams to check the status of the telescope or enclosure. Of course, one does not want to turn the lights on if the telescope is observing.
-\label{interface-switch-on-button}
-\item
-Switch Off. Switch off the enclosure lights. 
-\label{interface-switch-off-button}
-
-\item
-Restart. Schedule a restart of the control system servers for the start of the next minute. This can be used to recover from software problems. After the software has restarted, you might want to enable the supervisor again.
-\label{interface-restart-button}
-
-\end{itemize}
-\end{itemize}
-

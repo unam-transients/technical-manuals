@@ -3,7 +3,10 @@
 *.out
 *.synctex.gz
 *.toc
+*.fdb_latexmk
+*.fls
 .DS_Store
 coatli.pdf
 ddoti.pdf
 colibri.pdf
+quetzalcoatl.pdf
