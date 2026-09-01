@@ -1,20 +1,28 @@
-\usepackage[utf8]{inputenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{newtxtext}
-\usepackage{newtxmath}
+% FONT
 
-\usepackage[cm]{fullpage}
-\setlength{\columnsep}{1cm}
+\usepackage{unicode-math}
+\setmainfont[
+    BoldFont = texgyreschola-bold.otf,
+    BoldItalicFont = texgyreschola-bolditalic.otf,
+    ItalicFont = texgyreschola-italic.otf
+]{texgyreschola-regular.otf}
+\setmathfont{texgyreschola-math.otf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% BASIC SPACING
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{\smallskipamount}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.5}
 \usetikzlibrary{calc}
-
-%\usepackage{fullpage}
 
 \usepackage[colorlinks=true,destlabel=true]{hyperref}
 \hypersetup{extension = }
@@ -55,9 +63,6 @@
 \newcommand{\dummylabel}[2]{
     \draw[label,white] #1 node [label,anchor=#2,draw=white] {};
 }
-
-% https://tex.stackexchange.com/questions/52317/pdftex-warning-version-allowed
-\pdfminorversion=7
 
 \newif\ifcoatli
 \coatlifalse

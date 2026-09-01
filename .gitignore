@@ -5,6 +5,7 @@
 *.toc
 *.fdb_latexmk
 *.fls
+*.xdv
 .DS_Store
 coatli.pdf
 ddoti.pdf
